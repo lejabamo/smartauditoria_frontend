@@ -3,31 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentación SGSRI - SmartAuditorIA | Maestría en Computación e IA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Presentación SGSRI - SmartAuditorIA | Universidad del Valle</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --primary: #818cf8;
-            --primary-dark: #4f46e5;
-            --secondary: #c084fc;
-            --accent: #22d3ee;
-            --accent-soft: rgba(34, 211, 238, 0.15);
-            --dark: #020617;
-            --dark-card: rgba(15, 23, 42, 0.75);
-            --light: #f8fafc;
-            --text-muted: #94a3b8;
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --success: #34d399;
-            --warning: #fbbf24;
+            --univalle-red: #aa1916;
+            --univalle-red-dark: #881311;
+            --univalle-red-light: #fef2f2;
+            --univalle-red-border: #fecaca;
+            --dark: #111827;
+            --dark-secondary: #1f2937;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --text-subtle: #6b7280;
+            --bg-page: #f3f4f6;
+            --bg-card: #ffffff;
+            --border: #e5e7eb;
+            --border-hover: #d1d5db;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --blue: #2563eb;
+            --blue-light: #eff6ff;
+            --green: #16a34a;
+            --green-light: #f0fdf4;
+            --amber: #d97706;
+            --amber-light: #fffbeb;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            background: #020617;
-            color: var(--light);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
             height: 100vh;
             width: 100vw;
             overflow: hidden;
@@ -35,97 +49,109 @@
             flex-direction: column;
         }
 
-        /* Top Bar Navigation */
-        .top-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            padding: 0 30px;
+        /* Top Bar */
+        .top-bar {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            padding: 10px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(2, 6, 23, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--glass-border);
             z-index: 1000;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         }
 
-        .brand-link {
+        .brand-container {
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: white;
+            gap: 12px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
         }
 
-        .brand-link span { color: var(--accent); }
+        .univalle-logo {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
+        }
 
-        .nav-actions {
+        .brand-text h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .brand-text h1 span {
+            color: var(--univalle-red);
+        }
+
+        .brand-text p {
+            font-size: 0.75rem;
+            color: var(--text-subtle);
+            font-weight: 500;
+        }
+
+        .nav-links {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 8px;
         }
 
         .nav-link {
-            color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 6px 14px;
-            border-radius: 8px;
-            transition: all 0.25s ease;
-            border: 1px solid transparent;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .nav-link:hover {
-            color: white;
-            background: var(--glass);
-            border-color: var(--glass-border);
+            color: var(--univalle-red);
+            background: var(--univalle-red-light);
         }
 
         .nav-link.active-link {
-            color: var(--accent);
-            background: var(--accent-soft);
-            border-color: var(--accent);
+            color: var(--univalle-red);
+            background: var(--univalle-red-light);
+            border: 1px solid var(--univalle-red-border);
         }
 
+        /* Slide Area */
         .presentation {
             position: relative;
             flex: 1;
             width: 100%;
-            margin-top: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #020617 75%);
+            padding: 20px;
+            background: #f9fafb;
             overflow: hidden;
         }
 
         .slide {
             position: absolute;
-            width: 88%;
-            max-width: 1050px;
-            max-height: calc(100vh - 170px);
+            width: 90%;
+            max-width: 1100px;
+            max-height: calc(100vh - 160px);
             min-height: 480px;
-            background: var(--dark-card);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 28px;
-            padding: 45px 50px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px 48px;
+            box-shadow: var(--shadow-lg);
             opacity: 0;
-            transform: scale(0.96) translateY(20px);
-            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: scale(0.97) translateY(15px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
             pointer-events: none;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 80px rgba(99, 102, 241, 0.12);
             overflow-y: auto;
         }
 
@@ -135,37 +161,39 @@
             pointer-events: auto;
         }
 
-        /* Custom Scrollbar */
-        .slide::-webkit-scrollbar { width: 6px; }
-        .slide::-webkit-scrollbar-track { background: transparent; }
-        .slide::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
-
         .slide-tag {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            font-size: 0.75rem;
             font-weight: 700;
-            color: var(--accent);
+            color: var(--univalle-red);
+            background: var(--univalle-red-light);
+            border: 1px solid var(--univalle-red-border);
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             margin-bottom: 12px;
+            align-self: flex-start;
         }
 
         .title {
-            font-size: 2.4rem;
+            font-size: 2.15rem;
             font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 18px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 50%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--dark);
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+
+        .title span {
+            color: var(--univalle-red);
         }
 
         .content {
-            font-size: 1.15rem;
-            color: #cbd5e1;
-            line-height: 1.65;
+            font-size: 1.05rem;
+            color: var(--text-main);
+            line-height: 1.6;
             flex: 1;
         }
 
@@ -177,19 +205,14 @@
         }
 
         .card-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
+            background: #f9fafb;
+            border: 1px solid var(--border);
+            border-radius: 10px;
             padding: 20px;
-            transition: border-color 0.3s;
-        }
-
-        .card-box:hover {
-            border-color: var(--accent);
         }
 
         .card-box h4 {
-            color: var(--accent);
+            color: var(--dark);
             font-size: 1.05rem;
             font-weight: 700;
             margin-bottom: 10px;
@@ -198,87 +221,84 @@
             gap: 8px;
         }
 
+        .card-box h4 i {
+            color: var(--univalle-red);
+        }
+
         .content ul {
             list-style: none;
-            margin-top: 10px;
         }
 
         .content li {
             margin-bottom: 10px;
-            padding-left: 24px;
+            padding-left: 22px;
             position: relative;
-            font-size: 1rem;
-            color: #e2e8f0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
         }
 
         .content li::before {
-            content: "•";
-            color: var(--accent);
+            content: "✓";
+            color: var(--univalle-red);
             position: absolute;
-            left: 6px;
+            left: 0;
             font-weight: bold;
-            font-size: 1.2rem;
-            line-height: 1;
         }
 
         .status-badge {
             display: inline-block;
-            padding: 3px 10px;
+            padding: 2px 8px;
             border-radius: 12px;
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
         }
 
-        .badge-done { background: rgba(52, 211, 153, 0.15); color: var(--success); border: 1px solid var(--success); }
-        .badge-dev { background: rgba(251, 191, 36, 0.15); color: var(--warning); border: 1px solid var(--warning); }
+        .badge-done { background: var(--green-light); color: var(--green); border: 1px solid #bbf7d0; }
+        .badge-dev { background: var(--amber-light); color: var(--amber); border: 1px solid #fde68a; }
 
+        /* Controls */
         .controls {
             position: fixed;
-            bottom: 30px;
-            right: 40px;
+            bottom: 24px;
+            right: 32px;
             display: flex;
-            gap: 14px;
+            gap: 10px;
             z-index: 100;
         }
 
-        .btn {
-            background: var(--dark-card);
-            border: 1px solid var(--glass-border);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
+        .btn-ctrl {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            color: var(--dark);
+            padding: 10px 20px;
+            border-radius: 8px;
             cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.25s ease;
             font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
         }
 
-        .btn:hover:not(:disabled) {
-            background: var(--primary);
-            border-color: var(--primary);
-            box-shadow: 0 0 25px rgba(129, 140, 248, 0.4);
-            transform: translateY(-2px);
+        .btn-ctrl:hover:not(:disabled) {
+            background: var(--univalle-red);
+            color: white;
+            border-color: var(--univalle-red);
         }
 
-        .btn:disabled {
+        .btn-ctrl:disabled {
             opacity: 0.4;
             cursor: not-allowed;
         }
 
         .progress {
             position: fixed;
-            bottom: 38px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            width: 220px;
+            width: 200px;
             height: 6px;
-            background: rgba(255, 255, 255, 0.1);
+            background: #e5e7eb;
             border-radius: 3px;
             overflow: hidden;
             z-index: 100;
@@ -286,104 +306,87 @@
 
         .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, var(--accent), var(--primary));
+            background: var(--univalle-red);
             width: 12.5%;
-            transition: width 0.35s ease;
-            box-shadow: 0 0 10px var(--accent);
+            transition: width 0.3s ease;
         }
 
         .slide-counter {
             position: fixed;
-            top: 75px;
-            right: 40px;
-            font-size: 0.9rem;
-            color: var(--accent);
+            bottom: 24px;
+            left: 32px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
             font-weight: 700;
-            letter-spacing: 1.5px;
+            background: #ffffff;
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
             z-index: 100;
-            background: rgba(2, 6, 23, 0.6);
-            padding: 4px 12px;
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
         }
 
-        /* Mobile & Tablet Responsiveness */
         @media (max-width: 768px) {
-            .top-nav { padding: 0 16px; }
-            .brand-link span { display: none; }
+            .top-bar { padding: 8px 16px; }
+            .brand-text p { display: none; }
+            .nav-link span { display: none; }
             .slide {
-                width: 94%;
+                width: 95%;
                 padding: 24px 20px;
-                max-height: calc(100vh - 145px);
-                min-height: unset;
-                border-radius: 20px;
+                max-height: calc(100vh - 130px);
+                border-radius: 12px;
             }
-            .title { font-size: 1.65rem; margin-bottom: 12px; }
-            .content { font-size: 0.95rem; line-height: 1.5; }
-            .content li { font-size: 0.9rem; margin-bottom: 8px; }
+            .title { font-size: 1.5rem; margin-bottom: 12px; }
             .grid-2 { grid-template-columns: 1fr; gap: 12px; }
-            .card-box { padding: 14px; }
-            .controls {
-                bottom: 15px;
-                right: 16px;
-                gap: 8px;
-            }
-            .btn {
-                padding: 9px 16px;
-                font-size: 0.8rem;
-            }
-            .progress {
-                bottom: 24px;
-                left: 20px;
-                transform: none;
-                width: 90px;
-            }
-            .slide-counter {
-                top: 70px;
-                right: 16px;
-                font-size: 0.8rem;
-                padding: 3px 8px;
-            }
+            .controls { bottom: 12px; right: 12px; }
+            .slide-counter { bottom: 12px; left: 12px; font-size: 0.75rem; padding: 6px 10px; }
+            .progress { display: none; }
         }
     </style>
 </head>
 <body>
+
     <!-- Top Navigation Bar -->
-    <header class="top-nav">
-        <a href="index.html" class="brand-link">
-            🛡️ SmartAuditorIA <span>| SGSRI</span>
+    <header class="top-bar">
+        <a href="index.html" class="brand-container">
+            <img src="https://www.univalle.edu.co/images/Univalle/escudo_univalle_rojo.png" alt="Universidad del Valle" class="univalle-logo">
+            <div class="brand-text">
+                <h1>Smart<span>AuditorIA</span></h1>
+                <p>Universidad del Valle • Maestría en Computación e IA</p>
+            </div>
         </a>
-        <nav class="nav-actions">
-            <a href="index.html" class="nav-link">Inicio</a>
-            <a href="20260320_Presentacion_SGSRI.html" class="nav-link active-link">Presentación</a>
-            <a href="20260320_Retrospectiva_Ciclo.html" class="nav-link">Retrospectiva</a>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link"><i data-lucide="home" style="width: 15px;"></i> <span>Inicio</span></a>
+            <a href="20260320_Presentacion_SGSRI.html" class="nav-link active-link"><i data-lucide="presentation" style="width: 15px;"></i> <span>Presentación</span></a>
+            <a href="20260320_Retrospectiva_Ciclo.html" class="nav-link"><i data-lucide="history" style="width: 15px;"></i> <span>Retrospectiva</span></a>
+            <a href="https://smartauditoria.atlassian.net/jira/software/projects/SCRUM/summary" target="_blank" class="nav-link"><i data-lucide="trello" style="width: 15px;"></i> <span>Jira</span></a>
         </nav>
     </header>
 
     <div class="presentation">
         <div class="slide-counter" id="counter">1 / 8</div>
 
-        <!-- SLIDE 1: PORTADA Y FICHA TÉCNICA -->
+        <!-- SLIDE 1: PORTADA -->
         <div class="slide active">
             <span class="slide-tag">Trabajo Integrador 2 • Maestría en Computación e IA</span>
-            <h1 class="title">SmartAuditorIA (SGSRI)</h1>
+            <h2 class="title">SmartAuditorIA <span>(SGSRI)</span></h2>
             <div class="content">
-                <p style="font-size: 1.25rem; color: #e2e8f0; font-weight: 600;">
-                    Sistema de Gestión y Auditoría de Seguridad de Activos de Información con Asistencia de IA
+                <p style="font-size: 1.15rem; color: var(--text-muted); font-weight: 500; margin-bottom: 20px;">
+                    Sistema de Gestión de Seguridad y Riesgos de Información con Asistencia de Inteligencia Artificial
                 </p>
-                <div class="grid-2" style="margin-top: 25px;">
-                    <div class="card-box">
-                        <h4>👨‍💻 Autor y Rol</h4>
+                <div class="grid-2">
+                    <div class="card-box" style="border-left: 4px solid var(--univalle-red);">
+                        <h4><i data-lucide="user"></i> Autor del Proyecto</h4>
                         <p><strong>Ing. Leonardo Javier Bastidas Moreno</strong></p>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">
-                            Desarrollo individual adaptando roles de Arquitecto de Software, Fullstack/DevOps y Auditor de Seguridad.
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 6px;">
+                            Desarrollo individual adaptando roles de Arquitecto de Software, Desarrollador Fullstack y Auditor de Seguridad.
                         </p>
                     </div>
-                    <div class="card-box">
-                        <h4>🏛️ Marco Académico y Normativo</h4>
+                    <div class="card-box" style="border-left: 4px solid var(--dark);">
+                        <h4><i data-lucide="award"></i> Institución y Marco Normativo</h4>
                         <p><strong>Universidad del Valle</strong> — Facultad de Ingeniería</p>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">
-                            Alineado con estándares <strong>ISO/IEC 27001:2022</strong>, <strong>ISO 27005:2022</strong> y modelo <strong>DAFP V7 / MIPG</strong>.
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 6px;">
+                            Alineación con normas <strong>ISO/IEC 27001:2022</strong>, <strong>ISO 27005:2022</strong> y marco <strong>DAFP V7 / MIPG</strong>.
                         </p>
                     </div>
                 </div>
@@ -393,23 +396,23 @@
         <!-- SLIDE 2: PROBLEMA Y PROPÓSITO -->
         <div class="slide">
             <span class="slide-tag">Definición Estratégica</span>
-            <h1 class="title">Problema y Propósito</h1>
+            <h2 class="title">Problema y <span>Propósito del Sistema</span></h2>
             <div class="content">
                 <div class="grid-2">
                     <div class="card-box">
-                        <h4>⚠️ Problemática en Entidades Públicas</h4>
+                        <h4><i data-lucide="alert-triangle"></i> Problemática en Entidades Públicas</h4>
                         <ul>
-                            <li><strong>Gestión Dispersa:</strong> Inventarios de activos desactualizados en hojas de cálculo no estandarizadas.</li>
-                            <li><strong>Evaluación Subjetiva:</strong> Valoración de riesgos manual con alta disparidad de criterios y sesgo humano.</li>
-                            <li><strong>Brecha Normativa:</strong> Desconexión entre los inventarios técnicos y los marcos obligatorios DAFP V7 e ISO 27001.</li>
+                            <li><strong>Inventarios Dispersos:</strong> Activos de información gestionados manualmente en hojas de cálculo desactualizadas.</li>
+                            <li><strong>Valoración Subjetiva:</strong> Evaluaciones de impacto y probabilidad sin criterios unificados ni respaldo técnico.</li>
+                            <li><strong>Brecha Normativa:</strong> Desconexión entre el inventario tecnológico y los requerimientos DAFP V7 y MIPG.</li>
                         </ul>
                     </div>
                     <div class="card-box">
-                        <h4>🎯 Propósito de SmartAuditorIA</h4>
+                        <h4><i data-lucide="target"></i> Propósito de SmartAuditorIA</h4>
                         <ul>
-                            <li><strong>Automatización:</strong> Centralizar y gobernar los activos de información con clasificación CIA (Confidencialidad, Integridad, Disponibilidad).</li>
-                            <li><strong>Asistencia Inteligente:</strong> Sugerir controles y justificaciones técnicas contextualizadas basadas en normas.</li>
-                            <li><strong>Reportes Oficiales:</strong> Generar matrices de riesgo 5x5 y formatos DAFP listos para auditoría formal.</li>
+                            <li><strong>Centralización:</strong> Gobierno estructurado de activos con clasificación de Confidencialidad, Integridad y Disponibilidad (CIA).</li>
+                            <li><strong>Asistencia Inteligente:</strong> Sugerencia de controles ISO/IEC 27002 contextualizados a las amenazas evaluadas.</li>
+                            <li><strong>Generación Oficial:</strong> Matrices dinámicas 5x5 y reportes listos para auditorías institucionales de control interno.</li>
                         </ul>
                     </div>
                 </div>
@@ -419,126 +422,134 @@
         <!-- SLIDE 3: ARQUITECTURA DE LA SOLUCIÓN -->
         <div class="slide">
             <span class="slide-tag">Ingeniería de Software</span>
-            <h1 class="title">Arquitectura del Ecosistema</h1>
+            <h2 class="title">Arquitectura y <span>Repositorios GitHub</span></h2>
             <div class="content">
-                <p>Diseño desacoplado basado en microservicios contenerizados y principios DevSecOps:</p>
-                <div class="grid-2" style="margin-top: 15px;">
+                <p style="color: var(--text-muted); margin-bottom: 12px;">Ecosistema modular desacoplado en tres repositorios oficiales independientes:</p>
+                <div class="grid-2">
                     <div class="card-box">
-                        <h4>🖥️ Frontend SPA & API REST</h4>
+                        <h4><i data-lucide="layout"></i> Frontend & Backend</h4>
                         <ul>
-                            <li><strong>Frontend:</strong> React 18 + TypeScript + Vite + Material UI con interfaz reactiva y Wizard interactivo.</li>
-                            <li><strong>Backend API:</strong> Flask + SQLAlchemy con arquitectura en capas (rutas, servicios, modelos).</li>
-                            <li><strong>Base de Datos:</strong> MariaDB 10.11 relacional persistente en contenedor Docker aislado.</li>
+                            <li><strong>Frontend SPA:</strong> React 18, TypeScript, Vite, Material UI y Wizard guiado. <br><a href="https://github.com/lejabamo/smartauditoria_frontend" target="_blank" style="color: var(--univalle-red); font-weight: 600;">github.com/lejabamo/smartauditoria_frontend</a></li>
+                            <li><strong>Backend API:</strong> Python Flask, SQLAlchemy, base de datos MariaDB y seguridad JWT. <br><a href="https://github.com/lejabamo/smartauditoria_backend" target="_blank" style="color: var(--univalle-red); font-weight: 600;">github.com/lejabamo/smartauditoria_backend</a></li>
                         </ul>
                     </div>
                     <div class="card-box">
-                        <h4>🧠 Motor Inteligente & Seguridad</h4>
+                        <h4><i data-lucide="cpu"></i> Motor Inteligente & Seguridad</h4>
                         <ul>
-                            <li><strong>Motor RAG:</strong> Servicio híbrido de recuperación y generación asistida por normativas de ciberseguridad.</li>
-                            <li><strong>Seguridad RBAC:</strong> JWT con expiración estricta, bloqueo anti-fuerza bruta y roles (ADMIN, OPERADOR, CONSULTOR).</li>
-                            <li><strong>Proxy Seguro:</strong> Nginx con terminación SSL/TLS automatizada vía Let's Encrypt.</li>
+                            <li><strong>Engine IA (RAG):</strong> FastAPI, pipeline de recuperación contextual y catálogo ISO 27002. <br><a href="https://github.com/lejabamo/smartauditoria_engine" target="_blank" style="color: var(--univalle-red); font-weight: 600;">github.com/lejabamo/smartauditoria_engine</a></li>
+                            <li><strong>Infraestructura:</strong> Proxy inverso Nginx con SSL Let's Encrypt sobre servidor VPS OVH Cloud.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 4: LAS CINCO ÉPICAS DEL PROYECTO -->
+        <!-- SLIDE 4: LAS CINCO ÉPICAS -->
         <div class="slide">
-            <span class="slide-tag">Estructura del Backlog</span>
-            <h1 class="title">Las Cinco Épicas del Proyecto</h1>
+            <span class="slide-tag">Alcance Funcional</span>
+            <h2 class="title">Las Cinco Épicas del <span>Proyecto</span></h2>
             <div class="content">
                 <div class="grid-2">
                     <div class="card-box">
                         <h4>1. Gestión de Activos</h4>
-                        <p style="font-size: 0.95rem;">Ingesta de inventarios, tipificación (Software, Hardware, Datos) y cálculo de criticidad CIA según DAFP V7.</p>
-                        <h4 style="margin-top: 15px;">2. Matriz de Riesgos ISO</h4>
-                        <p style="font-size: 0.95rem;">Motor de cálculo de riesgo inherente y residual (Probabilidad × Impacto) con matriz dinámica 5x5 (ISO 27005).</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Inventario, categorización (Software, Hardware, Datos) y cálculo de criticidad CIA según lineamientos DAFP V7.</p>
+                        <h4 style="margin-top: 14px;">2. Matriz de Riesgos ISO</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Cálculo automático de riesgo inherente y residual (Probabilidad × Impacto) con mapa de calor 5x5 (ISO 27005).</p>
                     </div>
                     <div class="card-box">
                         <h4>3. Motor Inteligente RAG</h4>
-                        <p style="font-size: 0.95rem;">Sugerencias automatizadas de controles ISO 27002:2022 y asistencia en justificaciones de evaluación.</p>
-                        <h4 style="margin-top: 15px;">4. Dashboard y 5. Despliegue</h4>
-                        <p style="font-size: 0.95rem;">KPIs ejecutivos, exportación oficial y despliegue robusto en VPS de producción con dominio institucional.</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Recuperación aumentada por contexto para sugerencia asistida de controles ISO/IEC 27002:2022.</p>
+                        <h4 style="margin-top: 14px;">4. Dashboard y 5. Despliegue</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Monitoreo de criticidad institucional, exportación de reportes y despliegue robusto con HTTPS en la nube.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 5: METODOLOGÍA ÁGIL Y ROLES -->
+        <!-- SLIDE 5: METODOLOGÍA Y JIRA -->
         <div class="slide">
             <span class="slide-tag">Gestión del Proyecto</span>
-            <h1 class="title">Metodología Ágil y Organización</h1>
+            <h2 class="title">Product Backlog en <span>Jira Software</span></h2>
             <div class="content">
+                <div class="card-box" style="margin-bottom: 16px; border-left: 4px solid var(--blue);">
+                    <p style="font-size: 0.95rem;">
+                        <strong>Seguimiento en Tablero Jira:</strong> El backlog se gestiona en Jira Software bajo el proyecto <strong>SCRUM</strong> (<a href="https://smartauditoria.atlassian.net/jira/software/projects/SCRUM/summary" target="_blank" style="color: var(--blue); font-weight: 600;">smartauditoria.atlassian.net/.../summary</a>), con historias estructuradas desde SCRUM-12 hasta SCRUM-35.
+                    </p>
+                    <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 6px;">
+                        * <em>Nota técnica:</em> El proyecto se administra directamente en Jira; no se cuenta con integración automática por webhooks hacia GitHub en esta fase.
+                    </p>
+                </div>
                 <div class="grid-2">
                     <div class="card-box">
-                        <h4>📋 Product Backlog en Jira</h4>
+                        <h4><i data-lucide="check-circle"></i> Historias Clave Implementadas</h4>
                         <ul>
-                            <li><strong>Historias de Usuario:</strong> Requisitos funcionales estructurados desde SCRUM-12 hasta SCRUM-35.</li>
-                            <li><strong>Criterios de Aceptación:</strong> Validación técnica medible en cada incremento.</li>
-                            <li><strong>Iteraciones Equilibradas:</strong> Sprints temáticos con tiempo reservado para pruebas y retrospectivas.</li>
+                            <li><strong>SCRUM-12:</strong> Ingesta y sincronización de inventario.</li>
+                            <li><strong>SCRUM-13:</strong> Clasificación MSIP/MIPG de activos.</li>
+                            <li><strong>SCRUM-14:</strong> Roles de usuario y permisos RBAC.</li>
+                            <li><strong>SCRUM-18:</strong> Wizard interactivo de evaluación.</li>
                         </ul>
                     </div>
                     <div class="card-box">
-                        <h4>🔄 Adaptación Individual</h4>
+                        <h4><i data-lucide="clock"></i> Épica de Investigación (Tesis)</h4>
                         <ul>
-                            <li><strong>Arquitecto:</strong> Diseño de modelos relacionales, diagramas C4 y esquema de seguridad.</li>
-                            <li><strong>Desarrollador Fullstack:</strong> Implementación de endpoints Flask y componentes React.</li>
-                            <li><strong>DevOps / Auditor:</strong> Hardening de contenedores, scripts de prueba E2E y validación contra rúbrica.</li>
+                            <li><strong>SCRUM-15:</strong> Base vectorial histórica con ChromaDB.</li>
+                            <li><strong>SCRUM-16:</strong> Motor de sugerencias RAG ISO 27002.</li>
+                            <li><strong>SCRUM-17:</strong> Generación asistida de justificaciones.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 6: ESTADO REAL DE IMPLEMENTACIÓN -->
+        <!-- SLIDE 6: ESTADO REAL -->
         <div class="slide">
             <span class="slide-tag">Verificación Técnica</span>
-            <h1 class="title">Estado Real de Implementación</h1>
+            <h2 class="title">Estado Real de <span>Implementación</span></h2>
             <div class="content">
                 <div class="grid-2">
                     <div class="card-box">
-                        <h4>✅ Terminado y Operativo (Release 1.0 & 2.0)</h4>
+                        <h4><span class="status-badge badge-done">Terminado y Operativo</span></h4>
                         <ul>
-                            <li><span class="status-badge badge-done">Terminado</span> Backend Flask con CRUD completo de activos y riesgos.</li>
-                            <li><span class="status-badge badge-done">Terminado</span> Autenticación JWT y control de acceso RBAC.</li>
-                            <li><span class="status-badge badge-done">Terminado</span> Frontend React con Wizard de auditoría y Dashboard.</li>
-                            <li><span class="status-badge badge-done">Terminado</span> Despliegue en producción con SSL activo.</li>
+                            <li><strong>Release 1.0:</strong> Backend Flask API, modelo relacional MariaDB, sistema de autenticación JWT y roles RBAC.</li>
+                            <li><strong>Release 2.0:</strong> Frontend SPA en React, Wizard guiado y despliegue cloud en producción.</li>
+                            <li><strong>Infraestructura:</strong> Dominio institucional con certificado SSL/TLS activo.</li>
                         </ul>
                     </div>
                     <div class="card-box">
-                        <h4>🔬 En Desarrollo / Foco de Tesis</h4>
+                        <h4><span class="status-badge badge-dev">En Desarrollo / Foco de Tesis</span></h4>
                         <ul>
-                            <li><span class="status-badge badge-dev">En Desarrollo</span> Motor RAG v2 con base de datos vectorial persistente (ChromaDB).</li>
-                            <li><span class="status-badge badge-dev">En Desarrollo</span> Evaluación cuantitativa con framework RAGAS (precisión y fidelidad).</li>
-                            <li><span class="status-badge badge-dev">Pendiente</span> Conector directo a la API de GLPI para ingesta en vivo.</li>
+                            <li><strong>Motor RAG v2:</strong> Persistencia en ChromaDB y embeddings semánticos para los 93 controles ISO 27002.</li>
+                            <li><strong>Evaluación RAGAS:</strong> Marco de métricas cuantitativas (Fidelidad, Relevancia) para la sustentación.</li>
+                            <li><strong>Conector GLPI:</strong> Sincronización continua de tickets y activos vía API.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 7: EVIDENCIAS TÉCNICAS DEMOSTRABLES -->
+        <!-- SLIDE 7: EVIDENCIAS TÉCNICAS -->
         <div class="slide">
             <span class="slide-tag">Sustento Empírico</span>
-            <h1 class="title">Evidencias Demostrables</h1>
+            <h2 class="title">Evidencias Técnicas <span>Demostrables</span></h2>
             <div class="content">
                 <div class="grid-2">
                     <div class="card-box">
-                        <h4>🌐 Plataforma en Producción</h4>
-                        <p><strong>URL Pública:</strong> <a href="https://riesgosti.tics.sedcauca.gov.co" target="_blank" style="color: var(--accent);">riesgosti.tics.sedcauca.gov.co</a></p>
+                        <h4><i data-lucide="server"></i> Plataforma en Producción (Cloud VPS)</h4>
+                        <p style="font-size: 0.95rem;">
+                            <strong>URL:</strong> <a href="https://riesgosti.tics.sedcauca.gov.co/login" target="_blank" style="color: var(--univalle-red); font-weight: 600;">riesgosti.tics.sedcauca.gov.co</a>
+                        </p>
                         <ul style="margin-top: 10px;">
-                            <li>Servidor VPS OVH Cloud (51.79.35.88).</li>
-                            <li>Certificado SSL/TLS válido (Let's Encrypt).</li>
-                            <li>Roles operativos verificados en base de datos.</li>
+                            <li>Servidor VPS OVH Cloud (IP 51.79.35.88).</li>
+                            <li>Contenedores Docker (Frontend Nginx, Backend Gunicorn, MariaDB).</li>
+                            <li>Certificado SSL/TLS emitido por Let's Encrypt.</li>
                         </ul>
                     </div>
                     <div class="card-box">
-                        <h4>🧪 Verificación Automatizada</h4>
+                        <h4><i data-lucide="check-square"></i> Pruebas y Trazabilidad</h4>
                         <ul>
-                            <li><strong>Test E2E:</strong> Script de prueba <code>test_production.py</code> con validación de endpoints y sesión.</li>
-                            <li><strong>Suite Pytest:</strong> Cobertura de pruebas unitarias en lógica de criticidad y autenticación.</li>
-                            <li><strong>Showcase Pages:</strong> Portafolio público de entregables en GitHub Pages.</li>
+                            <li><strong>Prueba E2E:</strong> Script automatizado <code>test_production.py</code> con validación de endpoints y sesión.</li>
+                            <li><strong>Pytest:</strong> Batería de pruebas unitarias sobre lógica de criticidad y autenticación.</li>
+                            <li><strong>GitHub Pages:</strong> Portafolio documental público en <code>lejabamo.github.io/smartauditoria_frontend</code>.</li>
                         </ul>
                     </div>
                 </div>
@@ -548,35 +559,32 @@
         <!-- SLIDE 8: CONCLUSIONES Y PRÓXIMOS PASOS -->
         <div class="slide">
             <span class="slide-tag">Cierre Académico</span>
-            <h1 class="title">Limitaciones y Próximos Pasos</h1>
+            <h2 class="title">Limitaciones y <span>Próximos Pasos</span></h2>
             <div class="content">
                 <div class="grid-2">
                     <div class="card-box">
-                        <h4>⚠️ Limitaciones Actuales</h4>
+                        <h4><i data-lucide="alert-circle"></i> Limitaciones Técnicas Actuales</h4>
                         <ul>
-                            <li>El motor RAG actual se basa en base de conocimiento estructurada; la base vectorial requiere persistencia dedicada.</li>
-                            <li>La ingesta de activos se realiza por carga estructurada; requiere sincronización webhook con GLPI.</li>
+                            <li>La base de conocimiento RAG actual opera en modo estructurado; la base vectorial requiere persistencia dedicada.</li>
+                            <li>La ingesta de activos opera mediante carga estructurada; la integración GLPI requiere configuración de webhooks.</li>
                         </ul>
                     </div>
                     <div class="card-box">
-                        <h4>🚀 Próximos Pasos (Ciclo 3 & Tesis)</h4>
+                        <h4><i data-lucide="arrow-right-circle"></i> Próximos Pasos para la Tesis</h4>
                         <ul>
-                            <li>Integración de ChromaDB + Embeddings bge-large para recuperación semántica densa.</li>
-                            <li>Pipeline de evaluación formal RAGAS para reporte de tesis de maestría.</li>
-                            <li>Pipeline CI/CD completamente automatizado vía GitHub Actions hacia el VPS.</li>
+                            <li>Despliegue del cluster de ChromaDB con embeddings densos en servidor dedicado.</li>
+                            <li>Batería formal de evaluación cuantitativa con framework RAGAS.</li>
+                            <li>Automatización del pipeline de CI/CD vía GitHub Actions para despliegue sin intervención manual.</li>
                         </ul>
                     </div>
                 </div>
-                <p style="text-align: center; margin-top: 25px; color: var(--accent); font-style: italic; font-weight: 600;">
-                    "Paso dado, paso asegurado — Rigor técnico hacia la excelencia académica."
-                </p>
             </div>
         </div>
 
         <!-- Controls -->
         <div class="controls">
-            <button class="btn" id="prevBtn" onclick="prevSlide()" disabled>← Anterior</button>
-            <button class="btn" id="nextBtn" onclick="nextSlide()">Siguiente →</button>
+            <button class="btn-ctrl" id="prevBtn" onclick="prevSlide()" disabled>← Anterior</button>
+            <button class="btn-ctrl" id="nextBtn" onclick="nextSlide()">Siguiente →</button>
         </div>
 
         <div class="progress">
@@ -622,7 +630,6 @@
             }
         }
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === ' ') {
                 e.preventDefault();
@@ -634,26 +641,19 @@
             }
         });
 
-        // Touch swipe navigation for mobile
         let touchStartX = 0;
         let touchEndX = 0;
-        const presentationEl = document.querySelector('.presentation');
-
-        presentationEl.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        presentationEl.addEventListener('touchend', (e) => {
+        const pres = document.querySelector('.presentation');
+        pres.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        pres.addEventListener('touchend', e => {
             touchEndX = e.changedTouches[0].screenX;
-            handleGesture();
+            if (touchEndX < touchStartX - 40) nextSlide();
+            if (touchEndX > touchStartX + 40) prevSlide();
         }, { passive: true });
 
-        function handleGesture() {
-            const threshold = 40;
-            if (touchEndX < touchStartX - threshold) nextSlide();
-            if (touchEndX > touchStartX + threshold) prevSlide();
+        if (typeof lucide !== 'undefined' && lucide.createIcons) {
+            lucide.createIcons();
         }
-
         updateProgress();
     </script>
 </body>
