@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retrospectiva SGSRI - SmartAuditorIA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Retrospectiva SGSRI - SmartAuditorIA | Trabajo Integrador 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
             --primary: #3B82F6;
+            --primary-dark: #1E40AF;
             --secondary: #1E40AF;
             --accent: #06B6D4;
             --dark: #0F172A;
@@ -17,7 +18,11 @@
             --white: #FFFFFF;
             --glass: rgba(255, 255, 255, 0.9);
             --border: #E2E8F0;
-            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+            --glass-border: rgba(226, 232, 240, 0.9);
+            --text-muted: #64748B;
+            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+            --success: #10B981;
+            --warning: #F59E0B;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,73 +31,172 @@
             font-family: 'Outfit', sans-serif;
             background-color: var(--light);
             background-image: 
-                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.05) 0px, transparent 50%);
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.06) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.06) 0px, transparent 50%);
             color: var(--dark);
             line-height: 1.6;
             min-height: 100vh;
-            padding: 60px 20px;
+            padding: 40px 20px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 0 auto;
             background: var(--white);
             border: 1px solid var(--border);
-            border-radius: 30px;
-            padding: 60px;
+            border-radius: 28px;
+            padding: 50px;
             box-shadow: var(--shadow);
-            animation: fadeIn 1s ease-out;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Top Breadcrumb Navigation */
+        nav.breadcrumb-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 35px;
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        nav.breadcrumb-nav a {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            transition: all 0.25s ease;
+            padding: 4px 10px;
+            border-radius: 8px;
+        }
+
+        .nav-home {
+            color: var(--primary);
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .nav-home:hover {
+            background: rgba(59, 130, 246, 0.16);
+            color: var(--primary-dark);
+        }
+
+        .nav-presentation {
+            color: var(--accent);
+            background: rgba(6, 182, 212, 0.08);
+        }
+
+        .nav-presentation:hover {
+            background: rgba(6, 182, 212, 0.18);
+            color: #0891b2;
+        }
+
+        .nav-current {
+            color: var(--text-muted);
+            font-weight: 600;
+            padding: 4px 8px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 45px;
+        }
+
+        .meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: block;
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
             color: var(--dark);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            line-height: 1.2;
         }
         h1 span { color: var(--primary); }
 
-        .meta {
-            font-size: 0.9rem;
+        .author-subtitle {
+            font-size: 1.1rem;
             color: var(--text-muted);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 15px;
-            display: block;
+            margin-bottom: 8px;
+        }
+
+        .author-roles {
+            font-size: 0.9rem;
+            color: #475569;
+            background: rgba(59, 130, 246, 0.06);
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            font-weight: 500;
         }
 
         hr {
             border: 0;
             height: 1px;
             background: var(--border);
-            margin: 40px 0;
+            margin: 35px 0;
         }
 
         section {
-            margin-bottom: 40px;
+            margin-bottom: 45px;
         }
 
         h2 {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
+            font-size: 1.65rem;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             color: var(--dark);
+            font-weight: 700;
         }
 
         h3 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--primary);
-            margin: 20px 0 10px;
+            margin: 18px 0 10px;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card {
+            background: var(--light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            background: var(--white);
+            border-color: var(--primary);
+        }
+
+        .card-accent {
+            border-left: 5px solid var(--accent);
+        }
+
+        .card-success {
+            border-left: 5px solid var(--success);
+        }
+
+        .card-warning {
+            border-left: 5px solid var(--warning);
         }
 
         ul {
@@ -103,8 +207,9 @@
         li {
             margin-bottom: 12px;
             position: relative;
-            padding-left: 30px;
-            color: #475569;
+            padding-left: 28px;
+            color: #334155;
+            font-size: 1rem;
         }
 
         li::before {
@@ -112,136 +217,243 @@
             position: absolute;
             left: 0;
             color: var(--primary);
+            font-weight: 800;
+        }
+
+        .li-issue::before {
+            content: "!";
+            color: var(--warning);
             font-weight: 900;
+        }
+
+        .li-learned::before {
+            content: "💡";
+            font-size: 0.85rem;
+        }
+
+        .li-metric::before {
+            content: "🎯";
+            font-size: 0.85rem;
         }
 
         code {
             background: rgba(59, 130, 246, 0.1);
             color: var(--secondary);
-            padding: 2px 6px;
+            padding: 2px 7px;
             border-radius: 6px;
             font-family: inherit;
             font-weight: 600;
+            font-size: 0.9em;
         }
 
-        .card {
-            background: var(--light);
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .table-metrics {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 30px;
-            transition: all 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            background: var(--white);
-            border-color: var(--primary);
+        .table-metrics th {
+            background: #f1f5f9;
+            color: var(--dark);
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .table-metrics td {
+            padding: 12px 16px;
+            border-top: 1px solid var(--border);
+            font-size: 0.95rem;
+            color: #334155;
         }
 
         .footer-quote {
             text-align: center;
             font-style: italic;
             color: var(--primary);
-            margin-top: 60px;
+            margin-top: 50px;
             font-size: 1.1rem;
             border-top: 1px solid var(--border);
             padding-top: 30px;
+            font-weight: 600;
         }
 
-        /* Nav specifically for the breadcrumb I added earlier */
-        nav a { transition: color 0.3s; }
-        nav a:hover { color: var(--secondary) !important; }
-
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @media (max-width: 600px) {
-            .container { padding: 30px; }
+        @media (max-width: 768px) {
+            .container { padding: 25px 20px; }
             h1 { font-size: 2.2rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .table-metrics { font-size: 0.85rem; }
+            .table-metrics th, .table-metrics td { padding: 8px 10px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav style="display: flex; align-items: center; gap: 12px; margin-bottom: 30px; font-size: 0.9rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px;">
-            <a href="index.html" style="color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 6px; font-weight: 600;">
-                <i data-lucide="home" style="width: 16px;"></i> Presentación
+        <!-- Navigation Breadcrumbs -->
+        <nav class="breadcrumb-nav">
+            <a href="index.html" class="nav-home">
+                <i data-lucide="home" style="width: 16px;"></i> Inicio (Hub)
             </a>
             <i data-lucide="chevron-right" style="width: 14px; color: #94a3b8;"></i>
-            <span style="color: #94a3b8;">Retrospectiva del Ciclo</span>
+            <a href="20260320_Presentacion_SGSRI.html" class="nav-presentation">
+                <i data-lucide="presentation" style="width: 16px;"></i> Presentación
+            </a>
+            <i data-lucide="chevron-right" style="width: 14px; color: #94a3b8;"></i>
+            <span class="nav-current">Retrospectiva del Ciclo</span>
         </nav>
+
         <header>
-            <div class="meta">Ciclo: Fase 1-2 | Metodología Espiral</div>
-            <h1>Retrospectiva SGSRI</h1>
-            <p style="color: #94a3b8;">SmartAuditorIA - Ingeniería Leonardo Bastidas</p>
+            <div class="meta">Trabajo Integrador 2 • Maestría en Computación e Inteligencia Artificial</div>
+            <h1>Retrospectiva del Ciclo SGSRI</h1>
+            <p class="author-subtitle">SmartAuditorIA — Sistema de Gestión y Auditoría de Riesgos de Información</p>
+            <div class="author-roles">
+                <strong>Estudiante:</strong> Ing. Leonardo Javier Bastidas Moreno | <strong>Adaptación:</strong> Proyecto Individual (Roles: Arquitecto, DevOps, Auditor)
+            </div>
         </header>
 
         <hr>
 
+        <!-- 1. QUÉ FUNCIONÓ -->
         <section>
-            <h2>📋 1. Evidencias de Progreso</h2>
-            <div class="card">
-                <h3>Backend (Flask API)</h3>
-                <ul>
-                    <li><strong>Gestión de Activos</strong>: Implementado en <code>activos.py</code>. Soporte para CRUD y clasificación CIA.</li>
-                    <li><strong>Modelado de Riesgos</strong>: Engine de cálculo <code>Probabilidad x Impacto</code> integrado en <code>riesgos.py</code>.</li>
-                    <li><strong>Motor RAG v1</strong>: Servicio híbrido en <code>iso_suggestions_service.py</code> para controles ISO.</li>
-                    <li><strong>Autenticación</strong>: Sistema JWT funcional con roles <code>roles_auth</code>.</li>
-                </ul>
+            <h2>📋 1. Qué Funcionó (Fortalezas y Logros Verificados)</h2>
+            <div class="card card-success">
+                <p style="margin-bottom: 15px; font-weight: 600; color: #1e293b;">
+                    Avances técnicos consolidados y validados en el entorno de producción durante los Sprints 1 y 2:
+                </p>
+                <div class="grid-2">
+                    <div>
+                        <h3>Backend y Datos (Flask + MariaDB)</h3>
+                        <ul>
+                            <li><strong>Modelado Relacional:</strong> Entidades completas para usuarios del sistema, autenticación, activos de información y roles RBAC (<code>ADMIN</code>, <code>OPERADOR</code>, <code>CONSULTOR</code>).</li>
+                            <li><strong>Cálculo de Criticidad:</strong> Algoritmo de impacto CIA (Confidencialidad, Integridad, Disponibilidad) alineado con DAFP V7 y MIPG.</li>
+                            <li><strong>Seguridad de Acceso:</strong> JWT con expiración estricta y protección contra fuerza bruta por bloqueo temporal de cuenta tras 5 intentos fallidos.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Frontend y Despliegue en la Nube</h3>
+                        <ul>
+                            <li><strong>Wizard de Evaluación:</strong> Flujo paso a paso intuitivo que guía la calificación de activos y amenazas.</li>
+                            <li><strong>Matriz 5x5 Dinámica:</strong> Cuadrícula visual de calor para mapeo de severidad inherente y residual (ISO 27005).</li>
+                            <li><strong>Despliegue Cloud en Producción:</strong> Servidor VPS OVH (IP 51.79.35.88) operativo con dominio institucional SSL (<code>https://riesgosti.tics.sedcauca.gov.co</code>).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <h3>Frontend (React)</h3>
+        <!-- 2. QUÉ DIFICULTADES SE PRESENTARON -->
+        <section>
+            <h2>⚠️ 2. Qué Dificultades se Presentaron (Retos Reales)</h2>
+            <div class="card card-warning">
+                <p style="margin-bottom: 15px; font-weight: 600; color: #1e293b;">
+                    Obstáculos técnicos y operativos identificados durante la ejecución:
+                </p>
                 <ul>
-                    <li><strong>Dashboard</strong>: Visualización inicial de métricas clave.</li>
-                    <li><strong>Wizard</strong>: Identificación guiada integrada con el backend.</li>
-                    <li><strong>Matriz 5x5</strong>: Visualización dinámica de criticidad.</li>
-                </ul>
-
-                <h3>Gestión de Proyecto</h3>
-                <ul>
-                    <li><strong>Jira</strong>: Backlog sincronizado y organizado en épicas.</li>
-                    <li><strong>Agentes</strong>: Jira, Dev y RAG operativos en el workspace.</li>
+                    <li class="li-issue"><strong>Compatibilidad de Dependencias en IA:</strong> Divergencias entre versiones de Python y librerías de embeddings (ChromaDB / PyTorch) en servidores virtuales con recursos limitados de memoria RAM.</li>
+                    <li class="li-issue"><strong>Sincronización de Catálogo Normativo:</strong> Complejidad para estructurar los 93 controles de la norma ISO/IEC 27002:2022 en un formato uniforme apto para inferencia RAG sin generar alucinaciones en el modelo.</li>
+                    <li class="li-issue"><strong>Sobrecarga Operativa en Desarrollo Individual:</strong> La simultaneidad de roles (configuración de infraestructura Linux/Nginx, desarrollo frontend React, backend Python y redacción académica) demandó una estricta priorización para no comprometer la calidad del entregable.</li>
+                    <li class="li-issue"><strong>Latencia en Respuestas de Inferencia:</strong> Pruebas preliminares con modelos LLM locales evidenciaron tiempos de espera superiores a 5 segundos por sugerencia, requiriendo un esquema híbrido de caché estructurada.</li>
                 </ul>
             </div>
         </section>
 
+        <!-- 3. QUÉ APRENDIMOS -->
         <section>
-            <h2>🧠 2. Retrospectiva del Equipo</h2>
-            <div class="card">
+            <h2>💡 3. Qué Aprendimos (Lecciones Clave)</h2>
+            <div class="card card-accent">
                 <ul>
-                    <li><strong>Fortalezas</strong>: Arquitectura de microservicios robusta y entrega ágil de sugerencias v1.</li>
-                    <li><strong>Desafíos</strong>: Necesidad de mayor precisión semántica; migración a <code>Vector DB</code> obligatoria.</li>
-                    <li><strong>Ajuste Espiral</strong>: Replanificación exitosa de las épicas EP1 y EP2 para asegurar calidad.</li>
+                    <li class="li-learned"><strong>El Principio «Paso dado, paso asegurado»:</strong> Antes de integrar modelos avanzados de aprendizaje profundo o vector stores, es indispensable que la base de datos relacional y las APIs REST cuenten con pruebas de integración E2E automatizadas (como <code>test_production.py</code>).</li>
+                    <li class="li-learned"><strong>Valor de la Metodología Espiral en Proyectos de IA:</strong> En sistemas RAG, iterar primero con una base de conocimiento curada (RAG v1 híbrido) permitió validar la interfaz del usuario antes de desplegar infraestructuras vectoriales complejas (RAG v2 con ChromaDB).</li>
+                    <li class="li-learned"><strong>Desacoplamiento Estricto de Capas:</strong> Mantener el motor de IA (FastAPI en Oracle Cloud) separado del backend transaccional (Flask en OVH) protegió la disponibilidad de la plataforma incluso ante picos de procesamiento del LLM.</li>
                 </ul>
             </div>
         </section>
 
+        <!-- 4. QUÉ ACCIONES DE MEJORA SE PROPONEN -->
         <section>
-            <h2>📈 3. Plan de Trabajo (Próximo Ciclo)</h2>
-            <div class="card" style="border-left: 4px solid var(--accent);">
-                <h3>Motor RAG v2 (Foco Maestría)</h3>
+            <h2>🚀 4. Qué Acciones de Mejora se Proponen</h2>
+            <div class="card">
+                <p style="margin-bottom: 15px; font-weight: 600; color: #1e293b;">
+                    Compromisos para el siguiente ciclo y la fase de consolidación de la Tesis:
+                </p>
                 <ul>
-                    <li>Investigación de embeddings y <code>ChromaDB</code>.</li>
-                    <li>Aplicación de métricas <code>RAGAS</code> para la tesis.</li>
+                    <li><strong>Acción 1 (Base Vectorial Persistente):</strong> Migrar el servicio de sugerencias hacia una instancia dedicada de ChromaDB persistente en el VPS de inteligencia artificial.</li>
+                    <li><strong>Acción 2 (Evaluación Cuantitativa con RAGAS):</strong> Implementar una batería de pruebas de evaluación formal de RAG midiendo <em>Faithfulness</em>, <em>Answer Relevance</em> y <em>Context Recall</em> sobre la norma ISO 27002.</li>
+                    <li><strong>Acción 3 (Automatización CI/CD con GitHub Actions):</strong> Implementar un flujo de trabajo de despliegue continuo que ejecute linter, pruebas unitarias y despliegue automatizado vía SSH al VPS ante cambios en la rama principal.</li>
+                    <li><strong>Acción 4 (Conector API GLPI):</strong> Desarrollar el adaptador para sincronizar activos de TI directamente desde la mesa de ayuda GLPI institucional hacia la base de datos de auditoría.</li>
                 </ul>
+            </div>
+        </section>
 
-                <h3>Refinamiento Profesional</h3>
-                <ul>
-                    <li>Refuerzo de seguridad en Frontend.</li>
-                    <li>Optimización UI/UX para nivel Premium.</li>
-                    <li>GitHub Actions para CI/CD.</li>
-                </ul>
+        <!-- 5. CÓMO SE COMPROBARÁ CADA MEJORA -->
+        <section>
+            <h2>🎯 5. Cómo se Comprobará Cada Mejora (Criterios de Verificación)</h2>
+            <div class="card">
+                <p style="margin-bottom: 10px; font-weight: 600; color: #1e293b;">
+                    Matriz de verificación objetiva y métricas de aceptación académica:
+                </p>
+                <table class="table-metrics">
+                    <thead>
+                        <tr>
+                            <th>Acción de Mejora</th>
+                            <th>Métrica / Criterio Objetivo</th>
+                            <th>Método de Validación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Base Vectorial ChromaDB</strong></td>
+                            <td>Tiempo de recuperación &lt; 250 ms con persistencia de 93 controles ISO 27002.</td>
+                            <td>Test de carga sintética con suite de pruebas Pytest en el motor IA.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Métricas RAGAS</strong></td>
+                            <td>Puntaje de <em>Faithfulness</em> &gt; 0.85 y <em>Context Precision</em> &gt; 0.80 sobre dataset de prueba.</td>
+                            <td>Ejecución automatizada de evaluación RAGAS reportada en informe de maestría.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Pipeline CI/CD</strong></td>
+                            <td>Pipeline 100% verde que complete build, pruebas y deploy en &lt; 4 minutos.</td>
+                            <td>Ejecución verificable en pestaña <em>Actions</em> del repositorio de GitHub.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Ingesta GLPI</strong></td>
+                            <td>Sincronización exitosa de activos con respuesta HTTP 200 y mapeo automático de campos.</td>
+                            <td>Prueba de integración end-to-end con endpoint <code>/api/activos/sync-glpi</code>.</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
         <div class="footer-quote">
-            "Paso dado, paso asegurado. Hacia el refinamiento profesional."
+            "Paso dado, paso asegurado. Hacia el rigor y la excelencia en auditoría inteligente de ciberseguridad."
         </div>
     </div>
+
     <script>
-        lucide.createIcons();
+        // Initialize Lucide icons with fallback handling
+        if (typeof lucide !== 'undefined' && lucide.createIcons) {
+            lucide.createIcons();
+        }
     </script>
 </body>
 </html>
