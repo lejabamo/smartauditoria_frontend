@@ -1,10 +1,19 @@
-El Sistema de Gestión de Riesgos de Información (SGRI) se clasifica como una aplicación inteligente (Smart App) debido a la implementación de dos capacidades fundamentales: Conciencia de Contexto y Toma de Decisiones Autónoma. La primera capacidad se manifiesta en el sistema mediante su habilidad para identificar y aplicar automáticamente las normativas legales y estándares internacionales pertinentes según el contexto específico de cada evaluación de riesgo. El sistema analiza dinámicamente el escenario (tipo de reducción identificada, controles implementados, características del activo) y selecciona las referencias normativas apropiadas: ISO 27005:2022 para justificaciones de evaluación residual, ISO 27002:2022 para controles de seguridad, y el marco legal colombiano (Resolución 2277 de 2025, Resolución 500 de 2021, CONPES 3995 de 2020) según la naturaleza del riesgo. Esta capacidad contextual se implementa mediante el sistema RAG (Retrieval Augmented Generation), que clasifica automáticamente controles según su función (preventivos para reducir probabilidad, de protección para mitigar impacto) y los mapea a códigos ISO específicos, demostrando que el sistema posee conocimiento contextual sobre qué norma aplicar en cada situación. La segunda capacidad, Toma de Decisiones, se evidencia en el motor predictivo que sugiere controles de seguridad mediante análisis inteligente de relaciones entre amenazas, vulnerabilidades y activos, calculando relevancia, confianza y prioridad de cada sugerencia, y generando justificaciones contextuales que integran estándares internacionales y marco legal colombiano. Por tanto, SGRI trasciende las aplicaciones tradicionales al incorporar inteligencia contextual adaptativa y capacidad de decisión fundamentada, posicionándolo como una Smart App en el dominio de la gestión de riesgos de seguridad de la información.<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuditorIA - Smart Context Diagram</title>
-    <script type="module">
+    <title>SmartAuditorIA - Archivo Histórico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+      .historical-content-wrapper { padding: 2rem; background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin: 2rem auto; overflow-x: auto; position: relative;}
+      .back-btn { display: inline-block; margin-bottom: 2rem; color: var(--univalle-red); text-decoration: none; font-weight: 600; border: 1px solid var(--univalle-red); padding: 0.5rem 1rem; border-radius: 4px; transition: all 0.2s;}
+      .back-btn:hover { background-color: var(--univalle-red); color: white; }
+      .historical-content-wrapper h1, .historical-content-wrapper h2 { margin-top: 0; }
+    </style>
+<script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ 
             startOnLoad: true,
@@ -25,7 +34,7 @@ El Sistema de Gestión de Riesgos de Información (SGRI) se clasifica como una a
             }
         });
     </script>
-    <style>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -97,8 +106,25 @@ El Sistema de Gestión de Riesgos de Información (SGRI) se clasifica como una a
     </style>
 </head>
 <body>
+    <header>
+        <div class="container header-content">
+            <div class="brand">
+                <img src="logoUV_Oficial_Rojo.jpg" alt="Universidad del Valle" class="univalle-logo">
+                <div class="logo-text">Smart<span>AuditorIA</span> <span style="font-size: 1.1rem; color: #666; font-weight: 500; text-transform: none; border-left: 2px solid #ccc; padding-left: 10px; margin-left: 10px;">Archivo Histórico</span></div>
+            </div>
+            <nav class="nav-links">
+                <a href="../index.html">Volver al Inicio</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+      <div style="margin-top: 2rem;">
+        <a href="../index.html" class="back-btn">&larr; Volver al Hub Principal</a>
+      </div>
+      <div class="historical-content-wrapper">
+
     <div class="container">
-        <h1>🏗️ Smart Context Diagram (SCD) - AuditorIA</h1>
+        <h1>­ƒÅù´©Å Smart Context Diagram (SCD) - AuditorIA</h1>
         <h2>Diagrama de Contexto C4 - Arquitectura del Sistema</h2>
         
         <div class="mermaid">
@@ -115,21 +141,21 @@ graph LR
     %% === COLUMNA IZQUIERDA: EXTERNO Y ETL ===
     subgraph LeftCol[" "]
         direction TB
-        GLPI["🔌 GLPI<br/>Hardware • Software"]
-        ModuloETL["🔄 Módulo ETL<br/>Extract • Transform • Load"]
-        MySQL["🗄️ MySQL<br/>Activos • Riesgos"]
+        GLPI["­ƒöî GLPI<br/>Hardware ÔÇó Software"]
+        ModuloETL["­ƒöä Módulo ETL<br/>Extract ÔÇó Transform ÔÇó Load"]
+        MySQL["­ƒùä´©Å MySQL<br/>Activos ÔÇó Riesgos"]
     end
     
     class GLPI externalStyle
     class ModuloETL etlStyle
     class MySQL dbStyle
 
-    %% === COLUMNA CENTRAL: APLICACIÓN ===
+    %% === COLUMNA CENTRAL: APLICACI├ôN ===
     subgraph CenterCol[" "]
         direction TB
-        GestorRiesgos["👤 Gestor de Riesgos"]
-        Frontend["⚛️ Frontend React<br/>Wizard • Dashboard"]
-        BackendAPI["🔧 Backend API<br/>REST Services"]
+        GestorRiesgos["­ƒæñ Gestor de Riesgos"]
+        Frontend["ÔÜø´©Å Frontend React<br/>Wizard ÔÇó Dashboard"]
+        BackendAPI["­ƒöº Backend API<br/>REST Services"]
     end
     
     class GestorRiesgos userStyle
@@ -139,8 +165,8 @@ graph LR
     %% === COLUMNA DERECHA: IA Y VECTOR ===
     subgraph RightCol[" "]
         direction TB
-        MotorRAG["🤖 Motor RAG / IA<br/>Sugerencias ISO<br/>Justificaciones"]
-        VectorDB["📊 Vector DB<br/>Embeddings ISO"]
+        MotorRAG["­ƒñû Motor RAG / IA<br/>Sugerencias ISO<br/>Justificaciones"]
+        VectorDB["­ƒôè Vector DB<br/>Embeddings ISO"]
     end
     
     class MotorRAG aiStyle
@@ -176,16 +202,25 @@ graph LR
         </div>
 
         <div class="info">
-            <h3>📋 Información del Diagrama</h3>
+            <h3>­ƒôï Información del Diagrama</h3>
             <p><strong>Color Naranja:</strong> Motor RAG / Servicio de IA (componente inteligente destacado)</p>
             <p><strong>Color Púrpura:</strong> Componentes del sistema AuditorIA</p>
             <p><strong>Color Verde:</strong> Base de datos MySQL</p>
             <p><strong>Color Amarillo:</strong> Base de datos vectorial</p>
             <p><strong>Color Rosa:</strong> Sistemas externos</p>
             <p><strong>Color Azul:</strong> Usuarios</p>
-            <p style="margin-top: 15px;"><strong>💡 Para exportar:</strong> Abre este archivo en el navegador, haz clic derecho en el diagrama y selecciona "Guardar imagen como..." o usa herramientas de captura de pantalla.</p>
+            <p style="margin-top: 15px;"><strong>­ƒÆí Para exportar:</strong> Abre este archivo en el navegador, haz clic derecho en el diagrama y selecciona "Guardar imagen como..." o usa herramientas de captura de pantalla.</p>
         </div>
     </div>
+
+      </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p><strong>SmartAuditorIA</strong> &copy; 2026<br>
+            Trabajo Académico - Universidad del Valle<br>
+            <em>Documento de Archivo Histórico</em></p>
+        </div>
+    </footer>
 </body>
 </html>
-

@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartAuditorIA - Showcase de Avances</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>SmartAuditorIA - Archivo Histórico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
     <style>
+      .historical-content-wrapper { padding: 2rem; background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin: 2rem auto; overflow-x: auto; position: relative;}
+      .back-btn { display: inline-block; margin-bottom: 2rem; color: var(--univalle-red); text-decoration: none; font-weight: 600; border: 1px solid var(--univalle-red); padding: 0.5rem 1rem; border-radius: 4px; transition: all 0.2s;}
+      .back-btn:hover { background-color: var(--univalle-red); color: white; }
+      .historical-content-wrapper h1, .historical-content-wrapper h2 { margin-top: 0; }
+    </style>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
         :root {
             --primary: #0F172A;
             --secondary: #3B82F6;
@@ -132,10 +136,28 @@
         /* Footer */
         footer { margin-top: 80px; text-align: center; color: var(--text-dim); font-size: 0.8rem; padding-bottom: 40px; font-weight: 500; }
     </style>
-
-    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <header>
+        <div class="container header-content">
+            <div class="brand">
+                <img src="logoUV_Oficial_Rojo.jpg" alt="Universidad del Valle" class="univalle-logo">
+                <div class="logo-text">Smart<span>AuditorIA</span> <span style="font-size: 1.1rem; color: #666; font-weight: 500; text-transform: none; border-left: 2px solid #ccc; padding-left: 10px; margin-left: 10px;">Archivo Histórico</span></div>
+            </div>
+            <nav class="nav-links">
+                <a href="../index.html">Volver al Inicio</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+      <div style="margin-top: 2rem;">
+        <a href="../index.html" class="back-btn">&larr; Volver al Hub Principal</a>
+      </div>
+      <div class="historical-content-wrapper">
+
     <div class="container">
         <div class="breadcrumb">
             <a href="index.html">SmartAuditorIA</a> 
@@ -163,7 +185,7 @@
             <a href="wireframe_rag_tecnico.html" class="showcase-card">
                 <div class="card-icon"><i data-lucide="zap"></i></div>
                 <h3>Arquitectura RAG</h3>
-                <p>Detalle técnico del pipeline de datos: Ingesta de ISOs, Embeddings en ChromaDB y Simulador de Búsqueda Semántica.</p>
+                <p>Detalle t├®cnico del pipeline de datos: Ingesta de ISOs, Embeddings en ChromaDB y Simulador de Búsqueda Semántica.</p>
                 <div class="card-footer">
                     <div class="status"><span></span> Finalizado</div>
                     <div class="view-btn">VER DEMO <i data-lucide="arrow-right"></i></div>
@@ -190,7 +212,7 @@
                 <div class="jira-item">
                     <div class="jira-meta">
                         <h4>SCRUM-14: Implementar matriz de riesgos 5x5</h4>
-                        <span>EP2 - EVALUACIÓN</span>
+                        <span>EP2 - EVALUACI├ôN</span>
                     </div>
                     <div class="jira-tag tag-ready">READY</div>
                 </div>
@@ -211,7 +233,7 @@
                 <div class="jira-item">
                     <div class="jira-meta">
                         <h4>SCRUM-16: Clasificar automáticamente el nivel de riesgo</h4>
-                        <span>EP2 - EVALUACIÓN</span>
+                        <span>EP2 - EVALUACI├ôN</span>
                     </div>
                     <div class="jira-tag tag-done">DONE</div>
                 </div>
@@ -276,5 +298,15 @@
     <script>
         lucide.createIcons();
     </script>
+
+      </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p><strong>SmartAuditorIA</strong> &copy; 2026<br>
+            Trabajo Académico - Universidad del Valle<br>
+            <em>Documento de Archivo Histórico</em></p>
+        </div>
+    </footer>
 </body>
 </html>

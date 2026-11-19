@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartAuditorIA - Gestión Inteligente de Riesgos</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>SmartAuditorIA - Archivo Histórico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
     <style>
+      .historical-content-wrapper { padding: 2rem; background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin: 2rem auto; overflow-x: auto; position: relative;}
+      .back-btn { display: inline-block; margin-bottom: 2rem; color: var(--univalle-red); text-decoration: none; font-weight: 600; border: 1px solid var(--univalle-red); padding: 0.5rem 1rem; border-radius: 4px; transition: all 0.2s;}
+      .back-btn:hover { background-color: var(--univalle-red); color: white; }
+      .historical-content-wrapper h1, .historical-content-wrapper h2 { margin-top: 0; }
+    </style>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
         :root {
             /* Refined Color Palette - High Contrast */
             --primary-navy: #0F1D40; /* Improved Deep Blue with better visibility */
@@ -135,8 +139,28 @@
         footer { padding: 60px 10%; background: var(--primary-navy); color: white; text-align: center; }
 
     </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <header>
+        <div class="container header-content">
+            <div class="brand">
+                <img src="logoUV_Oficial_Rojo.jpg" alt="Universidad del Valle" class="univalle-logo">
+                <div class="logo-text">Smart<span>AuditorIA</span> <span style="font-size: 1.1rem; color: #666; font-weight: 500; text-transform: none; border-left: 2px solid #ccc; padding-left: 10px; margin-left: 10px;">Archivo Histórico</span></div>
+            </div>
+            <nav class="nav-links">
+                <a href="../index.html">Volver al Inicio</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+      <div style="margin-top: 2rem;">
+        <a href="../index.html" class="back-btn">&larr; Volver al Hub Principal</a>
+      </div>
+      <div class="historical-content-wrapper">
+
     <nav>
         <div class="logo">
             <i data-lucide="shield-check"></i>
@@ -179,7 +203,30 @@
             <div class="floating-card card-2" style="background: var(--primary-navy); color: white;">
                 <p style="font-size: 0.75rem; opacity: 0.7; margin-bottom: 8px;">Matriz de Riesgo</p>
                 <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px;">
-                    ${Array(24).fill('<div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>').join('')}
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
+                    <div style="height: 15px; background: rgba(255,255,255,0.1); border-radius: 2px;"></div>
                     <div style="height: 15px; background: #EF4444; border-radius: 2px; box-shadow: 0 0 10px #EF4444;"></div>
                 </div>
             </div>
@@ -197,19 +244,19 @@
                 <div class="mod-icon"><i data-lucide="navigation"></i></div>
                 <h3>Exploración UI</h3>
                 <p>Navegación fluida y profesional diseñada para gestores de seguridad.</p>
-                <a href="wireframe_navegacion.html" style="margin-top: 20px; display: inline-block; color: var(--primary-vibrant); font-weight: 700; text-decoration: none;">Ver Wireframe →</a>
+                <a href="wireframe_navegacion.html" style="margin-top: 20px; display: inline-block; color: var(--primary-vibrant); font-weight: 700; text-decoration: none;">Ver Wireframe ÔåÆ</a>
             </div>
             <div class="mod-card">
                 <div class="mod-icon"><i data-lucide="sparkles"></i></div>
                 <h3>Smart Wizard</h3>
                 <p>Asistente inteligente de evaluación de riesgos basado en contexto RAG.</p>
-                <a href="wireframe_wizard.html" style="margin-top: 20px; display: inline-block; color: var(--primary-vibrant); font-weight: 700; text-decoration: none;">Ver Wizard →</a>
+                <a href="wireframe_wizard.html" style="margin-top: 20px; display: inline-block; color: var(--primary-vibrant); font-weight: 700; text-decoration: none;">Ver Wizard ÔåÆ</a>
             </div>
             <div class="mod-card">
                 <div class="mod-icon"><i data-lucide="database"></i></div>
                 <h3>Arquitectura RAG</h3>
                 <p>Motor de procesamiento de lenguaje natural y base vectorial ChromaDB.</p>
-                <a href="wireframe_rag_tecnico.html" style="margin-top: 20px; display: inline-block; color: var(--primary-vibrant); font-weight: 700; text-decoration: none;">Ver Flujo RAG →</a>
+                <a href="wireframe_rag_tecnico.html" style="margin-top: 20px; display: inline-block; color: var(--primary-vibrant); font-weight: 700; text-decoration: none;">Ver Flujo RAG ÔåÆ</a>
             </div>
         </div>
     </section>
@@ -221,5 +268,15 @@
     <script>
         lucide.createIcons();
     </script>
+
+      </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p><strong>SmartAuditorIA</strong> &copy; 2026<br>
+            Trabajo Académico - Universidad del Valle<br>
+            <em>Documento de Archivo Histórico</em></p>
+        </div>
+    </footer>
 </body>
 </html>

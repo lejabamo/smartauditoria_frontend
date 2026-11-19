@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SGRI - Smart Context Diagram</title>
-    <script type="module">
+    <title>SmartAuditorIA - Archivo Histórico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+      .historical-content-wrapper { padding: 2rem; background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin: 2rem auto; overflow-x: auto; position: relative;}
+      .back-btn { display: inline-block; margin-bottom: 2rem; color: var(--univalle-red); text-decoration: none; font-weight: 600; border: 1px solid var(--univalle-red); padding: 0.5rem 1rem; border-radius: 4px; transition: all 0.2s;}
+      .back-btn:hover { background-color: var(--univalle-red); color: white; }
+      .historical-content-wrapper h1, .historical-content-wrapper h2 { margin-top: 0; }
+    </style>
+<script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ 
             startOnLoad: true,
@@ -19,7 +28,7 @@
             }
         });
     </script>
-    <style>
+<style>
         :root {
             --primary: #0F172A;
             --secondary: #3B82F6;
@@ -87,6 +96,23 @@
     </style>
 </head>
 <body>
+    <header>
+        <div class="container header-content">
+            <div class="brand">
+                <img src="logoUV_Oficial_Rojo.jpg" alt="Universidad del Valle" class="univalle-logo">
+                <div class="logo-text">Smart<span>AuditorIA</span> <span style="font-size: 1.1rem; color: #666; font-weight: 500; text-transform: none; border-left: 2px solid #ccc; padding-left: 10px; margin-left: 10px;">Archivo Histórico</span></div>
+            </div>
+            <nav class="nav-links">
+                <a href="../index.html">Volver al Inicio</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+      <div style="margin-top: 2rem;">
+        <a href="../index.html" class="back-btn">&larr; Volver al Hub Principal</a>
+      </div>
+      <div class="historical-content-wrapper">
+
     <div class="container">
         <nav style="display: flex; align-items: center; gap: 8px; margin-bottom: 30px; font-size: 0.85rem; color: #64748B;">
             <a href="index.html" style="color: var(--secondary); text-decoration: none; font-weight: 600;">SmartAuditorIA</a>
@@ -107,21 +133,21 @@ graph LR
     classDef db fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#166534
     classDef ext fill:#F1F5F9,stroke:#64748B,stroke-width:2px,color:#334155
 
-    User["👤 Gestor de Riesgos"]
+    User["­ƒæñ Gestor de Riesgos"]
     class User main
 
     subgraph "Plataforma SGRI"
-        UI["⚛️ Frontend / Wizard"]
-        API["🔧 Backend Flask"]
-        RAG["🤖 Motor RAG (IA)"]
-        MySQL["🗄️ MySQL (Estructurado)"]
-        Vector["📊 ChromaDB (Vectores)"]
+        UI["ÔÜø´©Å Frontend / Wizard"]
+        API["­ƒöº Backend Flask"]
+        RAG["­ƒñû Motor RAG (IA)"]
+        MySQL["­ƒùä´©Å MySQL (Estructurado)"]
+        Vector["­ƒôè ChromaDB (Vectores)"]
     end
     class UI,API main
     class RAG ai
     class MySQL,Vector db
 
-    GLPI["🔌 GLPI (Activos TI)"]
+    GLPI["­ƒöî GLPI (Activos TI)"]
     class GLPI ext
 
     User -->|"HTTPS / Operaciones"| UI
@@ -144,6 +170,15 @@ graph LR
     <script>
         lucide.createIcons();
     </script>
+
+      </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p><strong>SmartAuditorIA</strong> &copy; 2026<br>
+            Trabajo Académico - Universidad del Valle<br>
+            <em>Documento de Archivo Histórico</em></p>
+        </div>
+    </footer>
 </body>
 </html>
-
