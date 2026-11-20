@@ -864,82 +864,97 @@
             </div>
         </article>
 
-        <!-- DIAPOSITIVA 5: PROCESO SMART BPMN Y PERSISTENCIA -->
+        <!-- DIAPOSITIVA 5: MODELO DE PROCESO DE NEGOCIO BPMN 2.0 -->
         <article class="slide-card" data-slide="5">
             <div class="slide-top-meta">
-                <span class="slide-tag">Proceso & Persistencia</span>
+                <span class="slide-tag">Proceso de Negocio BPMN 2.0</span>
                 <span class="slide-counter">Diapositiva 5 de 10</span>
             </div>
-            <h2 class="slide-title">5. Proceso Operativo Smart BPMN (5 Fases SGSI), Persistencia y Matriz DAFP</h2>
+            <h2 class="slide-title">5. Proceso Operativo BPMN 2.0 del SGSI: Evaluación de Riesgos y Auditoría</h2>
             <div class="slide-body">
-                <!-- SVG Smart BPMN Process Lifecycle Diagram -->
-                <div class="diagram-container">
-                    <svg viewBox="0 0 960 140" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Phase 1 -->
-                        <rect x="8" y="8" width="180" height="124" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-                        <text x="18" y="26" font-size="10" font-weight="bold" fill="#1e40af">1. GOBIERNO & SESIÓN</text>
-                        <rect x="16" y="36" width="164" height="24" rx="4" fill="#ffffff" stroke="#bfdbfe"/>
-                        <text x="98" y="52" font-size="8.5" fill="#1e293b" text-anchor="middle">Auth JWT & Roles RBAC</text>
-                        <rect x="16" y="66" width="164" height="24" rx="4" fill="#ffffff" stroke="#bfdbfe"/>
-                        <text x="98" y="82" font-size="8.5" fill="#1e293b" text-anchor="middle">Control Inactividad 15m</text>
-                        <rect x="16" y="96" width="164" height="24" rx="4" fill="#ffffff" stroke="#bfdbfe"/>
-                        <text x="98" y="112" font-size="8.5" fill="#1e293b" text-anchor="middle">Revocación Server en BD</text>
+                <p style="font-size: 0.83rem; color: var(--slate-700); margin-bottom: 0.35rem;">
+                    Modelo formal de procesos de negocio de SmartAuditorIA con carriles de participantes humanos y tareas de servicio automatizadas:
+                </p>
 
-                        <!-- Connector 1 -->
-                        <line x1="188" y1="70" x2="200" y2="70" stroke="#94a3b8" stroke-width="2"/>
+                <!-- SVG BPMN 2.0 Swimlane Diagram -->
+                <div class="diagram-container" style="padding: 0.4rem;">
+                    <svg viewBox="0 0 960 170" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Pool Header -->
+                        <rect x="10" y="5" width="940" height="160" rx="6" fill="#ffffff" stroke="#cbd5e0" stroke-width="1.5"/>
+                        <rect x="10" y="5" width="28" height="160" rx="6" fill="#1A1A1A"/>
+                        <text x="24" y="85" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(-90 24 85)" letter-spacing="1">SGSI SMARTAUDITORIA</text>
 
-                        <!-- Phase 2 -->
-                        <rect x="200" y="8" width="180" height="124" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
-                        <text x="210" y="26" font-size="10" font-weight="bold" fill="#0f172a">2. ACTIVOS DE INFORMACIÓN</text>
-                        <rect x="208" y="36" width="164" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
-                        <text x="290" y="52" font-size="8.5" fill="#1e293b" text-anchor="middle">Carga Masiva .xlsm Macros</text>
-                        <rect x="208" y="66" width="164" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
-                        <text x="290" y="82" font-size="8.5" fill="#1e293b" text-anchor="middle">Ficha 28 Columnas Cauca</text>
-                        <rect x="208" y="96" width="164" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
-                        <text x="290" y="112" font-size="8.5" fill="#1e293b" text-anchor="middle">Escala CIA 1–5 & Custodio</text>
+                        <!-- Lane 1: Operador / Evaluador -->
+                        <line x1="38" y1="52" x2="950" y2="52" stroke="#e2e8f0" stroke-width="1"/>
+                        <text x="45" y="18" font-size="8.5" font-weight="bold" fill="#CC0000">CARRIL 1: OPERADOR / EVALUADOR SGSI</text>
+                        <!-- Start Event -->
+                        <circle cx="58" cy="34" r="9" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+                        <circle cx="58" cy="34" r="6" fill="#059669"/>
+                        <!-- Step 1: Seleccionar Activo -->
+                        <rect x="78" y="22" width="105" height="24" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+                        <text x="130" y="37" font-size="8" fill="#1e293b" text-anchor="middle">1. Seleccionar Activo</text>
+                        <line x1="183" y1="34" x2="198" y2="34" stroke="#64748b" stroke-width="1.2"/>
+                        <!-- Step 2: Amenazas / Vuln -->
+                        <rect x="198" y="22" width="115" height="24" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+                        <text x="255" y="37" font-size="8" fill="#1e293b" text-anchor="middle">2. Amenaza & Vuln.</text>
+                        <line x1="313" y1="34" x2="328" y2="34" stroke="#64748b" stroke-width="1.2"/>
+                        <!-- Step 3: Valoración 5x5 -->
+                        <rect x="328" y="22" width="115" height="24" rx="4" fill="#fef2f2" stroke="#ef4444"/>
+                        <text x="385" y="37" font-size="8" font-weight="bold" fill="#991b1b" text-anchor="middle">3. Valorar Riesgo (5x5)</text>
+                        <line x1="443" y1="34" x2="458" y2="34" stroke="#64748b" stroke-width="1.2"/>
+                        <!-- Step 4: Controles ISO -->
+                        <rect x="458" y="22" width="120" height="24" rx="4" fill="#eff6ff" stroke="#3b82f6"/>
+                        <text x="518" y="37" font-size="8" fill="#1e40af" text-anchor="middle">4. Controles ISO 27002</text>
+                        <line x1="578" y1="34" x2="595" y2="34" stroke="#64748b" stroke-width="1.2"/>
+                        <!-- Gateway XOR -->
+                        <polygon points="615,22 630,34 615,46 600,34" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+                        <text x="615" y="37" font-size="9" font-weight="bold" fill="#b45309" text-anchor="middle">✕</text>
+                        <text x="615" y="16" font-size="7" fill="#78350f" text-anchor="middle">¿Riesgo Aceptable?</text>
+                        <line x1="630" y1="34" x2="655" y2="34" stroke="#64748b" stroke-width="1.2"/>
+                        <!-- Step 5: Tratamiento & Plan -->
+                        <rect x="655" y="22" width="130" height="24" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+                        <text x="720" y="37" font-size="8" fill="#1e293b" text-anchor="middle">5. Tratamiento & Plan Acción</text>
+                        <line x1="785" y1="34" x2="805" y2="34" stroke="#64748b" stroke-width="1.2"/>
+                        <!-- Step 6: Guardado Atómico -->
+                        <rect x="805" y="22" width="125" height="24" rx="4" fill="#ecfdf5" stroke="#10b981"/>
+                        <text x="867" y="37" font-size="8" font-weight="bold" fill="#065f46" text-anchor="middle">6. Guardado Atómico BD</text>
 
-                        <!-- Connector 2 -->
-                        <line x1="380" y1="70" x2="392" y2="70" stroke="#94a3b8" stroke-width="2"/>
+                        <!-- Lane 2: Custodio del Activo -->
+                        <line x1="38" y1="92" x2="950" y2="92" stroke="#e2e8f0" stroke-width="1"/>
+                        <text x="45" y="62" font-size="8.5" font-weight="bold" fill="#4a5568">CARRIL 2: CUSTODIO / RESPONSABLE DEL ACTIVO</text>
+                        <rect x="135" y="65" width="170" height="22" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+                        <text x="220" y="79" font-size="7.5" fill="#334155" text-anchor="middle">Validar Ficha 28 Cols & Criticidad CIA (1-5)</text>
+                        <line x1="130" y1="46" x2="135" y2="65" stroke="#94a3b8" stroke-dasharray="2 2"/>
+                        <rect x="670" y="65" width="170" height="22" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+                        <text x="755" y="79" font-size="7.5" fill="#334155" text-anchor="middle">Validar Factibilidad del Plan de Acción</text>
+                        <line x1="720" y1="46" x2="720" y2="65" stroke="#94a3b8" stroke-dasharray="2 2"/>
 
-                        <!-- Phase 3 -->
-                        <rect x="392" y="8" width="180" height="124" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
-                        <text x="402" y="26" font-size="10" font-weight="bold" fill="#991b1b">3. EVALUACIÓN DE RIESGOS</text>
-                        <rect x="400" y="36" width="164" height="24" rx="4" fill="#ffffff" stroke="#fecaca"/>
-                        <text x="482" y="52" font-size="8.5" fill="#1e293b" text-anchor="middle">Wizard 8 Pasos Obligatorios</text>
-                        <rect x="400" y="66" width="164" height="24" rx="4" fill="#ffffff" stroke="#fecaca"/>
-                        <text x="482" y="82" font-size="8.5" fill="#1e293b" text-anchor="middle">Matriz DAFP 5x5 (25 Celdas)</text>
-                        <rect x="400" y="96" width="164" height="24" rx="4" fill="#ffffff" stroke="#fecaca"/>
-                        <text x="482" y="112" font-size="8.5" fill="#1e293b" text-anchor="middle">Planes y Guardado Atómico</text>
+                        <!-- Lane 3: Auditor SGSI / Administrador -->
+                        <line x1="38" y1="130" x2="950" y2="130" stroke="#e2e8f0" stroke-width="1"/>
+                        <text x="45" y="103" font-size="8.5" font-weight="bold" fill="#2563eb">CARRIL 3: AUDITOR SGSI / CONTROL INTERNO</text>
+                        <rect x="360" y="104" width="165" height="22" rx="4" fill="#f8fafc" stroke="#bfdbfe"/>
+                        <text x="442" y="118" font-size="7.5" fill="#1e40af" text-anchor="middle">Monitoreo Tablero & Mapa de Calor DAFP</text>
+                        <rect x="555" y="104" width="180" height="22" rx="4" fill="#eff6ff" stroke="#3b82f6"/>
+                        <text x="645" y="118" font-size="7.5" font-weight="bold" fill="#1e40af" text-anchor="middle">Auditoría REST GET/PUT & Hallazgos</text>
+                        <!-- End Event -->
+                        <circle cx="915" cy="115" r="9" fill="#fef2f2" stroke="#dc2626" stroke-width="3"/>
+                        <text x="915" y="130" font-size="7" font-weight="bold" fill="#991b1b" text-anchor="middle">Fin: Certificado</text>
+                        <line x1="735" y1="115" x2="906" y2="115" stroke="#64748b" stroke-width="1.2"/>
 
-                        <!-- Connector 3 -->
-                        <line x1="572" y1="70" x2="584" y2="70" stroke="#94a3b8" stroke-width="2"/>
-
-                        <!-- Phase 4 -->
-                        <rect x="584" y="8" width="180" height="124" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-                        <text x="594" y="26" font-size="10" font-weight="bold" fill="#065f46">4. AUDITORÍA & MONITOREO</text>
-                        <rect x="592" y="36" width="164" height="24" rx="4" fill="#ffffff" stroke="#a7f3d0"/>
-                        <text x="674" y="52" font-size="8.5" fill="#1e293b" text-anchor="middle">Dashboard con allSettled</text>
-                        <rect x="592" y="66" width="164" height="24" rx="4" fill="#ffffff" stroke="#a7f3d0"/>
-                        <text x="674" y="82" font-size="8.5" fill="#1e293b" text-anchor="middle">Módulo REST GET/PUT</text>
-                        <rect x="592" y="96" width="164" height="24" rx="4" fill="#ffffff" stroke="#a7f3d0"/>
-                        <text x="674" y="112" font-size="8.5" fill="#1e293b" text-anchor="middle">Reportes & Gráficas con %</text>
-
-                        <!-- Connector 4 -->
-                        <line x1="764" y1="70" x2="776" y2="70" stroke="#94a3b8" stroke-width="2"/>
-
-                        <!-- Phase 5 -->
-                        <rect x="776" y="8" width="176" height="124" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
-                        <text x="786" y="26" font-size="10" font-weight="bold" fill="#92400e">5. ASISTENCIA IA / RAG</text>
-                        <rect x="784" y="36" width="160" height="24" rx="4" fill="#ffffff" stroke="#fde68a"/>
-                        <text x="864" y="52" font-size="8.5" fill="#1e293b" text-anchor="middle">ChromaDB 0.5.3 (Puerto 8000)</text>
-                        <rect x="784" y="66" width="160" height="24" rx="4" fill="#ffffff" stroke="#fde68a"/>
-                        <text x="864" y="82" font-size="8.5" fill="#1e293b" text-anchor="middle">93 Controles ISO 27002</text>
-                        <rect x="784" y="96" width="160" height="24" rx="4" fill="#ffffff" stroke="#fde68a"/>
-                        <text x="864" y="112" font-size="8.5" fill="#1e293b" text-anchor="middle">Recomendaciones Predictivas</text>
+                        <!-- Lane 4: Tareas Automatizadas de Servicio -->
+                        <text x="45" y="141" font-size="8.5" font-weight="bold" fill="#059669">TAREAS DE SERVICIO (SMARTAUDITORIA):</text>
+                        <rect x="235" y="135" width="155" height="19" rx="3" fill="#f1f5f9" stroke="#cbd5e1"/>
+                        <text x="312" y="148" font-size="7" fill="#334155" text-anchor="middle">⚡ Validar Sesión 15m & JWT</text>
+                        <rect x="400" y="135" width="170" height="19" rx="3" fill="#f1f5f9" stroke="#cbd5e1"/>
+                        <text x="485" y="148" font-size="7" fill="#334155" text-anchor="middle">⚡ RAG: 93 Controles ChromaDB :8000</text>
+                        <rect x="580" y="135" width="160" height="19" rx="3" fill="#f1f5f9" stroke="#cbd5e1"/>
+                        <text x="660" y="148" font-size="7" fill="#334155" text-anchor="middle">⚡ Matriz 5x5 DAFP V7 Responsiva</text>
+                        <rect x="750" y="135" width="180" height="19" rx="3" fill="#f1f5f9" stroke="#cbd5e1"/>
+                        <text x="840" y="148" font-size="7" fill="#334155" text-anchor="middle">⚡ MariaDB 10.11 (3306) Transaccional</text>
                     </svg>
                 </div>
 
-                <div class="diff-grid" style="margin-top: 0.5rem;">
+                <div class="diff-grid" style="margin-top: 0.4rem;">
                     <div class="diff-panel diff-before">
                         <div class="diff-title">⚠️ Matriz Actual en Dashboard (RiskMatrix4x5.tsx)</div>
                         <ul style="padding-left: 1rem; font-size: 0.78rem;">
@@ -959,8 +974,8 @@
                 </div>
             </div>
             <div class="slide-footer-links">
-                <span>Persistencia Relacional: MariaDB 10.11 / MySQL (Corrección sobre PostgreSQL)</span>
-                <span>Base Vectorial: ChromaDB 0.5.3 (Puerto 8000)</span>
+                <span>Modelo BPMN 2.0 y Arquitectura C4: <a href="trazabilidad.html">Ver Matriz de Trazabilidad y C4</a></span>
+                <span>Persistencia: MariaDB 10.11 (3306) & ChromaDB 0.5.3 (8000)</span>
             </div>
         </article>
 
