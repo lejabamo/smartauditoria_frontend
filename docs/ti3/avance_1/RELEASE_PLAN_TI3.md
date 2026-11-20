@@ -2,7 +2,7 @@
 **Maestría en Computación para el Desarrollo de Aplicaciones Inteligentes**  
 **Universidad del Valle — Facultad de Ingeniería**  
 **Autor:** Ing. Leonardo Javier Bastidas Moreno  
-**Corte Académico:** 20 de noviembre de 2026 — Gate G0.5 Final  
+**Corte Académico:** 20 de noviembre de 2026 — Avance 1 (V4.0-TI3)  
 **Plazo de Entrega Final:** 20 de diciembre de 2026  
 
 ---

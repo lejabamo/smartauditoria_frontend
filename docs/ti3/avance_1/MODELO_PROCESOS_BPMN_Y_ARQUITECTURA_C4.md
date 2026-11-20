@@ -28,7 +28,13 @@ Se realizó una inspección exhaustiva de todo el repositorio `smartauditoria_pr
 
 ---
 
-## 2. Modelo de Procesos de Negocio BPMN 2.0 Formal
+## 2. Modelo de Procesos de Negocio del SGSI (AS-IS vs. TO-BE)
+
+> [!NOTE]
+> **Regularización Semántica del Modelo de Procesos:**
+> El diagrama Mermaid a continuación constituye el **Modelo Conceptual de Procesos (Notación BPMN)** para el SGSI. El archivo formal estandarizado bajo la especificación BPMN 2.0 (ISO/IEC 19510) validable en herramientas como Camunda o BPMN.io se encuentra disponible en: [`proceso_sgsi_operativo.bpmn`](proceso_sgsi_operativo.bpmn).
+> 
+> Se diferencia estrictamente el **estado actual implementado en código (AS-IS)** de las **metas de la iteración final (TO-BE)**. No se asumen como terminadas integraciones o aprobaciones cuya implementación en código no haya sido verificada.
 
 Para corregir la ambigüedad y separar estrictamente el **proceso de negocio del SGSI** de la arquitectura de software, se define a continuación el modelo de procesos de negocio formal bajo la especificación **BPMN 2.0 (ISO/IEC 19510)**.
 
@@ -206,7 +212,7 @@ ightarrow$ Calidad
 | # | Elemento | Estado Actual (AS-IS) | Estado Objetivo (TO-BE V4.0) | Historia de Regularización |
 |---|---|---|---|:---:|
 | **1** | **Matriz de Riesgos en Dashboard** | Componente `RiskMatrix4x5.tsx` de 4 probabilidades × 5 impactos (20 celdas, 3 niveles, omite 'Probable') con ancho fijo desbordado en laptops. | Componente unificado `RiskMatrix5x5.tsx` de 5 probabilidades × 5 impactos (25 celdas, 4 zonas DAFP V7) con grilla CSS responsiva sin scroll horizontal. | `SCRUM-57` (`HU-036`) |
-| **2** | **Motor de Base de Datos Documentado** | Documentos históricos de TI2 mencionaban PostgreSQL. En el entorno real opera MariaDB 10.11 / MySQL en puerto 3306. | Documentación técnica regularizada reflejando estrictamente **MariaDB 10.11 / MySQL** con `utf8mb4`. | Regularizado en G0.5 / TI3 |
+| **2** | **Motor de Base de Datos Documentado** | Documentos históricos de TI2 mencionaban PostgreSQL. En el entorno real opera MariaDB 10.11 / MySQL en puerto 3306. | Documentación técnica regularizada reflejando estrictamente **MariaDB 10.11 / MySQL** con `utf8mb4`. | Regularizado en Avance 1 / TI3 |
 | **3** | **Carga de Plantilla de Activos** | Endpoint anterior esperaba archivos `.xlsx` simples y fallaba con macros o archivos de 50MB. | Parser inteligente para `.xlsm` institucional que localiza la hoja `1. ACTIVOS DE INFORMACIÓN` y procesa lotes transaccionales con reporte de errores. | `SCRUM-55` (`HU-034`) |
 | **4** | **Módulo de Auditorías** | Interfaz con botones visuales pero sin endpoints REST dedicados de detalle o actualización. | Endpoints REST formales `GET /api/auditorias/<id>` y `PUT /api/auditorias/<id>` con RBAC y modales funcionales. | `SCRUM-59` (`HU-038`) |
 | **5** | **Wizard de Evaluación** | Cálculo de estado con efectos colaterales dentro de render y falta de validación estricta de obligatorios entre pasos. | Función pura `getEvaluacionEstado`, bloqueo secuencial sin activo o campos obligatorios y guardado atómico consolidado. | `SCRUM-54` / `SCRUM-60` |

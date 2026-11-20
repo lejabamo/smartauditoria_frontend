@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  id="Definitions_SmartAuditorIA_SGSI"
+                  targetNamespace="http://smartauditoria.sedcauca.gov.co/bpmn20"
+                  exporter="SmartAuditorIA Architecture Suite"
+                  exporterVersion="4.0.0">
+
+  <bpmn:collaboration id="Collaboration_SGSI">
+    <bpmn:participant id="Participant_SmartAuditorIA" name="Sistema de Gestión de Seguridad de la Información (SGSI — SmartAuditorIA)" processRef="Process_SGSI_Operativo" />
+  </bpmn:collaboration>
+
+  <bpmn:process id="Process_SGSI_Operativo" name="Proceso Operativo de Evaluación de Riesgos y Auditoría TI" isExecutable="false">
+    
+    <!-- Lanes / Carriles Organizacionales -->
+    <bpmn:laneSet id="LaneSet_SGSI">
+      <!-- Carril 1: Operador / Evaluador SGSI -->
+      <bpmn:lane id="Lane_Operador" name="Operador / Evaluador SGSI">
+        <bpmn:flowNodeRef>StartEvent_Solicitud</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SeleccionarActivo</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_IdentificarRiesgos</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_ValorarInherente</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SeleccionarControles</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_ValorarResidual</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_ApetitoRiesgo</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_FormularPlanAccion</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_JustificarAceptacion</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_ConsolidarEvaluacion</bpmn:flowNodeRef>
+      </bpmn:lane>
+
+      <!-- Carril 2: Custodio del Activo -->
+      <bpmn:lane id="Lane_Custodio" name="Custodio / Responsable del Activo">
+        <bpmn:flowNodeRef>Task_ValidarFichaActivo</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_RevisarFactibilidadPlan</bpmn:flowNodeRef>
+      </bpmn:lane>
+
+      <!-- Carril 3: Auditor SGSI / Control Interno -->
+      <bpmn:lane id="Lane_Auditor" name="Auditor SGSI / Control Interno">
+        <bpmn:flowNodeRef>Task_MonitorearDashboard</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_AuditarHallazgos</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_Certificado</bpmn:flowNodeRef>
+      </bpmn:lane>
+
+      <!-- Carril 4: Servicios Automatizados SmartAuditorIA -->
+      <bpmn:lane id="Lane_Servicios" name="Servicios Automatizados SmartAuditorIA">
+        <bpmn:flowNodeRef>ServiceTask_ValidarSesion</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ServiceTask_ParserExcel</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ServiceTask_ConsultaRAG</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ServiceTask_CalculoMatrizDAFP</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ServiceTask_PersistenciaTransaccional</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+
+    <!-- Flujo Operativo: Eventos, Tareas y Compuertas -->
+    <bpmn:startEvent id="StartEvent_Solicitud" name="Inicio: Requerimiento de Evaluación SGSI">
+      <bpmn:outgoing>Flow_01</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <!-- Tareas Operador -->
+    <bpmn:userTask id="Task_SeleccionarActivo" name="1. Seleccionar o Cargar Activo de Información">
+      <bpmn:incoming>Flow_01</bpmn:incoming>
+      <bpmn:outgoing>Flow_02</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="Task_IdentificarRiesgos" name="2. Identificar Amenazas y Vulnerabilidades">
+      <bpmn:incoming>Flow_02</bpmn:incoming>
+      <bpmn:outgoing>Flow_03</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="Task_ValorarInherente" name="3. Calificar Probabilidad e Impacto Inherente">
+      <bpmn:incoming>Flow_03</bpmn:incoming>
+      <bpmn:outgoing>Flow_04</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="Task_SeleccionarControles" name="4. Seleccionar y Evaluar Controles ISO 27002">
+      <bpmn:incoming>Flow_04</bpmn:incoming>
+      <bpmn:outgoing>Flow_05</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="Task_ValorarResidual" name="5. Calcular Eficacia y Riesgo Residual">
+      <bpmn:incoming>Flow_05</bpmn:incoming>
+      <bpmn:outgoing>Flow_06</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- Compuerta de Decisión: Apetito de Riesgo -->
+    <bpmn:exclusiveGateway id="Gateway_ApetitoRiesgo" name="¿Riesgo Residual > Apetito Institucional?">
+      <bpmn:incoming>Flow_06</bpmn:incoming>
+      <bpmn:outgoing>Flow_ApetitoExcedido</bpmn:outgoing>
+      <bpmn:outgoing>Flow_ApetitoAceptado</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:userTask id="Task_FormularPlanAccion" name="6a. Formular Plan de Acción y Tratamiento">
+      <bpmn:incoming>Flow_ApetitoExcedido</bpmn:incoming>
+      <bpmn:outgoing>Flow_07A</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="Task_JustificarAceptacion" name="6b. Registrar Justificación de Aceptación">
+      <bpmn:incoming>Flow_ApetitoAceptado</bpmn:incoming>
+      <bpmn:outgoing>Flow_07B</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="Task_ConsolidarEvaluacion" name="7. Consolidar y Confirmar Evaluación">
+      <bpmn:incoming>Flow_07A</bpmn:incoming>
+      <bpmn:incoming>Flow_07B</bpmn:incoming>
+      <bpmn:outgoing>Flow_08</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- Tareas Custodio -->
+    <bpmn:userTask id="Task_ValidarFichaActivo" name="Validar Atributos Ficha 28 Cols y Criticidad CIA (1-5)">
+      <bpmn:incoming>Flow_NotifCustodio1</bpmn:incoming>
+      <bpmn:outgoing>Flow_RespCustodio1</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="Task_RevisarFactibilidadPlan" name="Validar Factibilidad Operativa y Recursos del Plan">
+      <bpmn:incoming>Flow_NotifCustodio2</bpmn:incoming>
+      <bpmn:outgoing>Flow_RespCustodio2</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- Tareas Auditor SGSI -->
+    <bpmn:userTask id="Task_MonitorearDashboard" name="Monitorear Tablero de Riesgos y Mapa de Calor DAFP">
+      <bpmn:incoming>Flow_08</bpmn:incoming>
+      <bpmn:outgoing>Flow_09</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="Task_AuditarHallazgos" name="Ejecutar Auditoría Periódica y Registrar Hallazgos">
+      <bpmn:incoming>Flow_09</bpmn:incoming>
+      <bpmn:outgoing>Flow_10</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:endEvent id="EndEvent_Certificado" name="Fin: Evaluación y Auditoría Certificada">
+      <bpmn:incoming>Flow_10</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <!-- Tareas de Servicio (Automatizadas) -->
+    <bpmn:serviceTask id="ServiceTask_ValidarSesion" name="Validar JWT, Roles RBAC e Inactividad (15 min)" />
+    <bpmn:serviceTask id="ServiceTask_ParserExcel" name="Procesar Plantilla .xlsx/.xlsm (Openpyxl sin macros)" />
+    <bpmn:serviceTask id="ServiceTask_ConsultaRAG" name="Recuperar Controles ISO 27002 en ChromaDB :8000" />
+    <bpmn:serviceTask id="ServiceTask_CalculoMatrizDAFP" name="Calcular Niveles en Matriz DAFP V7 5x5" />
+    <bpmn:serviceTask id="ServiceTask_PersistenciaTransaccional" name="Persistir Datos en MariaDB 10.11 :3306" />
+
+    <!-- Secuencias Principales -->
+    <bpmn:sequenceFlow id="Flow_01" sourceRef="StartEvent_Solicitud" targetRef="Task_SeleccionarActivo" />
+    <bpmn:sequenceFlow id="Flow_02" sourceRef="Task_SeleccionarActivo" targetRef="Task_IdentificarRiesgos" />
+    <bpmn:sequenceFlow id="Flow_03" sourceRef="Task_IdentificarRiesgos" targetRef="Task_ValorarInherente" />
+    <bpmn:sequenceFlow id="Flow_04" sourceRef="Task_ValorarInherente" targetRef="Task_SeleccionarControles" />
+    <bpmn:sequenceFlow id="Flow_05" sourceRef="Task_SeleccionarControles" targetRef="Task_ValorarResidual" />
+    <bpmn:sequenceFlow id="Flow_06" sourceRef="Task_ValorarResidual" targetRef="Gateway_ApetitoRiesgo" />
+    <bpmn:sequenceFlow id="Flow_ApetitoExcedido" name="Sí (Riesgo Alto / Extremo)" sourceRef="Gateway_ApetitoRiesgo" targetRef="Task_FormularPlanAccion" />
+    <bpmn:sequenceFlow id="Flow_ApetitoAceptado" name="No (Riesgo Bajo / Moderado)" sourceRef="Gateway_ApetitoRiesgo" targetRef="Task_JustificarAceptacion" />
+    <bpmn:sequenceFlow id="Flow_07A" sourceRef="Task_FormularPlanAccion" targetRef="Task_ConsolidarEvaluacion" />
+    <bpmn:sequenceFlow id="Flow_07B" sourceRef="Task_JustificarAceptacion" targetRef="Task_ConsolidarEvaluacion" />
+    <bpmn:sequenceFlow id="Flow_08" sourceRef="Task_ConsolidarEvaluacion" targetRef="Task_MonitorearDashboard" />
+    <bpmn:sequenceFlow id="Flow_09" sourceRef="Task_MonitorearDashboard" targetRef="Task_AuditarHallazgos" />
+    <bpmn:sequenceFlow id="Flow_10" sourceRef="Task_AuditarHallazgos" targetRef="EndEvent_Certificado" />
+
+  </bpmn:process>
+
+  <!-- Diagram Interchange (BPMNDI) -->
+  <bpmndi:BPMNDiagram id="BPMNDiagram_SGSI">
+    <bpmndi:BPMNPlane id="BPMNPlane_SGSI" bpmnElement="Collaboration_SGSI">
+      <bpmndi:BPMNShape id="Participant_Shape" bpmnElement="Participant_SmartAuditorIA" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="1200" height="600" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Operador_Shape" bpmnElement="Lane_Operador" isHorizontal="true">
+        <dc:Bounds x="190" y="80" width="1170" height="180" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Custodio_Shape" bpmnElement="Lane_Custodio" isHorizontal="true">
+        <dc:Bounds x="190" y="260" width="1170" height="130" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Auditor_Shape" bpmnElement="Lane_Auditor" isHorizontal="true">
+        <dc:Bounds x="190" y="390" width="1170" height="130" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Servicios_Shape" bpmnElement="Lane_Servicios" isHorizontal="true">
+        <dc:Bounds x="190" y="520" width="1170" height="160" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
