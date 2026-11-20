@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trazabilidad y DoD TI3 | SmartAuditorIA TI3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #990000;
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-600: #475569;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --slate-50: #f8fafc;
+            --emerald-600: #059669;
+            --emerald-50: #ecfdf5;
+            --amber-600: #d97706;
+            --amber-50: #fffbeb;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--slate-50);
+            color: var(--slate-800);
+            line-height: 1.5;
+        }
+        .top-banner {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 0.45rem 2rem;
+            font-size: 0.82rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border-bottom: 1px solid #334155;
+        }
+        .v-pill {
+            background: #990000;
+            color: #fff;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            margin-right: 0.5rem;
+        }
+        .header {
+            background: #ffffff;
+            border-bottom: 3px solid var(--primary);
+            padding: 1rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .header-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--slate-700);
+            transition: color 0.15s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--slate-200);
+            border-radius: 10px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin-bottom: 0.85rem;
+            border-bottom: 1px solid var(--slate-100);
+            padding-bottom: 0.5rem;
+        }
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+        }
+        .table-custom th {
+            background: var(--slate-100);
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--slate-200);
+            text-align: left;
+            font-weight: 700;
+            color: var(--slate-800);
+        }
+        .table-custom td {
+            padding: 0.5rem 0.7rem;
+            border: 1px solid var(--slate-200);
+            color: var(--slate-700);
+        }
+        .badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+        }
+        .badge-must { background: #fee2e2; color: #991b1b; }
+        .badge-should { background: #fef3c7; color: #92400e; }
+        .badge-success { background: var(--emerald-50); color: var(--emerald-600); border: 1px solid #a7f3d0; }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+        footer {
+            background: #ffffff;
+            border-top: 1px solid var(--slate-200);
+            padding: 1.25rem;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--slate-600);
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-banner">
+        <div>
+            <span class="v-pill">TI3 AVANCE 1</span>
+            <span>SmartAuditorIA — Iteración Final de Ingeniería de Software (V4.0)</span>
+        </div>
+        <div style="display: flex; gap: 1rem;">
+            <a href="../../index.html" style="color: #f87171; text-decoration: none; font-weight: 700;">🏛️ Portal TI2 (Histórico)</a>
+            <a href="https://github.com/lejabamo/smartauditoria_frontend" target="_blank" style="color: #cbd5e1; text-decoration: none;">GitHub Frontend</a>
+            <a href="https://smartauditoria.atlassian.net" target="_blank" style="color: #cbd5e1; text-decoration: none;">Jira Cloud</a>
+        </div>
+    </div>
+    <header class="header">
+        <div class="header-wrap">
+            <div>
+                <h1 style="font-size: 1.35rem; font-weight: 800; color: #0f172a;">SmartAuditorIA</h1>
+                <p style="font-size: 0.82rem; color: #64748b;">Maestría en Computación para el desarrollo de aplicaciones inteligentes • Universidad del Valle</p>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="">Inicio Avance 1</a>
+                <a href="presentacion.html" class="">Presentación (10 Diapositivas)</a>
+                <a href="product_backlog.html" class="">Product Backlog</a>
+                <a href="release_plan.html" class="">Release Plan</a>
+                <a href="trazabilidad.html" class="active">Trazabilidad & DoD</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h2>Matriz de Trazabilidad, Auditoría y Definition of Done (DoD)</h2>
+            <p style="font-size: 0.9rem; color: var(--slate-600); margin-bottom: 0.75rem;">
+                Trazabilidad verificable de las implementaciones locales en validación (Sprint 8 anticipado):
+            </p>
+            <table class="table-custom">
+                <thead>
+                    <tr>
+                        <th>HU / Clave Jira Oficial</th>
+                        <th>Tarea Técnica</th>
+                        <th>Archivos y Funciones</th>
+                        <th>Criterio de Aceptación (DoD)</th>
+                        <th>Caso de Prueba Automatizado</th>
+                        <th>Evidencia Real</th>
+                        <th>Estado DoD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>HU-031</strong> (5 SP)</td>
+                        <td>Sesión e Inactividad</td>
+                        <td><code>AuthContext.tsx</code>, <code>IdleTimeoutModal.tsx</code>, <code>decorators.py</code> (<code>require_auth</code>)</td>
+                        <td>Inactividad a 15 min; modal a 60s; BroadcastChannel; @require_auth valida BD y expira token (401).</td>
+                        <td><code>auth_idle.test.tsx</code> (2 passed)<br><code>test_auth_session_revocation.py</code> (1 passed)</td>
+                        <td>3 pruebas automatizadas en verde; backend retorna 401 ante revocación.</td>
+                        <td><span class="badge badge-success">Validación Local</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>HU-032</strong> (5 SP)</td>
+                        <td>Saneamiento UTF-8</td>
+                        <td>11 archivos TSX saneados; <code>EditableActionPlan.tsx</code> (padding <code>pt: 20px</code>)</td>
+                        <td>0 mojibake en frontend; tildes correctas; padding en modal para evitar corte de título.</td>
+                        <td><code>utf8_orthography.test.ts</code> (1 passed)</td>
+                        <td>0 violaciones detectadas en barrido recursivo sobre <code>src/</code>.</td>
+                        <td><span class="badge badge-success">Validación Local</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>HU-033</strong> (5 SP)</td>
+                        <td>Resiliencia SPA</td>
+                        <td><code>RouteErrorBoundary.tsx</code>, <code>App.tsx</code>, <code>RiskAssessmentWizard.tsx</code></td>
+                        <td>Captura de fallos en rutas lazy sin pantalla blanca; <code>getEvaluacionEstado</code> pura; bloqueo Paso 0.</td>
+                        <td><code>RouteErrorBoundary.test.tsx</code> (2 passed)</td>
+                        <td>UI de contingencia renderiza reintento; Wizard no guarda en render.</td>
+                        <td><span class="badge badge-success">Validación Local</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Auditoría de Matriz de Riesgo: Aprobada vs. Implementada</h2>
+            <table class="table-custom">
+                <thead>
+                    <tr>
+                        <th>Aspecto</th>
+                        <th>Matriz Aprobada (DAFP V7 / ISO 27005)</th>
+                        <th>Matriz Actual en Dashboard (<code>RiskMatrix4x5.tsx</code>)</th>
+                        <th>Diferencia / Brecha</th>
+                        <th>Acción en Backlog</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Dimensiones</strong></td>
+                        <td><strong>5 &times; 5 (25 celdas)</strong>: Raro, Improbable, Posible, Probable, Casi Seguro</td>
+                        <td><strong>4 &times; 5 (20 celdas)</strong>: Frecuente, Ocasional, Posible, Improbable</td>
+                        <td>Omite el nivel 'Probable' en el eje Y.</td>
+                        <td>Homologar a 5x5 en <code>HU-036</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Zonas</strong></td>
+                        <td>4 Zonas (Bajo, Moderado, Alto, Extremo)</td>
+                        <td>3 Zonas (BAJO, MEDIO, ALTO)</td>
+                        <td>Simplificación de zonas de riesgo.</td>
+                        <td>Alinear a DAFP V7 en <code>HU-036</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Responsividad</strong></td>
+                        <td>Adaptable a pantallas de laptops (1366&times;768)</td>
+                        <td>Ancho rígido con scroll horizontal forzado</td>
+                        <td>Defecto de usabilidad (<code>DAS-01</code>).</td>
+                        <td>Diseño Flex/Grid sin desborde en <code>HU-036</code>.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        SmartAuditorIA • Sistema de Gestión y Auditoría de Seguridad de Activos de Información • Universidad del Valle (2026)
+    </footer>
+</body>
+</html>

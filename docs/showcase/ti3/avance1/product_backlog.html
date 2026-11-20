@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Backlog TI3 | SmartAuditorIA TI3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #990000;
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-600: #475569;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --slate-50: #f8fafc;
+            --emerald-600: #059669;
+            --emerald-50: #ecfdf5;
+            --amber-600: #d97706;
+            --amber-50: #fffbeb;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--slate-50);
+            color: var(--slate-800);
+            line-height: 1.5;
+        }
+        .top-banner {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 0.45rem 2rem;
+            font-size: 0.82rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border-bottom: 1px solid #334155;
+        }
+        .v-pill {
+            background: #990000;
+            color: #fff;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            margin-right: 0.5rem;
+        }
+        .header {
+            background: #ffffff;
+            border-bottom: 3px solid var(--primary);
+            padding: 1rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .header-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--slate-700);
+            transition: color 0.15s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--slate-200);
+            border-radius: 10px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin-bottom: 0.85rem;
+            border-bottom: 1px solid var(--slate-100);
+            padding-bottom: 0.5rem;
+        }
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+        }
+        .table-custom th {
+            background: var(--slate-100);
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--slate-200);
+            text-align: left;
+            font-weight: 700;
+            color: var(--slate-800);
+        }
+        .table-custom td {
+            padding: 0.5rem 0.7rem;
+            border: 1px solid var(--slate-200);
+            color: var(--slate-700);
+        }
+        .badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+        }
+        .badge-must { background: #fee2e2; color: #991b1b; }
+        .badge-should { background: #fef3c7; color: #92400e; }
+        .badge-success { background: var(--emerald-50); color: var(--emerald-600); border: 1px solid #a7f3d0; }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+        footer {
+            background: #ffffff;
+            border-top: 1px solid var(--slate-200);
+            padding: 1.25rem;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--slate-600);
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-banner">
+        <div>
+            <span class="v-pill">TI3 AVANCE 1</span>
+            <span>SmartAuditorIA — Iteración Final de Ingeniería de Software (V4.0)</span>
+        </div>
+        <div style="display: flex; gap: 1rem;">
+            <a href="../../index.html" style="color: #f87171; text-decoration: none; font-weight: 700;">🏛️ Portal TI2 (Histórico)</a>
+            <a href="https://github.com/lejabamo/smartauditoria_frontend" target="_blank" style="color: #cbd5e1; text-decoration: none;">GitHub Frontend</a>
+            <a href="https://smartauditoria.atlassian.net" target="_blank" style="color: #cbd5e1; text-decoration: none;">Jira Cloud</a>
+        </div>
+    </div>
+    <header class="header">
+        <div class="header-wrap">
+            <div>
+                <h1 style="font-size: 1.35rem; font-weight: 800; color: #0f172a;">SmartAuditorIA</h1>
+                <p style="font-size: 0.82rem; color: #64748b;">Maestría en Computación para el desarrollo de aplicaciones inteligentes • Universidad del Valle</p>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="">Inicio Avance 1</a>
+                <a href="presentacion.html" class="">Presentación (10 Diapositivas)</a>
+                <a href="product_backlog.html" class="active">Product Backlog</a>
+                <a href="release_plan.html" class="">Release Plan</a>
+                <a href="trazabilidad.html" class="">Trazabilidad & DoD</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h2>Product Backlog Oficial V4.0-TI3 (Jira Cloud Release ID 10037) — 59 SP Must-Have</h2>
+            <p style="font-size: 0.9rem; color: var(--slate-600); margin-bottom: 0.75rem;">
+                Historias de usuario funcionales candidatas (<a href="https://smartauditoria.atlassian.net" target="_blank">Jira Cloud</a> aún no ha formalizadas en Jira Cloud (Release oficial <code>V4.0-TI3</code>, ID 10037; Épicas SCRUM-49..51; Sprints 145..148):
+            </p>
+            <table class="table-custom">
+                <thead>
+                    <tr>
+                        <th>HU</th>
+                        <th>Clave Candidata</th>
+                        <th>Épica</th>
+                        <th>Sprint</th>
+                        <th>MoSCoW</th>
+                        <th>SP</th>
+                        <th>Alcance y Criterio de Aceptación (DoD)</th>
+                        <th>Estado Actual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>HU-031</strong></td>
+                        <td><strong>SCRUM-52</strong></td>
+                        <td>EP-07</td>
+                        <td>Sprint 8</td>
+                        <td><span class="badge badge-must">Must</span></td>
+                        <td>5</td>
+                        <td>Inactividad cliente a 15m; modal aviso a 60s con BroadcastChannel; backend valida <code>SesionUsuario.activa</code> y retorna 401.</td>
+                        <td><span class="badge badge-success">Validación Local</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>HU-032</strong></td>
+                        <td><strong>SCRUM-53</strong></td>
+                        <td>EP-09</td>
+                        <td>Sprint 8</td>
+                        <td><span class="badge badge-must">Must</span></td>
+                        <td>5</td>
+                        <td>Saneamiento UTF-8 en 11 archivos TSX; padding modal <code>EditableActionPlan</code>; test guardián automatizado.</td>
+                        <td><span class="badge badge-success">Validación Local</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>HU-033</strong></td>
+                        <td><strong>SCRUM-54</strong></td>
+                        <td>EP-07</td>
+                        <td>Sprint 8</td>
+                        <td><span class="badge badge-must">Must</span></td>
+                        <td>5</td>
+                        <td>RouteErrorBoundary para lazy routes; desacople de <code>getEvaluacionEstado</code> en Wizard; bloqueo Paso 0 sin activo.</td>
+                        <td><span class="badge badge-success">Validación Local</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>HU-034</strong></td>
+                        <td><strong>SCRUM-55</strong></td>
+                        <td>EP-08</td>
+                        <td>Sprint 9</td>
+                        <td><span class="badge badge-must">Must</span></td>
+                        <td>8</td>
+                        <td>Parser multi-hoja <code>.xlsm</code> detecta <code>1. ACTIVOS DE INFORMACIÓN</code>, límite 50MB e inserción transaccional por lotes.</td>
+                        <td>Propuesta S9</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HU-035</strong></td>
+                        <td><strong>SCRUM-56</strong></td>
+                        <td>EP-07</td>
+                        <td>Sprint 9</td>
+                        <td><span class="badge badge-must">Must</span></td>
+                        <td>5</td>
+                        <td>Carga independiente con <code>Promise.allSettled</code> en Dashboard; categorías MIPG completas; salud sin bucles.</td>
+                        <td>Propuesta S9</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HU-036</strong></td>
+                        <td><strong>SCRUM-57</strong></td>
+                        <td>EP-09</td>
+                        <td>Sprint 10</td>
+                        <td><span class="badge badge-must">Must</span></td>
+                        <td>5</td>
+                        <td>Componente único responsivo de Matriz DAFP V7 5x5 sin scroll horizontal en Dashboard y Wizard; tarjetas sin cortes.</td>
+                        <td>Propuesta S10</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HU-037</strong></td>
+                        <td><strong>SCRUM-58</strong></td>
+                        <td>EP-08</td>
+                        <td>Sprint 10</td>
+                        <td><span class="badge badge-must">Must</span></td>
+                        <td>8</td>
+                        <td>Modelo con las 28 columnas Cauca, escala CIA 1–5 con Promedio CIA, autocompletado y botón "Evaluar Activo".</td>
+                        <td>Propuesta S10</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HU-040</strong></td>
+                        <td><strong>SCRUM-61</strong></td>
+                        <td>EP-09</td>
+                        <td>Sprint 10</td>
+                        <td><span class="badge badge-must">Must</span></td>
+                        <td>5</td>
+                        <td>Paginación en grid de activos del Paso 1 sin saltar de paso; chips de filtros y tooltips de Recharts con porcentaje.</td>
+                        <td>Propuesta S10</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HU-038</strong></td>
+                        <td><strong>SCRUM-59</strong></td>
+                        <td>EP-08</td>
+                        <td>Sprint 11</td>
+                        <td><span class="badge badge-must">Must</span></td>
+                        <td>5</td>
+                        <td>Endpoints <code>GET/PUT /api/auditorias/&lt;id&gt;</code>; modales Ver Detalle y Editar funcionales con RBAC; tabla con filtros.</td>
+                        <td>Propuesta S11</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HU-039</strong></td>
+                        <td><strong>SCRUM-60</strong></td>
+                        <td>EP-08</td>
+                        <td>Sprint 11</td>
+                        <td><span class="badge badge-must">Must</span></td>
+                        <td>8</td>
+                        <td>Wizard 8 pasos: bloqueo por obligatorios, buscador por <code>Nombre</code>, supresión auto-scroll y guardado atómico ISO.</td>
+                        <td>Propuesta S11</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Tareas Técnicas Heredadas TI2 (18 SP Should-Have Condicionado)</h2>
+            <table class="table-custom">
+                <thead>
+                    <tr>
+                        <th>Clave Oficial</th>
+                        <th>Tarea Técnica Heredada</th>
+                        <th>Épica</th>
+                        <th>Sprint</th>
+                        <th>MoSCoW</th>
+                        <th>SP</th>
+                        <th>Criterio Original (DoD)</th>
+                        <th>Condición de Ejecución</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong><a href="https://smartauditoria.atlassian.net/browse/SCRUM-46" target="_blank">SCRUM-46</a></strong></td>
+                        <td>Estabilización Pipelines CI/CD GitHub Actions</td>
+                        <td>EP-03</td>
+                        <td>Sprint 9</td>
+                        <td><span class="badge badge-should">Should</span></td>
+                        <td>5</td>
+                        <td>Workflows <code>ci.yml</code> ejecutando en verde en repositorios de backend y engine.</td>
+                        <td>Condicionado a capacidad remanente en S9.</td>
+                    </tr>
+                    <tr>
+                        <td><strong><a href="https://smartauditoria.atlassian.net/browse/SCRUM-47" target="_blank">SCRUM-47</a></strong></td>
+                        <td>Re-indexación Catálogo 93 Controles ISO en ChromaDB</td>
+                        <td>EP-03</td>
+                        <td>Sprint 10</td>
+                        <td><span class="badge badge-should">Should</span></td>
+                        <td>8</td>
+                        <td>100% controles ISO indexados con metadatos completos y script de benchmarking RAG con Precision@3 &ge; 0.70.</td>
+                        <td>Condicionado a capacidad remanente en S10.</td>
+                    </tr>
+                    <tr>
+                        <td><strong><a href="https://smartauditoria.atlassian.net/browse/SCRUM-48" target="_blank">SCRUM-48</a></strong></td>
+                        <td>Validación Integral E2E en VPS de Producción</td>
+                        <td>EP-05</td>
+                        <td>Sprint 11</td>
+                        <td><span class="badge badge-should">Should</span></td>
+                        <td>5</td>
+                        <td>Script <code>e2e_vps_validation.py</code> pasando al 100% contra endpoints HTTPS y base de datos de producción.</td>
+                        <td>Condicionado a capacidad remanente en S11.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        SmartAuditorIA • Sistema de Gestión y Auditoría de Seguridad de Activos de Información • Universidad del Valle (2026)
+    </footer>
+</body>
+</html>
