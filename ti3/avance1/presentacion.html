@@ -616,7 +616,7 @@
             <div class="controls-group">
                 <button class="btn-ctrl" id="btnPrev" onclick="prevSlide()" title="Anterior (← o Flecha Izq)">Anterior</button>
                 <button class="btn-ctrl btn-primary" id="btnNext" onclick="nextSlide()" title="Siguiente (→ o Espacio)">Siguiente</button>
-                <button class="btn-ctrl" id="btnToggleScript" onclick="toggleScript()" title="Ver Guion del Expositor (G)">🎙️ Guion (G)</button>
+                
                 <button class="btn-ctrl" onclick="toggleFullScreen()" title="Pantalla Completa (F)">⛶ Pantalla Completa</button>
             </div>
         </div>
@@ -629,7 +629,7 @@
         <article class="slide-card active" data-slide="1">
             <div class="slide-top-meta">
                 <span class="slide-tag">Contexto Institucional & Continuidad</span>
-                <span class="slide-counter">Diapositiva 1 de 10</span>
+                
             </div>
             <h2 class="slide-title">1. Continuidad Metodológica TI2 → TI3 y Objetivos de la Iteración Final (V4.0-TI3)</h2>
             <div class="slide-body">
@@ -697,7 +697,7 @@
         <article class="slide-card" data-slide="2">
             <div class="slide-top-meta">
                 <span class="slide-tag">Diagnóstico de Campo</span>
-                <span class="slide-counter">Diapositiva 2 de 10</span>
+                
             </div>
             <h2 class="slide-title">2. Diagnóstico Técnico: 30 Observaciones de Campo en el VPS de Producción</h2>
             <div class="slide-body">
@@ -749,7 +749,7 @@
         <article class="slide-card" data-slide="3">
             <div class="slide-top-meta">
                 <span class="slide-tag">Estrategia de Alcance</span>
-                <span class="slide-counter">Diapositiva 3 de 10</span>
+                
             </div>
             <h2 class="slide-title">3. Priorización MoSCoW: 59 SP Must-Have vs. 18 SP Deuda Técnica Condicionada</h2>
             <div class="slide-body">
@@ -801,7 +801,7 @@
         <article class="slide-card" data-slide="4">
             <div class="slide-top-meta">
                 <span class="slide-tag">Gobernanza Jira Cloud</span>
-                <span class="slide-counter">Diapositiva 4 de 10</span>
+                
             </div>
             <h2 class="slide-title">4. Gobierno del Backlog: Jerarquía Oficial Jira Cloud (SCRUM-49 a SCRUM-61)</h2>
             <div class="slide-body">
@@ -868,12 +868,12 @@
         <article class="slide-card" data-slide="5">
             <div class="slide-top-meta">
                 <span class="slide-tag">Proceso de Negocio BPMN 2.0</span>
-                <span class="slide-counter">Diapositiva 5 de 10</span>
+                
             </div>
-            <h2 class="slide-title">5. Proceso Operativo BPMN 2.0 del SGSI: Evaluación de Riesgos y Auditoría</h2>
+            <h2 class="slide-title">5. Proceso Operativo del SGSI: Evaluación de Riesgos y Gestión de Seguridad (AS-IS vs. TO-BE)</h2>
             <div class="slide-body">
                 <p style="font-size: 0.83rem; color: var(--slate-700); margin-bottom: 0.35rem;">
-                    Modelo formal de procesos de negocio de SmartAuditorIA con carriles de participantes humanos y tareas de servicio automatizadas:
+                    Modelo operativo del SGSI (AS-IS actual vs. TO-BE en desarrollo), formalizado en el archivo estandarizado ISO/IEC 19510 (<code>proceso_sgsi_operativo.bpmn</code>):
                 </p>
 
                 <!-- SVG BPMN 2.0 Swimlane Diagram -->
@@ -917,11 +917,11 @@
                         <line x1="785" y1="34" x2="805" y2="34" stroke="#64748b" stroke-width="1.2"/>
                         <!-- Step 6: Guardado Atómico -->
                         <rect x="805" y="22" width="125" height="24" rx="4" fill="#ecfdf5" stroke="#10b981"/>
-                        <text x="867" y="37" font-size="8" font-weight="bold" fill="#065f46" text-anchor="middle">6. Guardado Atómico BD</text>
+                        <text x="867" y="37" font-size="8" font-weight="bold" fill="#065f46" text-anchor="middle">6. Guardado Atómico (DoD)</text>
 
                         <!-- Lane 2: Custodio del Activo -->
                         <line x1="38" y1="92" x2="950" y2="92" stroke="#e2e8f0" stroke-width="1"/>
-                        <text x="45" y="62" font-size="8.5" font-weight="bold" fill="#4a5568">CARRIL 2: CUSTODIO / RESPONSABLE DEL ACTIVO</text>
+                        <text x="45" y="62" font-size="8.5" font-weight="bold" fill="#4a5568">CARRIL 2: CUSTODIO / RESPONSABLE DEL ACTIVO (OBJETIVO TO-BE)</text>
                         <rect x="135" y="65" width="170" height="22" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
                         <text x="220" y="79" font-size="7.5" fill="#334155" text-anchor="middle">Validar Ficha 28 Cols & Criticidad CIA (1-5)</text>
                         <line x1="130" y1="46" x2="135" y2="65" stroke="#94a3b8" stroke-dasharray="2 2"/>
@@ -931,7 +931,7 @@
 
                         <!-- Lane 3: Auditor SGSI / Administrador -->
                         <line x1="38" y1="130" x2="950" y2="130" stroke="#e2e8f0" stroke-width="1"/>
-                        <text x="45" y="103" font-size="8.5" font-weight="bold" fill="#2563eb">CARRIL 3: AUDITOR SGSI / CONTROL INTERNO</text>
+                        <text x="45" y="103" font-size="8.5" font-weight="bold" fill="#2563eb">CARRIL 3: AUDITOR SGSI / CONTROL INTERNO (OBJETIVO TO-BE)</text>
                         <rect x="360" y="104" width="165" height="22" rx="4" fill="#f8fafc" stroke="#bfdbfe"/>
                         <text x="442" y="118" font-size="7.5" fill="#1e40af" text-anchor="middle">Monitoreo Tablero & Mapa de Calor DAFP</text>
                         <rect x="555" y="104" width="180" height="22" rx="4" fill="#eff6ff" stroke="#3b82f6"/>
@@ -956,25 +956,27 @@
 
                 <div class="diff-grid" style="margin-top: 0.4rem;">
                     <div class="diff-panel diff-before">
-                        <div class="diff-title">⚠️ Matriz Actual en Dashboard (RiskMatrix4x5.tsx)</div>
-                        <ul style="padding-left: 1rem; font-size: 0.78rem;">
-                            <li>Estructura de 4 probabilidades × 5 impactos (20 celdas).</li>
-                            <li>Omite el nivel 'Probable' y presenta 3 zonas (Bajo, Medio, Alto).</li>
-                            <li>Ancho fijo provoca desborde y scroll horizontal en laptops (DAS-01).</li>
+                        <div class="diff-title">⚠️ Línea Base Actual (AS-IS en Código)</div>
+                        <ul style="padding-left: 1rem; font-size: 0.76rem;">
+                            <li><strong>Carga y Ficha:</strong> Parser <code>.xlsx/.csv</code> estándar; formulario sin 28 columnas completas.</li>
+                            <li><strong>Matriz UI:</strong> Componente <code>RiskMatrix4x5.tsx</code> (20 celdas) con desborde en 1366×768.</li>
+                            <li><strong>Wizard:</strong> Stepper de 8 pasos con persistencia fraccionada y sin bloqueo estricto.</li>
+                            <li><strong>Auditoría:</strong> Rutas base en <code>auditorias.py</code> pendientes de roles RBAC integrales.</li>
                         </ul>
                     </div>
                     <div class="diff-panel diff-after">
-                        <div class="diff-title">✅ Matriz Homologada DAFP V7 (SCRUM-57 / HU-036)</div>
-                        <ul style="padding-left: 1rem; font-size: 0.78rem;">
-                            <li>Estructura estándar de 5 probabilidades × 5 impactos (25 celdas).</li>
-                            <li>4 zonas de severidad normativa: Bajo, Moderado, Alto y Extremo.</li>
-                            <li>Grilla responsiva CSS que elimina el scroll horizontal en 1366×768.</li>
+                        <div class="diff-title">🎯 Metas de la Iteración (TO-BE en V4.0)</div>
+                        <ul style="padding-left: 1rem; font-size: 0.76rem;">
+                            <li><strong>Carga y Ficha:</strong> Parser <code>.xlsm</code> sin macros (HU-034) y 28 columnas Cauca (HU-037).</li>
+                            <li><strong>Matriz DAFP:</strong> Grilla responsiva 5×5 (25 celdas) con 4 zonas de severidad (HU-036).</li>
+                            <li><strong>Wizard y Auditoría:</strong> Wizard consolidado (HU-039) y auditorías REST con RBAC (HU-038).</li>
+                            <li><strong>Gobernanza:</strong> Validaciones de custodio y guardado atómico como criterios de aceptación.</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="slide-footer-links">
-                <span>Modelo BPMN 2.0 y Arquitectura C4: <a href="trazabilidad.html">Ver Matriz de Trazabilidad y C4</a></span>
+                <span>Modelo BPMN 2.0: <a href="proceso_sgsi_operativo.bpmn" target="_blank">proceso_sgsi_operativo.bpmn</a> • <a href="trazabilidad.html">Ver C4 y DoD</a></span>
                 <span>Persistencia: MariaDB 10.11 (3306) & ChromaDB 0.5.3 (8000)</span>
             </div>
         </article>
@@ -983,7 +985,7 @@
         <article class="slide-card" data-slide="6">
             <div class="slide-top-meta">
                 <span class="slide-tag">Planificación Operativa</span>
-                <span class="slide-counter">Diapositiva 6 de 10</span>
+                
             </div>
             <h2 class="slide-title">6. Roadmap Oficial de Cuatro Sprints: 23 Noviembre al 20 Diciembre 2026</h2>
             <div class="slide-body">
@@ -1045,7 +1047,7 @@
         <article class="slide-card" data-slide="7">
             <div class="slide-top-meta">
                 <span class="slide-tag">Avance Técnico S8</span>
-                <span class="slide-counter">Diapositiva 7 de 10</span>
+                
             </div>
             <h2 class="slide-title">7. Avance HU-031 (SCRUM-52): Arquitectura y Secuencia de Seguridad de Sesiones</h2>
             <div class="slide-body">
@@ -1126,7 +1128,7 @@
         <article class="slide-card" data-slide="8">
             <div class="slide-top-meta">
                 <span class="slide-tag">Avance Técnico S8</span>
-                <span class="slide-counter">Diapositiva 8 de 10</span>
+                
             </div>
             <h2 class="slide-title">8. Avances HU-032 (SCRUM-53) y HU-033 (SCRUM-54): Saneamiento UTF-8 y Resiliencia SPA</h2>
             <div class="slide-body">
@@ -1180,7 +1182,7 @@
         <article class="slide-card" data-slide="9">
             <div class="slide-top-meta">
                 <span class="slide-tag">Ingeniería de Calidad</span>
-                <span class="slide-counter">Diapositiva 9 de 10</span>
+                
             </div>
             <h2 class="slide-title">9. Calidad y Trazabilidad: 82 Pruebas Automatizadas y Pipeline SDD → TDD → DoD</h2>
             <div class="slide-body">
@@ -1260,7 +1262,7 @@
         <article class="slide-card" data-slide="10">
             <div class="slide-top-meta">
                 <span class="slide-tag">Hoja de Ruta & Cierre</span>
-                <span class="slide-counter">Diapositiva 10 de 10</span>
+                
             </div>
             <h2 class="slide-title">10. Compromisos Inmediatos, Transición a Demostración en Vivo y Cierre V4.0-TI3</h2>
             <div class="slide-body">
@@ -1269,7 +1271,7 @@
                     <svg viewBox="0 0 950 110" xmlns="http://www.w3.org/2000/svg">
                         <!-- Step 1 -->
                         <circle cx="95" cy="55" r="32" fill="#1e293b"/>
-                        <text x="95" y="60" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">Gate G0.5</text>
+                        <text x="95" y="60" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">Primer Avance</text>
                         <text x="95" y="100" font-size="10" font-weight="bold" fill="#1e293b" text-anchor="middle">Aprobación Hoy</text>
 
                         <line x1="130" y1="55" x2="230" y2="55" stroke="#94a3b8" stroke-width="3"/>
@@ -1331,15 +1333,7 @@
         </article>
 
         <!-- Expandable Speaker Script Panel -->
-        <section class="script-drawer" id="scriptDrawer">
-            <div class="script-header">
-                <span id="scriptTitle">🎙️ Guion del Expositor — Diapositiva 1</span>
-                <span style="font-size: 0.75rem; color: var(--slate-500); font-weight: normal;">Pacing sugerido: ~1.1 min (Exposición oral: 11.5 min | Demo: 3.5 min)</span>
-            </div>
-            <p class="script-text" id="scriptBody">
-                Cargando guion discursivo...
-            </p>
-        </section>
+        
 
     </main>
 
@@ -1354,27 +1348,7 @@
         let currentSlide = 1;
         let isScriptOpen = false;
 
-        const scripts = [
-            "Muy buenos días a los miembros del comité evaluador de la Maestría en Computación para el Desarrollo de Aplicaciones Inteligentes de la Universidad del Valle. Presento el primer avance de Trabajo Integrador 3 para SmartAuditorIA, desarrollado junto a la Secretaría de Educación y Cultura de la Gobernación del Cauca. En Trabajo Integrador 2 consolidamos una línea base de 189 Story Points en estado Done en 7 sprints, con 136 SP aceptados formalmente y 53 SP bajo evaluación. El propósito de esta iteración final V4.0-TI3 es la consolidación operativa: cerrar las brechas identificadas en campo por los operadores, incorporar la plantilla oficial de 28 columnas y asegurar que SmartAuditorIA sea un producto terminado y listo para producción, alineado estrictamente con ISO/IEC 27001:2022, los 93 controles de ISO 27002 y las directrices del DAFP V7 y MIPG.",
-            
-            "Esta iteración se sustenta en una evaluación de campo real y documentada tras el despliegue del software en el VPS de producción institucional. Recibimos dos insumos formales invaluables: primero, el informe técnico de los operadores Stiven Fernández y Kevin Coca con 22 hallazgos concretos en torno a la carga masiva en Excel, la ergonomía del Wizard de riesgos y la visualización de reportes; segundo, la matriz oficial de observaciones de la Secretaría General con 8 puntos críticos de seguridad, sesión y ortografía. Tras una auditoría minuciosa en los repositorios, comprobamos la reproducibilidad del 100% de estos 30 hallazgos en el código fuente, identificando con precisión los componentes de frontend y backend involucrados.",
-            
-            "Aplicando la técnica MoSCoW, establecimos un plan de acción riguroso y sostenible: clasificamos como Must-Have 10 Historias de Usuario que concentran 59 Story Points. Estas historias resuelven el 100% de los bloqueos de los operadores: expiración de sesión por inactividad, soporte al formato .xlsm con macros, ficha con 28 columnas y escala CIA 1 a 5, y desacople del Wizard de evaluación. Por otra parte, la deuda técnica heredada de TI2 —representada por los tickets independientes SCRUM-46, 47 y 48 con 18 Story Points de CI/CD y RAG— fue clasificada responsablemente como Should-Have condicionado, programada sin sobrecargar el sprint final y protegiendo así la entrega de las necesidades operativas de la entidad.",
-            
-            "Bajo una rigurosa gobernanza ágil, la iteración TI3 se encuentra formalizada en Jira Cloud bajo el Release oficial V4.0-TI3, identificador 10037. Estructuramos el Backlog en 3 épicas oficiales: SCRUM-49 para Estabilidad Operativa, Sesiones, Carga Masiva y Dashboard; SCRUM-50 para Homologación Institucional de Activos y Evaluación; y SCRUM-51 para Consistencia de Riesgos, Auditoría y Experiencia Operativa. Las diez historias de usuario oficiales están registradas desde SCRUM-52 hasta SCRUM-61 con sus criterios de aceptación, tareas técnicas y Definition of Done completos, encontrándose los sprints planificados en estado futuro y el release como no liberado.",
-            
-            "La solución articula sus capacidades funcionales mediante un modelo de procesos de negocio inteligente o Smart BPMN que estructura el ciclo operativo del SGSI en cinco fases: la Fase 1 de Gobierno y Sesión con control de inactividad a 15 minutos y roles RBAC; la Fase 2 de Inventario de Activos con carga masiva .xlsm y ficha de 28 columnas de la Gobernación del Cauca; la Fase 3 de Evaluación de Riesgos en 8 pasos bajo DAFP V7; la Fase 4 de Monitoreo, Dashboard desacoplado y módulo de Auditoría REST con control de hallazgos; y la Fase 5 de Asistencia Inteligente con ChromaDB y los 93 controles ISO 27002. En términos de persistencia real verificada en código y contenedores Docker, la base de datos relacional opera sobre MariaDB 10.11 / MySQL en puerto 3306 con utf8mb4. Respecto a la matriz de riesgos, la auditoría reveló que la norma DAFP V7 aprueba una matriz de 5x5 con 4 zonas de severidad, mientras que el Dashboard operativo actual implementó una matriz de 4x5 con 3 niveles que presenta desborde en laptops. Esta discrepancia técnica queda formalmente tipificada para ser homologada en la historia SCRUM-57.",
-            
-            "Para materializar el Backlog formulamos un Release Plan oficial de 4 sprints en Jira Cloud, desde el 23 de noviembre hasta el 20 de diciembre de 2026, considerando los fines de semana y festivos como ventanas académicas de ejecución. El Sprint 8, identificador 145, aborda Estabilidad Core, Sesión y Resiliencia con 15 SP Must; el Sprint 9, identificador 146, implementa la Carga Masiva .xlsm y paneles con 13 SP Must, asignando SCRUM-46 como trabajo condicionado; el Sprint 10, identificador 147, incorpora las 28 columnas de activos, la matriz DAFP y reportes con 18 SP Must, vinculando SCRUM-47; y el Sprint 11, identificador 148, concentra las Auditorías REST y el Wizard integral con 13 SP Must, ligando SCRUM-48. Los días 17 y 18 de diciembre se reservan para la validación en vivo con los operadores en el VPS, culminando el 20 de diciembre con la congelación de versión v4.0.0.",
-            
-            "En el marco preparatorio, realizamos un desarrollo local anticipado en validación sobre las tres historias del Sprint 8. La historia SCRUM-52 o HU-031 resuelve la vulnerabilidad de sesiones desatendidas mediante una doble barrera: en el cliente, AuthContext.tsx rastrea la actividad mediante listeners DOM; tras 14 minutos de inactividad, abre un modal con cuenta regresiva de 60 segundos sincronizado entre pestañas vía BroadcastChannel; en el servidor, refactorizamos el decorador require_auth para validar contra la tabla sesiones_usuario que la sesión no haya sido revocada ni haya expirado, retornando un HTTP 401 Unauthorized inmediato. Este avance cuenta con 1 prueba en backend y 2 en frontend, todas en verde, permaneciendo en validación local a la espera de pruebas en el VPS institucional.",
-            
-            "La historia SCRUM-53 o HU-032 erradica el mojibake mediante un barrido completo en 11 archivos TSX, restableciendo la ortografía normativa y ajustando el padding en el modal de planes de acción, blindado por un test guardián automatizado que verifica cero violaciones tipográficas en todo el frontend. Por su parte, la historia SCRUM-54 o HU-033 suprime el riesgo de pantallas en blanco implementando RouteErrorBoundary para aislar excepciones en rutas lazy y ofrecer una interfaz de recuperación. Además, en el Wizard de evaluación convertimos getEvaluacionEstado en una función pura, eliminando guardados prematuros dentro del ciclo de render y bloqueando el avance en el Paso 0 si no hay activo seleccionado. Ambas historias superaron exitosamente sus pruebas unitarias en Vitest y se mantienen como desarrollo local anticipado.",
-            
-            "La solidez técnica del proyecto se sustenta en 82 pruebas automatizadas locales, todas ejecutándose al 100% de éxito: en backend, disponemos de 46 pruebas en Pytest, incluyendo autenticación, bulk upload, evaluación de riesgos y la nueva prueba de revocación de sesiones en servidor, ejecutadas en 7.73 segundos; en frontend, contamos con 36 pruebas en Vitest a través de 6 suites de componentes, asistentes de IA, ErrorBoundary y el guardián ortográfico, completadas en 6.17 segundos. Asimismo, la compilación de producción con TypeScript y Vite finaliza en 12.97 segundos con cero errores y cero advertencias de tipado. Reiteramos con rigor metodológico que estos avances no se declaran como Done, sino como implementaciones locales listas para despliegue y validación con los operadores.",
-            
-            "Para finalizar, nuestra hoja de ruta inmediata contempla tres pasos clave: primero, la aprobación de este Gate G0.5 para iniciar el registro de smart commits bajo las claves oficiales de Jira y la regla AGENTS.md; segundo, arrancar el Sprint 8 el próximo 23 de noviembre, desplegando los avances de sesión, ortografía y resiliencia en el VPS; y tercero, ejecutar secuencialmente los Sprints 9 a 11 para incorporar la carga masiva .xlsm, la ficha de 28 columnas y el Wizard consolidado, culminando el 17 y 18 de diciembre con la validación operativa en vivo con los operadores Stiven Fernández y Kevin Coca, y la congelación formal de versión el 20 de diciembre. A continuación, dedicaremos los siguientes 3 minutos y medio a navegar la interfaz local, comprobar los componentes y atender cualquier inquietud del comité evaluador. Muchas gracias."
-        ];
+        
 
         function initPresentation() {
             const dotsContainer = document.getElementById('dotsContainer');
@@ -1399,10 +1373,7 @@
             document.querySelectorAll('.deck-dot').forEach((dot, idx) => {
                 dot.classList.toggle('active', (idx + 1) === currentSlide);
             });
-
-            // Update Script Content
-            document.getElementById('scriptTitle').innerText = `🎙️ Guion del Expositor — Diapositiva ${currentSlide} de ${totalSlides}`;
-            document.getElementById('scriptBody').innerText = `"${scripts[currentSlide - 1]}"`;
+        }"`;
         }
 
         function goToSlide(n) {
@@ -1426,14 +1397,7 @@
             }
         }
 
-        function toggleScript() {
-            const drawer = document.getElementById('scriptDrawer');
-            const btn = document.getElementById('btnToggleScript');
-            isScriptOpen = !isScriptOpen;
-            drawer.classList.toggle('open', isScriptOpen);
-            btn.style.background = isScriptOpen ? '#1A1A1A' : '#ffffff';
-            btn.style.color = isScriptOpen ? '#ffffff' : '#4a5568';
-        }
+        
 
         function toggleFullScreen() {
             if (!document.fullscreenElement) {
@@ -1455,8 +1419,6 @@
             } else if (e.key === 'ArrowLeft') {
                 e.preventDefault();
                 prevSlide();
-            } else if (e.key.toLowerCase() === 'g') {
-                toggleScript();
             } else if (e.key.toLowerCase() === 'f') {
                 toggleFullScreen();
             }
