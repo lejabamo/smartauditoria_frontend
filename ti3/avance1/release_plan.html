@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Release Plan TI3 | SmartAuditorIA TI3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #990000;
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-600: #475569;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --slate-50: #f8fafc;
+            --emerald-600: #059669;
+            --emerald-50: #ecfdf5;
+            --amber-600: #d97706;
+            --amber-50: #fffbeb;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--slate-50);
+            color: var(--slate-800);
+            line-height: 1.5;
+        }
+        .top-banner {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 0.45rem 2rem;
+            font-size: 0.82rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border-bottom: 1px solid #334155;
+        }
+        .v-pill {
+            background: #990000;
+            color: #fff;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            margin-right: 0.5rem;
+        }
+        .header {
+            background: #ffffff;
+            border-bottom: 3px solid var(--primary);
+            padding: 1rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .header-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--slate-700);
+            transition: color 0.15s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--slate-200);
+            border-radius: 10px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin-bottom: 0.85rem;
+            border-bottom: 1px solid var(--slate-100);
+            padding-bottom: 0.5rem;
+        }
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+        }
+        .table-custom th {
+            background: var(--slate-100);
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--slate-200);
+            text-align: left;
+            font-weight: 700;
+            color: var(--slate-800);
+        }
+        .table-custom td {
+            padding: 0.5rem 0.7rem;
+            border: 1px solid var(--slate-200);
+            color: var(--slate-700);
+        }
+        .badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+        }
+        .badge-must { background: #fee2e2; color: #991b1b; }
+        .badge-should { background: #fef3c7; color: #92400e; }
+        .badge-success { background: var(--emerald-50); color: var(--emerald-600); border: 1px solid #a7f3d0; }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+        footer {
+            background: #ffffff;
+            border-top: 1px solid var(--slate-200);
+            padding: 1.25rem;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--slate-600);
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-banner">
+        <div>
+            <span class="v-pill">TI3 AVANCE 1</span>
+            <span>SmartAuditorIA — Iteración Final de Ingeniería de Software (V4.0)</span>
+        </div>
+        <div style="display: flex; gap: 1rem;">
+            <a href="../../index.html" style="color: #f87171; text-decoration: none; font-weight: 700;">🏛️ Portal TI2 (Histórico)</a>
+            <a href="https://github.com/lejabamo/smartauditoria_frontend" target="_blank" style="color: #cbd5e1; text-decoration: none;">GitHub Frontend</a>
+            <a href="https://smartauditoria.atlassian.net" target="_blank" style="color: #cbd5e1; text-decoration: none;">Jira Cloud</a>
+        </div>
+    </div>
+    <header class="header">
+        <div class="header-wrap">
+            <div>
+                <h1 style="font-size: 1.35rem; font-weight: 800; color: #0f172a;">SmartAuditorIA</h1>
+                <p style="font-size: 0.82rem; color: #64748b;">Maestría en Computación para el desarrollo de aplicaciones inteligentes • Universidad del Valle</p>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="">Inicio Avance 1</a>
+                <a href="presentacion.html" class="">Presentación (10 Diapositivas)</a>
+                <a href="product_backlog.html" class="">Product Backlog</a>
+                <a href="release_plan.html" class="active">Release Plan</a>
+                <a href="trazabilidad.html" class="">Trazabilidad & DoD</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h2>Release Plan Oficial V4.0-TI3 (Jira Cloud Release ID 10037)</h2>
+            <p style="font-size: 0.9rem; color: var(--slate-600); margin-bottom: 0.75rem;">
+                Plan de 4 sprints futuros de una semana con carga balanceada (~13 a 18 SP por sprint), evitando cuellos de botella al cierre:
+            </p>
+            <table class="table-custom">
+                <thead>
+                    <tr>
+                        <th>Sprint</th>
+                        <th>Fechas</th>
+                        <th>Foco Técnico</th>
+                        <th>Historias Must-Have</th>
+                        <th>Tarea Condicionada</th>
+                        <th>Carga Must</th>
+                        <th>Carga Cond.</th>
+                        <th>Entregable Verificable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Sprint 8 (ID 145)</strong></td>
+                        <td>23 nov – 29 nov</td>
+                        <td>Estabilidad Core, Sesión y Resiliencia</td>
+                        <td><code>SCRUM-52</code> (5), <code>SCRUM-53</code> (5), <code>SCRUM-54</code> (5)</td>
+                        <td>—</td>
+                        <td><strong>15 SP</strong></td>
+                        <td>—</td>
+                        <td>Sesión con inactividad a 15m, 0 mojibake y SPA sin congelamientos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sprint 9 (ID 146)</strong></td>
+                        <td>30 nov – 06 dic</td>
+                        <td>Carga Masiva .xlsm y Dashboard Resiliente</td>
+                        <td><code>SCRUM-55</code> (8), <code>SCRUM-56</code> (5)</td>
+                        <td><code>SCRUM-46</code> (5 SP)</td>
+                        <td><strong>13 SP</strong></td>
+                        <td>5 SP</td>
+                        <td>Parser multi-hoja procesa <code>.xlsm</code> oficial; Dashboard opera sin caídas en cascada.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sprint 10 (ID 147)</strong></td>
+                        <td>07 dic – 13 dic</td>
+                        <td>Activos 28 Cols Cauca, Matriz DAFP y Gráficas</td>
+                        <td><code>SCRUM-57</code> (5), <code>SCRUM-58</code> (8), <code>SCRUM-61</code> (5)</td>
+                        <td><code>SCRUM-47</code> (8 SP)</td>
+                        <td><strong>18 SP</strong></td>
+                        <td>8 SP</td>
+                        <td>Inventario con 28 columnas Cauca; matriz DAFP 5x5 responsiva en Dashboard; reportes con %.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sprint 11 (ID 148)</strong></td>
+                        <td>14 dic – 20 dic</td>
+                        <td>Auditorías REST y Wizard Integral DAFP</td>
+                        <td><code>SCRUM-59</code> (5), <code>SCRUM-60</code> (8)</td>
+                        <td><code>SCRUM-48</code> (5 SP)</td>
+                        <td><strong>13 SP</strong></td>
+                        <td>5 SP</td>
+                        <td>Auditorías REST operables; Wizard validado con guardado atómico ISO.</td>
+                    </tr>
+                    <tr style="background: #eff6ff;">
+                        <td><strong>Validación VPS</strong></td>
+                        <td>17 dic – 18 dic</td>
+                        <td>Validación Operativa en Vivo en VPS</td>
+                        <td>Validación con Stiven Fernández y Kevin Coca</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>Verificación en vivo en VPS institucional y firma de acta funcional.</td>
+                    </tr>
+                    <tr style="background: var(--emerald-50);">
+                        <td><strong>Cierre V4.0-TI3</strong></td>
+                        <td>19 dic – 20 dic</td>
+                        <td>Contingencia y Congelación de Release</td>
+                        <td>Congelación formal release v4.0.0</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>Ajustes menores de contingencia y congelación definitiva de versión v4.0.0.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        SmartAuditorIA • Sistema de Gestión y Auditoría de Seguridad de Activos de Información • Universidad del Valle (2026)
+    </footer>
+</body>
+</html>

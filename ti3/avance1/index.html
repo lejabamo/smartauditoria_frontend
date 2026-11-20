@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub Principal Avance 1 | SmartAuditorIA TI3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #990000;
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-600: #475569;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --slate-50: #f8fafc;
+            --emerald-600: #059669;
+            --emerald-50: #ecfdf5;
+            --amber-600: #d97706;
+            --amber-50: #fffbeb;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--slate-50);
+            color: var(--slate-800);
+            line-height: 1.5;
+        }
+        .top-banner {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 0.45rem 2rem;
+            font-size: 0.82rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border-bottom: 1px solid #334155;
+        }
+        .v-pill {
+            background: #990000;
+            color: #fff;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            margin-right: 0.5rem;
+        }
+        .header {
+            background: #ffffff;
+            border-bottom: 3px solid var(--primary);
+            padding: 1rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .header-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--slate-700);
+            transition: color 0.15s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--slate-200);
+            border-radius: 10px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin-bottom: 0.85rem;
+            border-bottom: 1px solid var(--slate-100);
+            padding-bottom: 0.5rem;
+        }
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+        }
+        .table-custom th {
+            background: var(--slate-100);
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--slate-200);
+            text-align: left;
+            font-weight: 700;
+            color: var(--slate-800);
+        }
+        .table-custom td {
+            padding: 0.5rem 0.7rem;
+            border: 1px solid var(--slate-200);
+            color: var(--slate-700);
+        }
+        .badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+        }
+        .badge-must { background: #fee2e2; color: #991b1b; }
+        .badge-should { background: #fef3c7; color: #92400e; }
+        .badge-success { background: var(--emerald-50); color: var(--emerald-600); border: 1px solid #a7f3d0; }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+        footer {
+            background: #ffffff;
+            border-top: 1px solid var(--slate-200);
+            padding: 1.25rem;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--slate-600);
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-banner">
+        <div>
+            <span class="v-pill">TI3 AVANCE 1</span>
+            <span>SmartAuditorIA — Iteración Final de Ingeniería de Software (V4.0)</span>
+        </div>
+        <div style="display: flex; gap: 1rem;">
+            <a href="../../index.html" style="color: #f87171; text-decoration: none; font-weight: 700;">🏛️ Portal TI2 (Histórico)</a>
+            <a href="https://github.com/lejabamo/smartauditoria_frontend" target="_blank" style="color: #cbd5e1; text-decoration: none;">GitHub Frontend</a>
+            <a href="https://smartauditoria.atlassian.net" target="_blank" style="color: #cbd5e1; text-decoration: none;">Jira Cloud</a>
+        </div>
+    </div>
+    <header class="header">
+        <div class="header-wrap">
+            <div>
+                <h1 style="font-size: 1.35rem; font-weight: 800; color: #0f172a;">SmartAuditorIA</h1>
+                <p style="font-size: 0.82rem; color: #64748b;">Maestría en Computación para el desarrollo de aplicaciones inteligentes • Universidad del Valle</p>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="active">Inicio Avance 1</a>
+                <a href="presentacion.html" class="">Presentación (10 Diapositivas)</a>
+                <a href="product_backlog.html" class="">Product Backlog</a>
+                <a href="release_plan.html" class="">Release Plan</a>
+                <a href="trazabilidad.html" class="">Trazabilidad & DoD</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card" style="border-left: 5px solid var(--primary);">
+            <h2>Primer Avance de Trabajo Integrador 3 (V4.0)</h2>
+            <p style="font-size: 0.95rem; color: var(--slate-700); margin-bottom: 1rem;">
+                Bienvenido al portal oficial de sustentación del <strong>Primer Avance de Trabajo Integrador 3 (Iteración Final V4.0)</strong> de <strong>SmartAuditorIA</strong>. Este espacio consolida la regularización metodológica, el diagnóstico técnico sobre 30 observaciones de los operadores de la <strong>Secretaría de Educación y Cultura de la Gobernación del Cauca</strong>, y los avances locales en validación hacia la sustentación final del 20 de diciembre de 2026.
+            </p>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <a href="presentacion.html" style="background: var(--primary); color: #fff; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.9rem;">▶ Abrir Presentación (10 Diapositivas)</a>
+                <a href="product_backlog.html" style="background: var(--slate-100); color: var(--slate-800); border: 1px solid var(--slate-200); padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">Explorar Backlog TI3</a>
+                <a href="../../index.html" style="background: transparent; color: #dc2626; border: 1px solid #fca5a5; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">← Volver al Portal Histórico TI2</a>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h2>📋 Resumen de Gobernanza TI3</h2>
+                <ul style="padding-left: 1.2rem; line-height: 1.6; font-size: 0.9rem;">
+                    <li><strong>Línea Base TI2 (Cerrada):</strong> 207 SP estimados, 189 SP Done (136 aceptados / 53 parciales) y 18 SP deuda técnica.</li>
+                    <li><strong>Demanda Must-Have TI3:</strong> <strong>59 Story Points</strong> distribuidos en 10 Historias de Usuario candidatas (<code>HU-031</code> a <code>HU-040</code>).</li>
+                    <li><strong>Deuda Técnica Should-Have:</strong> <strong>18 Story Points</strong> en 3 tareas independientes (<a href="https://smartauditoria.atlassian.net/browse/SCRUM-46" target="_blank">SCRUM-46</a>, <a href="https://smartauditoria.atlassian.net/browse/SCRUM-47" target="_blank">SCRUM-47</a>, <a href="https://smartauditoria.atlassian.net/browse/SCRUM-48" target="_blank">SCRUM-48</a>) condicionadas a capacidad.</li>
+                    <li><strong>Total Planificado:</strong> <strong>77 Story Points</strong> sin duplicidad.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>🧪 Estado Técnico Verificado Localmente</h2>
+                <ul style="padding-left: 1.2rem; line-height: 1.6; font-size: 0.9rem;">
+                    <li><strong>Backend (Pytest):</strong> <strong>46 passed</strong> en 7.73s (incluye revocación de sesiones en servidor).</li>
+                    <li><strong>Frontend (Vitest):</strong> <strong>36 passed</strong> en 6.17s (incluye inactividad, ErrorBoundary y ortografía).</li>
+                    <li><strong>Compilación de Producción:</strong> <code>tsc -b && vite build</code> limpio en 12.97s (0 errores).</li>
+                    <li><strong>Estado DoD:</strong> Desarrollo local anticipado en validación (pendiente prueba en VPS).</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        SmartAuditorIA • Sistema de Gestión y Auditoría de Seguridad de Activos de Información • Universidad del Valle (2026)
+    </footer>
+</body>
+</html>

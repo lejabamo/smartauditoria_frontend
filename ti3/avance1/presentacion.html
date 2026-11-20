@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartAuditorIA — Sustentación Avance 1 (Trabajo Integrador 3)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #CC0000;
+            --primary-hover: #990000;
+            --primary-light: #fef2f2;
+            --slate-900: #1A1A1A;
+            --slate-800: #2d3748;
+            --slate-700: #4a5568;
+            --slate-600: #718096;
+            --slate-500: #a0aec0;
+            --slate-300: #cbd5e0;
+            --slate-200: #e2e8f0;
+            --slate-100: #edf2f7;
+            --slate-50: #F8F9FA;
+            --emerald-600: #059669;
+            --emerald-50: #ecfdf5;
+            --amber-600: #d97706;
+            --amber-50: #fffbeb;
+            --blue-600: #2563eb;
+            --blue-50: #eff6ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--slate-50);
+            color: var(--slate-800);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Institutional Bar */
+        .inst-header {
+            background: #ffffff;
+            border-bottom: 3px solid var(--primary);
+            padding: 0.65rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .inst-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .inst-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .inst-logo-badge {
+            background: var(--primary);
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.05rem;
+            padding: 0.35rem 0.65rem;
+            border-radius: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .inst-title-group h1 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            line-height: 1.2;
+        }
+
+        .inst-title-group p {
+            font-size: 0.75rem;
+            color: var(--slate-600);
+        }
+
+        .inst-meta {
+            text-align: right;
+            font-size: 0.75rem;
+            color: var(--slate-600);
+        }
+
+        .inst-meta strong {
+            color: var(--slate-900);
+            display: block;
+        }
+
+        /* Slide Toolbar */
+        .slide-toolbar {
+            background: #ffffff;
+            border-bottom: 1px solid var(--slate-200);
+            padding: 0.45rem 2rem;
+        }
+
+        .toolbar-wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .deck-dots {
+            display: flex;
+            gap: 0.35rem;
+            align-items: center;
+        }
+
+        .deck-dot {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 1px solid var(--slate-300);
+            background: #ffffff;
+            color: var(--slate-700);
+            font-size: 0.72rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+        }
+
+        .deck-dot:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .deck-dot.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .controls-group {
+            display: flex;
+            gap: 0.45rem;
+            align-items: center;
+        }
+
+        .btn-ctrl {
+            background: #ffffff;
+            border: 1px solid var(--slate-300);
+            padding: 0.3rem 0.75rem;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--slate-700);
+            transition: all 0.15s;
+        }
+
+        .btn-ctrl:hover {
+            background: var(--slate-100);
+            border-color: var(--slate-400);
+        }
+
+        .btn-ctrl.btn-primary {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        .btn-ctrl.btn-primary:hover {
+            background: var(--primary-hover);
+        }
+
+        /* Presentation Canvas */
+        .presentation-wrap {
+            max-width: 1280px;
+            margin: 1.25rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .slide-card {
+            background: #ffffff;
+            border: 1px solid var(--slate-200);
+            border-radius: 10px;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            display: none;
+            min-height: 520px;
+            flex-direction: column;
+            animation: fadeIn 0.18s ease-out;
+        }
+
+        .slide-card.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(3px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-top-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.65rem;
+            border-bottom: 1px solid var(--slate-100);
+            padding-bottom: 0.45rem;
+        }
+
+        .slide-tag {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.72rem;
+            padding: 0.15rem 0.55rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .slide-counter {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--slate-500);
+        }
+
+        .slide-title {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin-bottom: 0.85rem;
+            letter-spacing: -0.3px;
+        }
+
+        .slide-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* Diagrams & SVG */
+        .diagram-container {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid var(--slate-200);
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin: 0.6rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            overflow: hidden;
+        }
+
+        .diagram-container svg {
+            width: 100%;
+            max-height: 250px;
+            height: auto;
+            display: block;
+        }
+
+        .visual-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .mod-box {
+            background: #ffffff;
+            border: 1px solid var(--slate-200);
+            border-left: 4px solid var(--primary);
+            border-radius: 6px;
+            padding: 0.65rem 0.85rem;
+            font-size: 0.82rem;
+        }
+
+        .mod-box h4 {
+            color: var(--slate-900);
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .mod-box p {
+            color: var(--slate-600);
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .tag-jira {
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-weight: 700;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.72rem;
+            border: 1px solid #bfdbfe;
+        }
+
+        .tag-sp {
+            background: #fef2f2;
+            color: #990000;
+            font-weight: 800;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.72rem;
+            border: 1px solid #fecaca;
+        }
+
+        .tag-done {
+            background: #ecfdf5;
+            color: #065f46;
+            font-weight: 700;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.72rem;
+            border: 1px solid #a7f3d0;
+        }
+
+        .diff-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .diff-panel {
+            border-radius: 6px;
+            padding: 0.85rem;
+            font-size: 0.82rem;
+        }
+
+        .diff-before {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            border-left: 4px solid #e53e3e;
+        }
+
+        .diff-after {
+            background: #f0fff4;
+            border: 1px solid #c6f6d5;
+            border-left: 4px solid #38a169;
+        }
+
+        .diff-title {
+            font-weight: 800;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.85rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+        }
+
+        .metric-card {
+            background: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            border-radius: 8px;
+            padding: 0.85rem 1rem;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.1;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--slate-600);
+            margin-top: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .box {
+            background: #ffffff;
+            border: 1px solid var(--slate-200);
+            border-radius: 8px;
+            padding: 1rem 1.15rem;
+            font-size: 0.85rem;
+        }
+
+        .box h3 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .box li {
+            position: relative;
+            padding-left: 1.15rem;
+            margin-bottom: 0.4rem;
+            color: var(--slate-700);
+            font-size: 0.83rem;
+        }
+
+        .box li::before {
+            content: "•";
+            position: absolute;
+            left: 0.2rem;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            margin-top: 0.5rem;
+        }
+
+        .table-custom th {
+            background: var(--slate-100);
+            padding: 0.5rem 0.65rem;
+            border: 1px solid var(--slate-200);
+            text-align: left;
+            font-weight: 700;
+            color: var(--slate-800);
+        }
+
+        .table-custom td {
+            padding: 0.45rem 0.65rem;
+            border: 1px solid var(--slate-200);
+            color: var(--slate-700);
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+        }
+
+        .badge-must { background: #fee2e2; color: #991b1b; }
+        .badge-should { background: #fef3c7; color: #92400e; }
+        .badge-success { background: var(--emerald-50); color: var(--emerald-600); border: 1px solid #a7f3d0; }
+
+        .slide-footer-links {
+            margin-top: auto;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--slate-100);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--slate-500);
+        }
+
+        .slide-footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .slide-footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Script Panel (Drawer) */
+        .script-drawer {
+            display: none;
+            background: #ffffff;
+            border: 1px solid var(--slate-300);
+            border-left: 4px solid var(--slate-800);
+            border-radius: 8px;
+            padding: 1.15rem 1.35rem;
+            margin-top: 0.4rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+        }
+
+        .script-drawer.open {
+            display: block;
+            animation: fadeIn 0.18s ease-out;
+        }
+
+        .script-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--slate-900);
+        }
+
+        .script-text {
+            font-size: 0.88rem;
+            color: var(--slate-700);
+            line-height: 1.55;
+            font-style: italic;
+        }
+
+        /* Responsive 1366x768 optimization */
+        @media (max-width: 1366px) {
+            .presentation-wrap {
+                max-width: 1160px;
+                padding: 0 1rem;
+            }
+            .slide-card {
+                padding: 1.6rem 2rem;
+                min-height: 480px;
+            }
+            .slide-title {
+                font-size: 1.35rem;
+            }
+            .diagram-container svg {
+                max-height: 220px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #ffffff;
+            border-top: 1px solid var(--slate-200);
+            padding: 0.75rem 2rem;
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--slate-500);
+        }
+    </style>
+</head>
+<body id="ti3-banner">
+
+    <div style="background: #1A1A1A; color: #f8fafc; padding: 0.4rem 2rem; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155;">
+        <div>
+            <span style="background: #CC0000; color: #fff; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 4px; margin-right: 0.5rem; font-size: 0.72rem;">TI3 AVANCE 1</span>
+            <span>Iteración Final V4.0 — Sustentación de Avance 1 (20 Noviembre 2026)</span>
+        </div>
+        <div style="display: flex; gap: 1rem;">
+            <a href="index.html" style="color: #cbd5e1; text-decoration: none; font-weight: 600;">Hub Avance 1</a>
+            <a href="product_backlog.html" style="color: #cbd5e1; text-decoration: none; font-weight: 600;">Backlog</a>
+            <a href="release_plan.html" style="color: #cbd5e1; text-decoration: none; font-weight: 600;">Release Plan</a>
+            <a href="trazabilidad.html" style="color: #cbd5e1; text-decoration: none; font-weight: 600;">Trazabilidad</a>
+            <a href="../../index.html" style="color: #f87171; text-decoration: none; font-weight: 700;">🏛️ Portal TI2 (Histórico)</a>
+        </div>
+    </div>
+
+    <!-- Institutional Header -->
+    <header class="inst-header">
+        <div class="inst-container">
+            <div class="inst-brand">
+                <div class="inst-logo-badge">UV</div>
+                <div class="inst-title-group">
+                    <h1>SmartAuditorIA</h1>
+                    <p>Maestría en Computación para el desarrollo de aplicaciones inteligentes • Universidad del Valle</p>
+                </div>
+            </div>
+            <div class="inst-meta">
+                <strong>Primera Sustentación — Trabajo Integrador 3 (Release V4.0-TI3)</strong>
+                <span>Ing. Leonardo Javier Bastidas Moreno • 20 Noviembre 2026</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Slide Control Toolbar -->
+    <nav class="slide-toolbar" aria-label="Controles de diapositivas">
+        <div class="toolbar-wrap">
+            <div class="deck-dots" id="dotsContainer">
+                <!-- Injected via JavaScript -->
+            </div>
+            <div class="controls-group">
+                <button class="btn-ctrl" id="btnPrev" onclick="prevSlide()" title="Anterior (← o Flecha Izq)">Anterior</button>
+                <button class="btn-ctrl btn-primary" id="btnNext" onclick="nextSlide()" title="Siguiente (→ o Espacio)">Siguiente</button>
+                <button class="btn-ctrl" id="btnToggleScript" onclick="toggleScript()" title="Ver Guion del Expositor (G)">🎙️ Guion (G)</button>
+                <button class="btn-ctrl" onclick="toggleFullScreen()" title="Pantalla Completa (F)">⛶ Pantalla Completa</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Presentation Main Canvas -->
+    <main class="presentation-wrap">
+
+        <!-- DIAPOSITIVA 1: CONTINUIDAD Y TIMELINE -->
+        <article class="slide-card active" data-slide="1">
+            <div class="slide-top-meta">
+                <span class="slide-tag">Contexto Institucional & Continuidad</span>
+                <span class="slide-counter">Diapositiva 1 de 10</span>
+            </div>
+            <h2 class="slide-title">1. Continuidad Metodológica TI2 → TI3 y Objetivos de la Iteración Final (V4.0-TI3)</h2>
+            <div class="slide-body">
+                <!-- SVG Timeline of Evolution -->
+                <div class="diagram-container">
+                    <svg viewBox="0 0 1000 130" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Line -->
+                        <line x1="80" y1="65" x2="920" y2="65" stroke="#cbd5e0" stroke-width="4" stroke-dasharray="6 6"/>
+                        <!-- Node 1: TI2 Base -->
+                        <circle cx="120" cy="65" r="24" fill="#059669"/>
+                        <text x="120" y="70" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">TI2</text>
+                        <text x="120" y="105" font-size="11" font-weight="bold" fill="#1A1A1A" text-anchor="middle">Línea Base S1–S7</text>
+                        <text x="120" y="120" font-size="10" fill="#718096" text-anchor="middle">189 SP Done (136 Acp/53 Par)</text>
+                        <!-- Node 2: VPS Evaluation -->
+                        <circle cx="380" cy="65" r="22" fill="#2563eb"/>
+                        <text x="380" y="69" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">VPS</text>
+                        <text x="380" y="105" font-size="11" font-weight="bold" fill="#1A1A1A" text-anchor="middle">Pruebas en Campo</text>
+                        <text x="380" y="120" font-size="10" fill="#718096" text-anchor="middle">30 Hallazgos Operadores</text>
+                        <!-- Node 3: TI3 Iteration -->
+                        <circle cx="650" cy="65" r="26" fill="#CC0000"/>
+                        <text x="650" y="70" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">TI3</text>
+                        <text x="650" y="105" font-size="11" font-weight="bold" fill="#CC0000" text-anchor="middle">Iteración V4.0-TI3</text>
+                        <text x="650" y="120" font-size="10" fill="#718096" text-anchor="middle">59 SP Must-Have (S8–S11)</text>
+                        <!-- Node 4: Final Closure -->
+                        <circle cx="880" cy="65" r="22" fill="#d97706"/>
+                        <text x="880" y="69" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">SEC</text>
+                        <text x="880" y="105" font-size="11" font-weight="bold" fill="#1A1A1A" text-anchor="middle">Cierre & Tesis</text>
+                        <text x="880" y="120" font-size="10" fill="#718096" text-anchor="middle">Certificación Gobernación</text>
+                    </svg>
+                </div>
+
+                <div class="grid-4" style="margin-top: 0.5rem;">
+                    <div class="metric-card">
+                        <div class="metric-value">189 SP</div>
+                        <div class="metric-label">Línea Base TI2 (Done)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">59 SP</div>
+                        <div class="metric-label">Compromiso TI3 (Must-Have)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">10 HU</div>
+                        <div class="metric-label">Historias Oficiales Jira</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">4 Sprints</div>
+                        <div class="metric-label">Cronograma V4.0-TI3</div>
+                    </div>
+                </div>
+
+                <div class="box" style="margin-top: 0.75rem;">
+                    <h3>🎯 Propósito Estratégico de la Iteración Final V4.0-TI3</h3>
+                    <p style="font-size: 0.83rem; color: var(--slate-700);">
+                        Consolidar operativamente SmartAuditorIA como solución lista para producción institucional en la <strong>Gobernación del Cauca (Secretaría de Educación y Cultura)</strong>, cerrando las 30 brechas funcionales detectadas en campo, homologando la plantilla de 28 columnas bajo DAFP V7 e ISO 27001:2022, y culminando con la certificación operativa de la entidad.
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer-links">
+                <span>Portal Académico TI2: <a href="../../index.html" target="_blank">Ver Registro Histórico V3.4 (10 Documentos)</a></span>
+                <span>Jira Release: <span class="tag-jira">V4.0-TI3 (ID: 10037)</span></span>
+            </div>
+        </article>
+
+        <!-- DIAPOSITIVA 2: DIAGNÓSTICO Y MAPA DE MÓDULOS -->
+        <article class="slide-card" data-slide="2">
+            <div class="slide-top-meta">
+                <span class="slide-tag">Diagnóstico de Campo</span>
+                <span class="slide-counter">Diapositiva 2 de 10</span>
+            </div>
+            <h2 class="slide-title">2. Diagnóstico Técnico: 30 Observaciones de Campo en el VPS de Producción</h2>
+            <div class="slide-body">
+                <p style="font-size: 0.85rem; color: var(--slate-700); margin-bottom: 0.5rem;">
+                    Inspección y contrastación de los 22 hallazgos de operadores (Stiven Fernández y Kevin Coca) y las 8 observaciones de la Secretaría General sobre el entorno en vivo:
+                </p>
+
+                <!-- Visual Grid of Modules Affected -->
+                <div class="visual-card-grid">
+                    <div class="mod-box">
+                        <h4>1. Sesiones y Autenticación <span class="tag-sp">HU-031</span></h4>
+                        <p><strong>Hallazgos SEC-01 / PDF-02:</strong> Sesión desatendida indefinida sin expiración ni revocación en servidor. Resuelto con doble barrera y modal a 15 min.</p>
+                    </div>
+                    <div class="mod-box">
+                        <h4>2. Carga Masiva .xlsm <span class="tag-sp">HU-034</span></h4>
+                        <p><strong>Hallazgos ACT-03..05 / PDF-08:</strong> Rechazo de plantilla oficial con macros y cuelgue ante archivos de 50MB. Parser multi-hoja transaccional por lotes.</p>
+                    </div>
+                    <div class="mod-box">
+                        <h4>3. Inventario 28 Cols Cauca <span class="tag-sp">HU-037</span></h4>
+                        <p><strong>Hallazgos ACT-01..02 / PDF-03:</strong> Ficha de activos incompleta. Incorporación de Secretaría, Marca, Modelo, escala CIA 1–5 y selector predictivo.</p>
+                    </div>
+                    <div class="mod-box">
+                        <h4>4. Wizard de Evaluación <span class="tag-sp">HU-039</span></h4>
+                        <p><strong>Hallazgos EVA-01..08 / PDF-05..06:</strong> Bloqueo estricto por pasos obligatorios, supresión de auto-scroll involuntario y guardado atómico ISO.</p>
+                    </div>
+                    <div class="mod-box">
+                        <h4>5. Dashboard & Matriz 5x5 <span class="tag-sp">HU-035 / 036</span></h4>
+                        <p><strong>Hallazgos DAS-01..02 / PDF-01:</strong> Desborde horizontal de matriz en laptops 1366x768 y fallos en cascada. Desacople con allSettled y matriz DAFP V7.</p>
+                    </div>
+                    <div class="mod-box">
+                        <h4>6. Auditorías & Reportes <span class="tag-sp">HU-038 / 040</span></h4>
+                        <p><strong>Hallazgos AUD-01 / REP-01..02 / PDF-07:</strong> Módulo de auditoría estático. Endpoints REST GET/PUT con RBAC y gráficos Recharts con porcentajes.</p>
+                    </div>
+                </div>
+
+                <div class="diagram-container" style="margin-top: 0.65rem; background: #f8fafc; padding: 0.5rem;">
+                    <span style="font-size: 0.82rem; font-weight: 700; color: #1e293b;">
+                        ✅ Verificación Técnica: 30 de 30 observaciones auditadas y comprobadas 100% reproducibles en código y entorno de producción VPS.
+                    </span>
+                </div>
+            </div>
+            <div class="slide-footer-links">
+                <span>Documentos de Entrada: <code>SmartAuditorIA_Informe_actualizadoStiven_Kevin.docx</code> • <code>Observaciones SGSI.pdf</code></span>
+                <span>Matriz Detallada: <a href="trazabilidad.html">Ver Trazabilidad Completa</a></span>
+            </div>
+        </article>
+
+        <!-- DIAPOSITIVA 3: PRIORIZACIÓN MOSCOW -->
+        <article class="slide-card" data-slide="3">
+            <div class="slide-top-meta">
+                <span class="slide-tag">Estrategia de Alcance</span>
+                <span class="slide-counter">Diapositiva 3 de 10</span>
+            </div>
+            <h2 class="slide-title">3. Priorización MoSCoW: 59 SP Must-Have vs. 18 SP Deuda Técnica Condicionada</h2>
+            <div class="slide-body">
+                <!-- SVG MoSCoW Diagram -->
+                <div class="diagram-container">
+                    <svg viewBox="0 0 950 140" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Must-Have Box -->
+                        <rect x="20" y="15" width="460" height="110" rx="8" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+                        <text x="40" y="42" font-size="14" font-weight="bold" fill="#991b1b">MUST-HAVE (59 SP — 10 Historias de Usuario)</text>
+                        <text x="40" y="65" font-size="11" fill="#7f1d1d">• Compromiso Garantizado de Alcance Funcional en 4 Sprints (S8 a S11).</text>
+                        <text x="40" y="85" font-size="11" fill="#7f1d1d">• Resuelve el 100% de las 30 observaciones de los operadores y Secretaría General.</text>
+                        <text x="40" y="105" font-size="11" fill="#7f1d1d">• Sesiones, carga .xlsm, 28 cols Cauca, matriz DAFP 5x5, Wizard y auditorías.</text>
+
+                        <!-- Should-Have Box -->
+                        <rect x="500" y="15" width="430" height="110" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+                        <text x="520" y="42" font-size="14" font-weight="bold" fill="#92400e">SHOULD-HAVE (18 SP — 3 Tareas Técnicas)</text>
+                        <text x="520" y="65" font-size="11" fill="#78350f">• Deuda Técnica TI2 heredada (SCRUM-46 [5], SCRUM-47 [8], SCRUM-48 [5]).</text>
+                        <text x="520" y="85" font-size="11" fill="#78350f">• Trabajo condicionado a capacidad remanente (stretch goals).</text>
+                        <text x="520" y="105" font-size="11" fill="#78350f">• No sobrecarga el cierre y protege la entrega institucional prioritaria.</text>
+                    </svg>
+                </div>
+
+                <div class="grid-2" style="margin-top: 0.65rem;">
+                    <div class="box">
+                        <h3>⚖️ Capacidad Neta de Ingeniería</h3>
+                        <ul>
+                            <li><strong>Equipo:</strong> 1 Desarrollador Fullstack / Arquitecto con dedicación intensiva.</li>
+                            <li><strong>Rendimiento Histórico:</strong> ~13 a 16 Story Points netos por sprint semanal.</li>
+                            <li><strong>Distribución 40h:</strong> 50% Codificación (20h), 22.5% TDD/SDD (9h), 15% Gestión (6h), 12.5% Validación (5h).</li>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <h3>🛡️ Salvaguarda Metodológica</h3>
+                        <ul>
+                            <li><strong>Cero Doble Conteo:</strong> Se eliminaron historias paraguas artificiales.</li>
+                            <li><strong>Transparencia:</strong> Las 3 tareas heredadas permanecen como tickets independientes.</li>
+                            <li><strong>Gobernanza:</strong> Solo los 59 SP Must-Have constituyen el compromiso de aprobación final.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer-links">
+                <span>Metodología: Ágil / MoSCoW Institucional</span>
+                <span>Backlog Completo: <a href="product_backlog.html">Ver Detalle de Criterios y DoD</a></span>
+            </div>
+        </article>
+
+        <!-- DIAPOSITIVA 4: JERARQUÍA JIRA CLOUD -->
+        <article class="slide-card" data-slide="4">
+            <div class="slide-top-meta">
+                <span class="slide-tag">Gobernanza Jira Cloud</span>
+                <span class="slide-counter">Diapositiva 4 de 10</span>
+            </div>
+            <h2 class="slide-title">4. Gobierno del Backlog: Jerarquía Oficial Jira Cloud (SCRUM-49 a SCRUM-61)</h2>
+            <div class="slide-body">
+                <p style="font-size: 0.85rem; color: var(--slate-700); margin-bottom: 0.4rem;">
+                    Estructura formalizada en Jira Cloud bajo el Release oficial <strong>V4.0-TI3</strong> (ID: <code>10037</code>):
+                </p>
+
+                <!-- Hierarchy Tree SVG -->
+                <div class="diagram-container" style="padding: 0.4rem;">
+                    <svg viewBox="0 0 960 160" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Epic 1 -->
+                        <rect x="10" y="10" width="300" height="42" rx="6" fill="#1e293b"/>
+                        <text x="20" y="27" font-size="11" font-weight="bold" fill="#38bdf8">EP-07 • SCRUM-49 (23 SP)</text>
+                        <text x="20" y="43" font-size="9" fill="#e2e8f0">Estabilidad, Sesiones, Carga & Dashboard</text>
+                        <!-- Stories Epic 1 -->
+                        <rect x="25" y="60" width="285" height="22" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                        <text x="35" y="75" font-size="9" fill="#1e293b"><strong>SCRUM-52</strong> [HU-031]: Sesión 15 min & rev. server (5 SP)</text>
+                        <rect x="25" y="85" width="285" height="22" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                        <text x="35" y="100" font-size="9" fill="#1e293b"><strong>SCRUM-54</strong> [HU-033]: Desbloqueo navegación SPA (5 SP)</text>
+                        <rect x="25" y="110" width="285" height="22" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                        <text x="35" y="125" font-size="9" fill="#1e293b"><strong>SCRUM-55</strong> [HU-034]: Parser carga masiva .xlsm (8 SP)</text>
+                        <rect x="25" y="135" width="285" height="22" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                        <text x="35" y="150" font-size="9" fill="#1e293b"><strong>SCRUM-56</strong> [HU-035]: Paneles con allSettled (5 SP)</text>
+
+                        <!-- Epic 2 -->
+                        <rect x="330" y="10" width="300" height="42" rx="6" fill="#1e293b"/>
+                        <text x="340" y="27" font-size="11" font-weight="bold" fill="#38bdf8">EP-08 • SCRUM-50 (16 SP)</text>
+                        <text x="340" y="43" font-size="9" fill="#e2e8f0">Homologación Activos & Evaluación</text>
+                        <!-- Stories Epic 2 -->
+                        <rect x="345" y="60" width="285" height="22" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                        <text x="355" y="75" font-size="9" fill="#1e293b"><strong>SCRUM-58</strong> [HU-037]: Activos 28 cols Cauca & CIA (8 SP)</text>
+                        <rect x="345" y="85" width="285" height="22" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                        <text x="355" y="100" font-size="9" fill="#1e293b"><strong>SCRUM-60</strong> [HU-039]: Wizard evaluación atómico (8 SP)</text>
+
+                        <!-- Epic 3 -->
+                        <rect x="650" y="10" width="300" height="42" rx="6" fill="#1e293b"/>
+                        <text x="660" y="27" font-size="11" font-weight="bold" fill="#38bdf8">EP-09 • SCRUM-51 (20 SP)</text>
+                        <text x="660" y="43" font-size="9" fill="#e2e8f0">Riesgos, Auditoría & Experiencia</text>
+                        <!-- Stories Epic 3 -->
+                        <rect x="665" y="60" width="285" height="22" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                        <text x="675" y="75" font-size="9" fill="#1e293b"><strong>SCRUM-53</strong> [HU-032]: Saneamiento UTF-8 mojibake (5 SP)</text>
+                        <rect x="665" y="85" width="285" height="22" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                        <text x="675" y="100" font-size="9" fill="#1e293b"><strong>SCRUM-57</strong> [HU-036]: Matriz DAFP 5x5 responsiva (5 SP)</text>
+                        <rect x="665" y="110" width="285" height="22" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                        <text x="675" y="125" font-size="9" fill="#1e293b"><strong>SCRUM-61</strong> [HU-040]: Paginación chips & gráficas (5 SP)</text>
+                        <rect x="665" y="135" width="285" height="22" rx="4" fill="#f1f5f9" stroke="#cbd5e1"/>
+                        <text x="675" y="150" font-size="9" fill="#1e293b"><strong>SCRUM-59</strong> [HU-038]: Módulo de Auditoría REST (5 SP)</text>
+                    </svg>
+                </div>
+
+                <div class="box" style="margin-top: 0.5rem; background: var(--slate-50);">
+                    <p style="font-size: 0.8rem; color: var(--slate-700);">
+                        <strong>Alineación en Jira Cloud:</strong> Épicas e historias creadas con criterios de aceptación, tareas técnicas, DoD y dependencias. Sprints planificados en estado futuro y release sin liberar.
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer-links">
+                <span>Jira Cloud Workspace: <a href="https://smartauditoria.atlassian.net" target="_blank">smartauditoria.atlassian.net</a></span>
+                <span>Épicas Oficiales: EP-07 (SCRUM-49), EP-08 (SCRUM-50), EP-09 (SCRUM-51)</span>
+            </div>
+        </article>
+
+        <!-- DIAPOSITIVA 5: PROCESO SMART BPMN Y PERSISTENCIA -->
+        <article class="slide-card" data-slide="5">
+            <div class="slide-top-meta">
+                <span class="slide-tag">Proceso & Persistencia</span>
+                <span class="slide-counter">Diapositiva 5 de 10</span>
+            </div>
+            <h2 class="slide-title">5. Proceso Operativo Smart BPMN (5 Fases SGSI), Persistencia y Matriz DAFP</h2>
+            <div class="slide-body">
+                <!-- SVG Smart BPMN Process Lifecycle Diagram -->
+                <div class="diagram-container">
+                    <svg viewBox="0 0 960 140" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Phase 1 -->
+                        <rect x="8" y="8" width="180" height="124" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+                        <text x="18" y="26" font-size="10" font-weight="bold" fill="#1e40af">1. GOBIERNO & SESIÓN</text>
+                        <rect x="16" y="36" width="164" height="24" rx="4" fill="#ffffff" stroke="#bfdbfe"/>
+                        <text x="98" y="52" font-size="8.5" fill="#1e293b" text-anchor="middle">Auth JWT & Roles RBAC</text>
+                        <rect x="16" y="66" width="164" height="24" rx="4" fill="#ffffff" stroke="#bfdbfe"/>
+                        <text x="98" y="82" font-size="8.5" fill="#1e293b" text-anchor="middle">Control Inactividad 15m</text>
+                        <rect x="16" y="96" width="164" height="24" rx="4" fill="#ffffff" stroke="#bfdbfe"/>
+                        <text x="98" y="112" font-size="8.5" fill="#1e293b" text-anchor="middle">Revocación Server en BD</text>
+
+                        <!-- Connector 1 -->
+                        <line x1="188" y1="70" x2="200" y2="70" stroke="#94a3b8" stroke-width="2"/>
+
+                        <!-- Phase 2 -->
+                        <rect x="200" y="8" width="180" height="124" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+                        <text x="210" y="26" font-size="10" font-weight="bold" fill="#0f172a">2. ACTIVOS DE INFORMACIÓN</text>
+                        <rect x="208" y="36" width="164" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+                        <text x="290" y="52" font-size="8.5" fill="#1e293b" text-anchor="middle">Carga Masiva .xlsm Macros</text>
+                        <rect x="208" y="66" width="164" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+                        <text x="290" y="82" font-size="8.5" fill="#1e293b" text-anchor="middle">Ficha 28 Columnas Cauca</text>
+                        <rect x="208" y="96" width="164" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+                        <text x="290" y="112" font-size="8.5" fill="#1e293b" text-anchor="middle">Escala CIA 1–5 & Custodio</text>
+
+                        <!-- Connector 2 -->
+                        <line x1="380" y1="70" x2="392" y2="70" stroke="#94a3b8" stroke-width="2"/>
+
+                        <!-- Phase 3 -->
+                        <rect x="392" y="8" width="180" height="124" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+                        <text x="402" y="26" font-size="10" font-weight="bold" fill="#991b1b">3. EVALUACIÓN DE RIESGOS</text>
+                        <rect x="400" y="36" width="164" height="24" rx="4" fill="#ffffff" stroke="#fecaca"/>
+                        <text x="482" y="52" font-size="8.5" fill="#1e293b" text-anchor="middle">Wizard 8 Pasos Obligatorios</text>
+                        <rect x="400" y="66" width="164" height="24" rx="4" fill="#ffffff" stroke="#fecaca"/>
+                        <text x="482" y="82" font-size="8.5" fill="#1e293b" text-anchor="middle">Matriz DAFP 5x5 (25 Celdas)</text>
+                        <rect x="400" y="96" width="164" height="24" rx="4" fill="#ffffff" stroke="#fecaca"/>
+                        <text x="482" y="112" font-size="8.5" fill="#1e293b" text-anchor="middle">Planes y Guardado Atómico</text>
+
+                        <!-- Connector 3 -->
+                        <line x1="572" y1="70" x2="584" y2="70" stroke="#94a3b8" stroke-width="2"/>
+
+                        <!-- Phase 4 -->
+                        <rect x="584" y="8" width="180" height="124" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+                        <text x="594" y="26" font-size="10" font-weight="bold" fill="#065f46">4. AUDITORÍA & MONITOREO</text>
+                        <rect x="592" y="36" width="164" height="24" rx="4" fill="#ffffff" stroke="#a7f3d0"/>
+                        <text x="674" y="52" font-size="8.5" fill="#1e293b" text-anchor="middle">Dashboard con allSettled</text>
+                        <rect x="592" y="66" width="164" height="24" rx="4" fill="#ffffff" stroke="#a7f3d0"/>
+                        <text x="674" y="82" font-size="8.5" fill="#1e293b" text-anchor="middle">Módulo REST GET/PUT</text>
+                        <rect x="592" y="96" width="164" height="24" rx="4" fill="#ffffff" stroke="#a7f3d0"/>
+                        <text x="674" y="112" font-size="8.5" fill="#1e293b" text-anchor="middle">Reportes & Gráficas con %</text>
+
+                        <!-- Connector 4 -->
+                        <line x1="764" y1="70" x2="776" y2="70" stroke="#94a3b8" stroke-width="2"/>
+
+                        <!-- Phase 5 -->
+                        <rect x="776" y="8" width="176" height="124" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+                        <text x="786" y="26" font-size="10" font-weight="bold" fill="#92400e">5. ASISTENCIA IA / RAG</text>
+                        <rect x="784" y="36" width="160" height="24" rx="4" fill="#ffffff" stroke="#fde68a"/>
+                        <text x="864" y="52" font-size="8.5" fill="#1e293b" text-anchor="middle">ChromaDB 0.5.3 (Puerto 8000)</text>
+                        <rect x="784" y="66" width="160" height="24" rx="4" fill="#ffffff" stroke="#fde68a"/>
+                        <text x="864" y="82" font-size="8.5" fill="#1e293b" text-anchor="middle">93 Controles ISO 27002</text>
+                        <rect x="784" y="96" width="160" height="24" rx="4" fill="#ffffff" stroke="#fde68a"/>
+                        <text x="864" y="112" font-size="8.5" fill="#1e293b" text-anchor="middle">Recomendaciones Predictivas</text>
+                    </svg>
+                </div>
+
+                <div class="diff-grid" style="margin-top: 0.5rem;">
+                    <div class="diff-panel diff-before">
+                        <div class="diff-title">⚠️ Matriz Actual en Dashboard (RiskMatrix4x5.tsx)</div>
+                        <ul style="padding-left: 1rem; font-size: 0.78rem;">
+                            <li>Estructura de 4 probabilidades × 5 impactos (20 celdas).</li>
+                            <li>Omite el nivel 'Probable' y presenta 3 zonas (Bajo, Medio, Alto).</li>
+                            <li>Ancho fijo provoca desborde y scroll horizontal en laptops (DAS-01).</li>
+                        </ul>
+                    </div>
+                    <div class="diff-panel diff-after">
+                        <div class="diff-title">✅ Matriz Homologada DAFP V7 (SCRUM-57 / HU-036)</div>
+                        <ul style="padding-left: 1rem; font-size: 0.78rem;">
+                            <li>Estructura estándar de 5 probabilidades × 5 impactos (25 celdas).</li>
+                            <li>4 zonas de severidad normativa: Bajo, Moderado, Alto y Extremo.</li>
+                            <li>Grilla responsiva CSS que elimina el scroll horizontal en 1366×768.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer-links">
+                <span>Persistencia Relacional: MariaDB 10.11 / MySQL (Corrección sobre PostgreSQL)</span>
+                <span>Base Vectorial: ChromaDB 0.5.3 (Puerto 8000)</span>
+            </div>
+        </article>
+
+        <!-- DIAPOSITIVA 6: ROADMAP OFICIAL SPRINTS -->
+        <article class="slide-card" data-slide="6">
+            <div class="slide-top-meta">
+                <span class="slide-tag">Planificación Operativa</span>
+                <span class="slide-counter">Diapositiva 6 de 10</span>
+            </div>
+            <h2 class="slide-title">6. Roadmap Oficial de Cuatro Sprints: 23 Noviembre al 20 Diciembre 2026</h2>
+            <div class="slide-body">
+                <!-- SVG Sprint Roadmap -->
+                <div class="diagram-container">
+                    <svg viewBox="0 0 950 115" xmlns="http://www.w3.org/2000/svg">
+                        <!-- S8 -->
+                        <rect x="15" y="15" width="215" height="85" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+                        <text x="25" y="35" font-size="11" font-weight="bold" fill="#1e40af">Sprint 8 (ID 145) • 15 SP</text>
+                        <text x="25" y="52" font-size="9" fill="#475569">23 Nov – 29 Nov 2026</text>
+                        <text x="25" y="70" font-size="9" font-weight="bold" fill="#1e293b">Core, Sesión & Resiliencia</text>
+                        <text x="25" y="87" font-size="8" fill="#64748b">SCRUM-52, 53, 54 (Must)</text>
+
+                        <!-- S9 -->
+                        <rect x="245" y="15" width="215" height="85" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+                        <text x="255" y="35" font-size="11" font-weight="bold" fill="#0f172a">Sprint 9 (ID 146) • 13 SP</text>
+                        <text x="255" y="52" font-size="9" fill="#475569">30 Nov – 06 Dic 2026</text>
+                        <text x="255" y="70" font-size="9" font-weight="bold" fill="#1e293b">Carga .xlsm & Dashboard</text>
+                        <text x="255" y="87" font-size="8" fill="#64748b">SCRUM-55, 56 (+ SCRUM-46 cond)</text>
+
+                        <!-- S10 -->
+                        <rect x="475" y="15" width="215" height="85" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+                        <text x="485" y="35" font-size="11" font-weight="bold" fill="#991b1b">Sprint 10 (ID 147) • 18 SP</text>
+                        <text x="485" y="52" font-size="9" fill="#475569">07 Dic – 13 Dic 2026</text>
+                        <text x="485" y="70" font-size="9" font-weight="bold" fill="#1e293b">Activos 28 Col, Matriz & Rep</text>
+                        <text x="485" y="87" font-size="8" fill="#64748b">SCRUM-57, 58, 61 (+ SCRUM-47 cond)</text>
+
+                        <!-- S11 -->
+                        <rect x="705" y="15" width="230" height="85" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+                        <text x="715" y="35" font-size="11" font-weight="bold" fill="#065f46">Sprint 11 (ID 148) • 13 SP</text>
+                        <text x="715" y="52" font-size="9" fill="#475569">14 Dic – 20 Dic 2026</text>
+                        <text x="715" y="70" font-size="9" font-weight="bold" fill="#1e293b">Auditorías & Wizard DAFP</text>
+                        <text x="715" y="87" font-size="8" fill="#64748b">SCRUM-59, 60 (+ SCRUM-48 cond)</text>
+                    </svg>
+                </div>
+
+                <div class="grid-2" style="margin-top: 0.5rem;">
+                    <div class="box" style="border-left: 4px solid #2563eb;">
+                        <h3>🏛️ Validación en Vivo en VPS (17–18 Dic)</h3>
+                        <p style="font-size: 0.8rem; color: var(--slate-700);">
+                            Sesión formal de comprobación en el VPS <code>riesgosti.tics.sedcauca.gov.co</code> con los operadores Stiven Fernández y Kevin Coca, verificando el cierre de las 30 observaciones y firmando el Acta de Aceptación.
+                        </p>
+                    </div>
+                    <div class="box" style="border-left: 4px solid #059669;">
+                        <h3>🔒 Contingencia y Cierre Release (19–20 Dic)</h3>
+                        <p style="font-size: 0.8rem; color: var(--slate-700);">
+                            Ventana de contingencia para ajustes menores y congelación definitiva de la versión <code>v4.0.0</code> para sustentación de tesis y cierre del proyecto.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer-links">
+                <span>Cronograma Oficial Jira: Sprint IDs 145, 146, 147 y 148</span>
+                <span>Release Plan Detallado: <a href="release_plan.html">Ver Cronograma Completo</a></span>
+            </div>
+        </article>
+
+        <!-- DIAPOSITIVA 7: AVANCE HU-031 SESIONES -->
+        <article class="slide-card" data-slide="7">
+            <div class="slide-top-meta">
+                <span class="slide-tag">Avance Técnico S8</span>
+                <span class="slide-counter">Diapositiva 7 de 10</span>
+            </div>
+            <h2 class="slide-title">7. Avance HU-031 (SCRUM-52): Arquitectura y Secuencia de Seguridad de Sesiones</h2>
+            <div class="slide-body">
+                <p style="font-size: 0.85rem; color: var(--slate-700); margin-bottom: 0.4rem;">
+                    Implementación de doble barrera (cliente y servidor) contra la vulnerabilidad de sesiones desatendidas:
+                </p>
+
+                <!-- SVG Sequence Diagram -->
+                <div class="diagram-container">
+                    <svg viewBox="0 0 950 145" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Entities -->
+                        <rect x="20" y="5" width="130" height="25" rx="4" fill="#1e293b"/>
+                        <text x="85" y="22" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">Operador (UI)</text>
+
+                        <rect x="190" y="5" width="150" height="25" rx="4" fill="#2563eb"/>
+                        <text x="265" y="22" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">AuthContext (15 min)</text>
+
+                        <rect x="380" y="5" width="160" height="25" rx="4" fill="#d97706"/>
+                        <text x="460" y="22" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">IdleTimeoutModal (60s)</text>
+
+                        <rect x="580" y="5" width="160" height="25" rx="4" fill="#059669"/>
+                        <text x="660" y="22" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">API (@require_auth)</text>
+
+                        <rect x="780" y="5" width="140" height="25" rx="4" fill="#7c3aed"/>
+                        <text x="850" y="22" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">MariaDB (Sesiones)</text>
+
+                        <!-- Lifelines -->
+                        <line x1="85" y1="30" x2="85" y2="140" stroke="#cbd5e1" stroke-dasharray="3 3"/>
+                        <line x1="265" y1="30" x2="265" y2="140" stroke="#cbd5e1" stroke-dasharray="3 3"/>
+                        <line x1="460" y1="30" x2="460" y2="140" stroke="#cbd5e1" stroke-dasharray="3 3"/>
+                        <line x1="660" y1="30" x2="660" y2="140" stroke="#cbd5e1" stroke-dasharray="3 3"/>
+                        <line x1="850" y1="30" x2="850" y2="140" stroke="#cbd5e1" stroke-dasharray="3 3"/>
+
+                        <!-- Messages -->
+                        <line x1="85" y1="50" x2="265" y2="50" stroke="#2563eb" stroke-width="1.5"/>
+                        <text x="175" y="45" font-size="8" fill="#1e40af" text-anchor="middle">1. Sin actividad por 14 min</text>
+
+                        <line x1="265" y1="70" x2="460" y2="70" stroke="#d97706" stroke-width="1.5"/>
+                        <text x="360" y="65" font-size="8" fill="#b45309" text-anchor="middle">2. Muestra modal + cuenta 60s</text>
+
+                        <line x1="460" y1="90" x2="265" y2="90" stroke="#dc2626" stroke-width="1.5"/>
+                        <text x="360" y="85" font-size="8" fill="#b91c1c" text-anchor="middle">3. Expiración / BroadcastChannel multi-pestaña</text>
+
+                        <line x1="265" y1="110" x2="660" y2="110" stroke="#475569" stroke-width="1.5"/>
+                        <text x="460" y="105" font-size="8" fill="#334155" text-anchor="middle">4. Request con token revocado</text>
+
+                        <line x1="660" y1="125" x2="850" y2="125" stroke="#7c3aed" stroke-width="1.5"/>
+                        <text x="755" y="120" font-size="8" fill="#5b21b6" text-anchor="middle">5. Valida SesionUsuario.activa == False ➔ HTTP 401</text>
+                    </svg>
+                </div>
+
+                <div class="grid-2" style="margin-top: 0.5rem;">
+                    <div class="box">
+                        <h3>💻 Cliente (AuthContext.tsx)</h3>
+                        <ul>
+                            <li>Listeners DOM globales (mousemove, keydown, click, scroll).</li>
+                            <li>Modal advertencia visual <code>IdleTimeoutModal.tsx</code> a los 14 minutos.</li>
+                            <li>Sincronización multi-pestaña con <code>BroadcastChannel</code>.</li>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <h3>🔒 Servidor (@require_auth)</h3>
+                        <ul>
+                            <li>Validación en base de datos: <code>SesionUsuario.activa == True</code>.</li>
+                            <li>Rechazo inmediato con <code>HTTP 401 Unauthorized</code> si fue revocada.</li>
+                            <li>Tests en verde: <code>test_auth_session_revocation.py</code> (Backend) y <code>auth_idle.test.tsx</code> (Frontend).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer-links">
+                <span>Estado Técnico: Desarrollo local anticipado en validación (No declarado Done)</span>
+                <span>Jira Issue: <span class="tag-jira">SCRUM-52</span> (5 SP)</span>
+            </div>
+        </article>
+
+        <!-- DIAPOSITIVA 8: AVANCES HU-032 Y HU-033 -->
+        <article class="slide-card" data-slide="8">
+            <div class="slide-top-meta">
+                <span class="slide-tag">Avance Técnico S8</span>
+                <span class="slide-counter">Diapositiva 8 de 10</span>
+            </div>
+            <h2 class="slide-title">8. Avances HU-032 (SCRUM-53) y HU-033 (SCRUM-54): Saneamiento UTF-8 y Resiliencia SPA</h2>
+            <div class="slide-body">
+                <div class="diff-grid">
+                    <div class="diff-panel diff-before">
+                        <div class="diff-title">❌ Antes: Mojibake y Caída SPA</div>
+                        <ul style="padding-left: 1rem; font-size: 0.8rem;">
+                            <li><strong>Mojibake (11 archivos):</strong> Textos como <code>GestiÃ³n</code>, <code>AutenticaciÃ³n</code>, <code>Ãcono</code> degradaban la percepción de calidad institucional.</li>
+                            <li><strong>Excepciones no controladas:</strong> Fallos en lazy routes o subcomponentes congelaban la SPA en pantalla blanca.</li>
+                            <li><strong>Efectos colaterales en render:</strong> <code>getEvaluacionEstado</code> realizaba escrituras en base de datos durante el ciclo de render.</li>
+                        </ul>
+                    </div>
+                    <div class="diff-panel diff-after">
+                        <div class="diff-title">✅ Después: Saneamiento y Resiliencia</div>
+                        <ul style="padding-left: 1rem; font-size: 0.8rem;">
+                            <li><strong>Ortografía Saneada:</strong> Erradicación total en 11 archivos TSX, blindada por test guardián automatizado <code>utf8_orthography.test.ts</code> (0 violaciones).</li>
+                            <li><strong>RouteErrorBoundary.tsx:</strong> Aislamiento de excepciones en rutas lazy con pantalla amigable de reintento.</li>
+                            <li><strong>Función Pura:</strong> <code>getEvaluacionEstado</code> convertida en cálculo puro sin escrituras automáticas y con bloqueo en Paso 0.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid-3" style="margin-top: 0.75rem;">
+                    <div class="metric-card">
+                        <div class="metric-value" style="color: #059669;">0</div>
+                        <div class="metric-label">Mojibake en Frontend</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" style="color: #2563eb;">100%</div>
+                        <div class="metric-label">Rutas con ErrorBoundary</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" style="color: #d97706;">5 + 5 SP</div>
+                        <div class="metric-label">SCRUM-53 y SCRUM-54</div>
+                    </div>
+                </div>
+
+                <div class="box" style="margin-top: 0.65rem;">
+                    <p style="font-size: 0.8rem; color: var(--slate-700);">
+                        <strong>Trazabilidad de Calidad:</strong> Los avances cuentan con pruebas unitarias en Vitest (<code>RouteErrorBoundary.test.tsx</code>, <code>utf8_orthography.test.ts</code>), permaneciendo en estado de desarrollo local anticipado a la espera de validación en VPS.
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer-links">
+                <span>Jira Issues: <span class="tag-jira">SCRUM-53</span> (UTF-8) • <span class="tag-jira">SCRUM-54</span> (Navegación SPA)</span>
+                <span>Componentes: <code>RouteErrorBoundary.tsx</code> • <code>EditableActionPlan.tsx</code></span>
+            </div>
+        </article>
+
+        <!-- DIAPOSITIVA 9: PIPELINE SDD/TDD Y PRUEBAS -->
+        <article class="slide-card" data-slide="9">
+            <div class="slide-top-meta">
+                <span class="slide-tag">Ingeniería de Calidad</span>
+                <span class="slide-counter">Diapositiva 9 de 10</span>
+            </div>
+            <h2 class="slide-title">9. Calidad y Trazabilidad: 82 Pruebas Automatizadas y Pipeline SDD → TDD → DoD</h2>
+            <div class="slide-body">
+                <!-- SVG Pipeline Diagram -->
+                <div class="diagram-container">
+                    <svg viewBox="0 0 950 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Step 1 -->
+                        <rect x="10" y="20" width="140" height="60" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+                        <text x="80" y="45" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">1. SDD</text>
+                        <text x="80" y="62" font-size="9" fill="#475569" text-anchor="middle">Diseño de Solución</text>
+
+                        <line x1="150" y1="50" x2="175" y2="50" stroke="#94a3b8" stroke-width="2"/>
+
+                        <!-- Step 2 -->
+                        <rect x="175" y="20" width="140" height="60" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+                        <text x="245" y="45" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">2. TDD</text>
+                        <text x="245" y="62" font-size="9" fill="#475569" text-anchor="middle">Pruebas Previas</text>
+
+                        <line x1="315" y1="50" x2="340" y2="50" stroke="#94a3b8" stroke-width="2"/>
+
+                        <!-- Step 3 -->
+                        <rect x="340" y="20" width="140" height="60" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+                        <text x="410" y="45" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">3. Código</text>
+                        <text x="410" y="62" font-size="9" fill="#475569" text-anchor="middle">Refactor Limpio</text>
+
+                        <line x1="480" y1="50" x2="505" y2="50" stroke="#94a3b8" stroke-width="2"/>
+
+                        <!-- Step 4 -->
+                        <rect x="505" y="20" width="140" height="60" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+                        <text x="575" y="45" font-size="11" font-weight="bold" fill="#065f46" text-anchor="middle">4. Tests Locales</text>
+                        <text x="575" y="62" font-size="9" fill="#475569" text-anchor="middle">82 Tests (100% Verde)</text>
+
+                        <line x1="645" y1="50" x2="670" y2="50" stroke="#94a3b8" stroke-width="2"/>
+
+                        <!-- Step 5 -->
+                        <rect x="670" y="20" width="130" height="60" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+                        <text x="735" y="45" font-size="11" font-weight="bold" fill="#92400e" text-anchor="middle">5. CI & VPS</text>
+                        <text x="735" y="62" font-size="9" fill="#475569" text-anchor="middle">Despliegue & Valid.</text>
+
+                        <line x1="800" y1="50" x2="825" y2="50" stroke="#94a3b8" stroke-width="2"/>
+
+                        <!-- Step 6 -->
+                        <rect x="825" y="20" width="115" height="60" rx="6" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.5"/>
+                        <text x="882" y="45" font-size="11" font-weight="bold" fill="#5b21b6" text-anchor="middle">6. DoD</text>
+                        <text x="882" y="62" font-size="9" fill="#475569" text-anchor="middle">Aceptación Final</text>
+                    </svg>
+                </div>
+
+                <div class="grid-3" style="margin-top: 0.65rem;">
+                    <div class="metric-card">
+                        <div class="metric-value">46 Tests</div>
+                        <div class="metric-label">Backend (Pytest — 7.73s)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">36 Tests</div>
+                        <div class="metric-label">Frontend (Vitest — 6.17s)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">0 Errores</div>
+                        <div class="metric-label">Build TS / Vite (12.97s)</div>
+                    </div>
+                </div>
+
+                <div class="box" style="margin-top: 0.65rem;">
+                    <p style="font-size: 0.8rem; color: var(--slate-700);">
+                        <strong>Transparencia Metodológica:</strong> Los 82 tests corresponden a ejecuciones locales reportadas que validan el comportamiento unitario e integrador. La CI remota en GitHub Actions y el motor RAG están programados para estabilización independiente en los Sprints 9 y 10.
+                    </p>
+                </div>
+            </div>
+            <div class="slide-footer-links">
+                <span>Total Pruebas Locales: 82 ejecutadas con 100% de éxito</span>
+                <span>Matriz de Calidad: <a href="trazabilidad.html">Ver DoD por Historia</a></span>
+            </div>
+        </article>
+
+        <!-- DIAPOSITIVA 10: HOJA DE RUTA Y CIERRE -->
+        <article class="slide-card" data-slide="10">
+            <div class="slide-top-meta">
+                <span class="slide-tag">Hoja de Ruta & Cierre</span>
+                <span class="slide-counter">Diapositiva 10 de 10</span>
+            </div>
+            <h2 class="slide-title">10. Compromisos Inmediatos, Transición a Demostración en Vivo y Cierre V4.0-TI3</h2>
+            <div class="slide-body">
+                <!-- SVG Roadmap Steps -->
+                <div class="diagram-container">
+                    <svg viewBox="0 0 950 110" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Step 1 -->
+                        <circle cx="95" cy="55" r="32" fill="#1e293b"/>
+                        <text x="95" y="60" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">Gate G0.5</text>
+                        <text x="95" y="100" font-size="10" font-weight="bold" fill="#1e293b" text-anchor="middle">Aprobación Hoy</text>
+
+                        <line x1="130" y1="55" x2="230" y2="55" stroke="#94a3b8" stroke-width="3"/>
+
+                        <!-- Step 2 -->
+                        <circle cx="270" cy="55" r="32" fill="#2563eb"/>
+                        <text x="270" y="60" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">S8</text>
+                        <text x="270" y="100" font-size="10" font-weight="bold" fill="#1e293b" text-anchor="middle">23–29 Nov (15 SP)</text>
+
+                        <line x1="305" y1="55" x2="405" y2="55" stroke="#94a3b8" stroke-width="3"/>
+
+                        <!-- Step 3 -->
+                        <circle cx="445" cy="55" r="32" fill="#64748b"/>
+                        <text x="445" y="60" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">S9</text>
+                        <text x="445" y="100" font-size="10" font-weight="bold" fill="#1e293b" text-anchor="middle">30 Nov–06 Dic</text>
+
+                        <line x1="480" y1="55" x2="580" y2="55" stroke="#94a3b8" stroke-width="3"/>
+
+                        <!-- Step 4 -->
+                        <circle cx="620" cy="55" r="32" fill="#ef4444"/>
+                        <text x="620" y="60" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">S10</text>
+                        <text x="620" y="100" font-size="10" font-weight="bold" fill="#1e293b" text-anchor="middle">07–13 Dic (18 SP)</text>
+
+                        <line x1="655" y1="55" x2="755" y2="55" stroke="#94a3b8" stroke-width="3"/>
+
+                        <!-- Step 5 -->
+                        <circle cx="795" cy="55" r="32" fill="#059669"/>
+                        <text x="795" y="60" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">S11 & VPS</text>
+                        <text x="795" y="100" font-size="10" font-weight="bold" fill="#059669" text-anchor="middle">14–20 Dic (Cierre)</text>
+                    </svg>
+                </div>
+
+                <div class="grid-2" style="margin-top: 0.65rem;">
+                    <div class="box">
+                        <h3>📋 Compromisos Inmediatos Post-Sustentación</h3>
+                        <ul>
+                            <li><strong>Smart Commits:</strong> Registro de avances con claves oficiales <code>[SCRUM-52][HU-031]</code>.</li>
+                            <li><strong>Publicación:</strong> Activación del showcase en GitHub Pages (rama <code>gh-pages</code>).</li>
+                            <li><strong>Inicio Sprint 8:</strong> Lunes 23 de noviembre con despliegue de validación en VPS.</li>
+                        </ul>
+                    </div>
+                    <div class="box" style="background: var(--primary-light); border-color: var(--primary);">
+                        <h3 style="color: var(--primary);">🚀 Transición a Demostración en Vivo</h3>
+                        <p style="font-size: 0.82rem; color: var(--slate-800); margin-bottom: 0.5rem;">
+                            Reservamos los siguientes <strong>3.5 minutos</strong> para navegar interactivamente por los componentes desarrollados localmente:
+                        </p>
+                        <ul style="color: var(--slate-800);">
+                            <li>Verificación del modal de inactividad de sesión (HU-031).</li>
+                            <li>Inspección de ortografía UTF-8 y ausencia de mojibake (HU-032).</li>
+                            <li>Comprobación de RouteErrorBoundary en la SPA (HU-033).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer-links">
+                <span>Continuar a: Bloque de Demostración en Vivo & Preguntas (3.5 min)</span>
+                <span>Meta: Release V4.0 Certificado por la Gobernación del Cauca (20 Dic)</span>
+            </div>
+        </article>
+
+        <!-- Expandable Speaker Script Panel -->
+        <section class="script-drawer" id="scriptDrawer">
+            <div class="script-header">
+                <span id="scriptTitle">🎙️ Guion del Expositor — Diapositiva 1</span>
+                <span style="font-size: 0.75rem; color: var(--slate-500); font-weight: normal;">Pacing sugerido: ~1.1 min (Exposición oral: 11.5 min | Demo: 3.5 min)</span>
+            </div>
+            <p class="script-text" id="scriptBody">
+                Cargando guion discursivo...
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        SmartAuditorIA • Sistema de Gestión y Auditoría de Seguridad de Activos de Información • Universidad del Valle
+    </footer>
+
+    <!-- Presentation Engine Script -->
+    <script>
+        const totalSlides = 10;
+        let currentSlide = 1;
+        let isScriptOpen = false;
+
+        const scripts = [
+            "Muy buenos días a los miembros del comité evaluador de la Maestría en Computación para el Desarrollo de Aplicaciones Inteligentes de la Universidad del Valle. Presento el primer avance de Trabajo Integrador 3 para SmartAuditorIA, desarrollado junto a la Secretaría de Educación y Cultura de la Gobernación del Cauca. En Trabajo Integrador 2 consolidamos una línea base de 189 Story Points en estado Done en 7 sprints, con 136 SP aceptados formalmente y 53 SP bajo evaluación. El propósito de esta iteración final V4.0-TI3 es la consolidación operativa: cerrar las brechas identificadas en campo por los operadores, incorporar la plantilla oficial de 28 columnas y asegurar que SmartAuditorIA sea un producto terminado y listo para producción, alineado estrictamente con ISO/IEC 27001:2022, los 93 controles de ISO 27002 y las directrices del DAFP V7 y MIPG.",
+            
+            "Esta iteración se sustenta en una evaluación de campo real y documentada tras el despliegue del software en el VPS de producción institucional. Recibimos dos insumos formales invaluables: primero, el informe técnico de los operadores Stiven Fernández y Kevin Coca con 22 hallazgos concretos en torno a la carga masiva en Excel, la ergonomía del Wizard de riesgos y la visualización de reportes; segundo, la matriz oficial de observaciones de la Secretaría General con 8 puntos críticos de seguridad, sesión y ortografía. Tras una auditoría minuciosa en los repositorios, comprobamos la reproducibilidad del 100% de estos 30 hallazgos en el código fuente, identificando con precisión los componentes de frontend y backend involucrados.",
+            
+            "Aplicando la técnica MoSCoW, establecimos un plan de acción riguroso y sostenible: clasificamos como Must-Have 10 Historias de Usuario que concentran 59 Story Points. Estas historias resuelven el 100% de los bloqueos de los operadores: expiración de sesión por inactividad, soporte al formato .xlsm con macros, ficha con 28 columnas y escala CIA 1 a 5, y desacople del Wizard de evaluación. Por otra parte, la deuda técnica heredada de TI2 —representada por los tickets independientes SCRUM-46, 47 y 48 con 18 Story Points de CI/CD y RAG— fue clasificada responsablemente como Should-Have condicionado, programada sin sobrecargar el sprint final y protegiendo así la entrega de las necesidades operativas de la entidad.",
+            
+            "Bajo una rigurosa gobernanza ágil, la iteración TI3 se encuentra formalizada en Jira Cloud bajo el Release oficial V4.0-TI3, identificador 10037. Estructuramos el Backlog en 3 épicas oficiales: SCRUM-49 para Estabilidad Operativa, Sesiones, Carga Masiva y Dashboard; SCRUM-50 para Homologación Institucional de Activos y Evaluación; y SCRUM-51 para Consistencia de Riesgos, Auditoría y Experiencia Operativa. Las diez historias de usuario oficiales están registradas desde SCRUM-52 hasta SCRUM-61 con sus criterios de aceptación, tareas técnicas y Definition of Done completos, encontrándose los sprints planificados en estado futuro y el release como no liberado.",
+            
+            "La solución articula sus capacidades funcionales mediante un modelo de procesos de negocio inteligente o Smart BPMN que estructura el ciclo operativo del SGSI en cinco fases: la Fase 1 de Gobierno y Sesión con control de inactividad a 15 minutos y roles RBAC; la Fase 2 de Inventario de Activos con carga masiva .xlsm y ficha de 28 columnas de la Gobernación del Cauca; la Fase 3 de Evaluación de Riesgos en 8 pasos bajo DAFP V7; la Fase 4 de Monitoreo, Dashboard desacoplado y módulo de Auditoría REST con control de hallazgos; y la Fase 5 de Asistencia Inteligente con ChromaDB y los 93 controles ISO 27002. En términos de persistencia real verificada en código y contenedores Docker, la base de datos relacional opera sobre MariaDB 10.11 / MySQL en puerto 3306 con utf8mb4. Respecto a la matriz de riesgos, la auditoría reveló que la norma DAFP V7 aprueba una matriz de 5x5 con 4 zonas de severidad, mientras que el Dashboard operativo actual implementó una matriz de 4x5 con 3 niveles que presenta desborde en laptops. Esta discrepancia técnica queda formalmente tipificada para ser homologada en la historia SCRUM-57.",
+            
+            "Para materializar el Backlog formulamos un Release Plan oficial de 4 sprints en Jira Cloud, desde el 23 de noviembre hasta el 20 de diciembre de 2026, considerando los fines de semana y festivos como ventanas académicas de ejecución. El Sprint 8, identificador 145, aborda Estabilidad Core, Sesión y Resiliencia con 15 SP Must; el Sprint 9, identificador 146, implementa la Carga Masiva .xlsm y paneles con 13 SP Must, asignando SCRUM-46 como trabajo condicionado; el Sprint 10, identificador 147, incorpora las 28 columnas de activos, la matriz DAFP y reportes con 18 SP Must, vinculando SCRUM-47; y el Sprint 11, identificador 148, concentra las Auditorías REST y el Wizard integral con 13 SP Must, ligando SCRUM-48. Los días 17 y 18 de diciembre se reservan para la validación en vivo con los operadores en el VPS, culminando el 20 de diciembre con la congelación de versión v4.0.0.",
+            
+            "En el marco preparatorio, realizamos un desarrollo local anticipado en validación sobre las tres historias del Sprint 8. La historia SCRUM-52 o HU-031 resuelve la vulnerabilidad de sesiones desatendidas mediante una doble barrera: en el cliente, AuthContext.tsx rastrea la actividad mediante listeners DOM; tras 14 minutos de inactividad, abre un modal con cuenta regresiva de 60 segundos sincronizado entre pestañas vía BroadcastChannel; en el servidor, refactorizamos el decorador require_auth para validar contra la tabla sesiones_usuario que la sesión no haya sido revocada ni haya expirado, retornando un HTTP 401 Unauthorized inmediato. Este avance cuenta con 1 prueba en backend y 2 en frontend, todas en verde, permaneciendo en validación local a la espera de pruebas en el VPS institucional.",
+            
+            "La historia SCRUM-53 o HU-032 erradica el mojibake mediante un barrido completo en 11 archivos TSX, restableciendo la ortografía normativa y ajustando el padding en el modal de planes de acción, blindado por un test guardián automatizado que verifica cero violaciones tipográficas en todo el frontend. Por su parte, la historia SCRUM-54 o HU-033 suprime el riesgo de pantallas en blanco implementando RouteErrorBoundary para aislar excepciones en rutas lazy y ofrecer una interfaz de recuperación. Además, en el Wizard de evaluación convertimos getEvaluacionEstado en una función pura, eliminando guardados prematuros dentro del ciclo de render y bloqueando el avance en el Paso 0 si no hay activo seleccionado. Ambas historias superaron exitosamente sus pruebas unitarias en Vitest y se mantienen como desarrollo local anticipado.",
+            
+            "La solidez técnica del proyecto se sustenta en 82 pruebas automatizadas locales, todas ejecutándose al 100% de éxito: en backend, disponemos de 46 pruebas en Pytest, incluyendo autenticación, bulk upload, evaluación de riesgos y la nueva prueba de revocación de sesiones en servidor, ejecutadas en 7.73 segundos; en frontend, contamos con 36 pruebas en Vitest a través de 6 suites de componentes, asistentes de IA, ErrorBoundary y el guardián ortográfico, completadas en 6.17 segundos. Asimismo, la compilación de producción con TypeScript y Vite finaliza en 12.97 segundos con cero errores y cero advertencias de tipado. Reiteramos con rigor metodológico que estos avances no se declaran como Done, sino como implementaciones locales listas para despliegue y validación con los operadores.",
+            
+            "Para finalizar, nuestra hoja de ruta inmediata contempla tres pasos clave: primero, la aprobación de este Gate G0.5 para iniciar el registro de smart commits bajo las claves oficiales de Jira y la regla AGENTS.md; segundo, arrancar el Sprint 8 el próximo 23 de noviembre, desplegando los avances de sesión, ortografía y resiliencia en el VPS; y tercero, ejecutar secuencialmente los Sprints 9 a 11 para incorporar la carga masiva .xlsm, la ficha de 28 columnas y el Wizard consolidado, culminando el 17 y 18 de diciembre con la validación operativa en vivo con los operadores Stiven Fernández y Kevin Coca, y la congelación formal de versión el 20 de diciembre. A continuación, dedicaremos los siguientes 3 minutos y medio a navegar la interfaz local, comprobar los componentes y atender cualquier inquietud del comité evaluador. Muchas gracias."
+        ];
+
+        function initPresentation() {
+            const dotsContainer = document.getElementById('dotsContainer');
+            dotsContainer.innerHTML = '';
+            for (let i = 1; i <= totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = `deck-dot ${i === currentSlide ? 'active' : ''}`;
+                dot.innerText = i;
+                dot.title = `Ir a Diapositiva ${i}`;
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+            updateSlideView();
+        }
+
+        function updateSlideView() {
+            document.querySelectorAll('.slide-card').forEach(card => {
+                const slideNum = parseInt(card.getAttribute('data-slide'));
+                card.classList.toggle('active', slideNum === currentSlide);
+            });
+
+            document.querySelectorAll('.deck-dot').forEach((dot, idx) => {
+                dot.classList.toggle('active', (idx + 1) === currentSlide);
+            });
+
+            // Update Script Content
+            document.getElementById('scriptTitle').innerText = `🎙️ Guion del Expositor — Diapositiva ${currentSlide} de ${totalSlides}`;
+            document.getElementById('scriptBody').innerText = `"${scripts[currentSlide - 1]}"`;
+        }
+
+        function goToSlide(n) {
+            if (n >= 1 && n <= totalSlides) {
+                currentSlide = n;
+                updateSlideView();
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlideView();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideView();
+            }
+        }
+
+        function toggleScript() {
+            const drawer = document.getElementById('scriptDrawer');
+            const btn = document.getElementById('btnToggleScript');
+            isScriptOpen = !isScriptOpen;
+            drawer.classList.toggle('open', isScriptOpen);
+            btn.style.background = isScriptOpen ? '#1A1A1A' : '#ffffff';
+            btn.style.color = isScriptOpen ? '#ffffff' : '#4a5568';
+        }
+
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    alert(`Error intentando activar pantalla completa: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Keyboard Navigation Support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key.toLowerCase() === 'g') {
+                toggleScript();
+            } else if (e.key.toLowerCase() === 'f') {
+                toggleFullScreen();
+            }
+        });
+
+        // Initialize presentation on load
+        window.onload = initPresentation;
+    </script>
+</body>
+</html>
