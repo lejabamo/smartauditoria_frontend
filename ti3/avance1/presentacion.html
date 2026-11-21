@@ -1344,88 +1344,124 @@
 
     <!-- Presentation Engine Script -->
     <script>
-        const totalSlides = 10;
-        let currentSlide = 1;
-        let isScriptOpen = false;
+    var totalSlides = 10;
+    var currentSlide = 1;
 
-        
-
-        function initPresentation() {
-            const dotsContainer = document.getElementById('dotsContainer');
+    function initPresentation() {
+        var dotsContainer = document.getElementById('dotsContainer');
+        if (dotsContainer) {
             dotsContainer.innerHTML = '';
-            for (let i = 1; i <= totalSlides; i++) {
-                const dot = document.createElement('button');
-                dot.className = `deck-dot ${i === currentSlide ? 'active' : ''}`;
-                dot.innerText = i;
-                dot.title = `Ir a Diapositiva ${i}`;
-                dot.onclick = () => goToSlide(i);
-                dotsContainer.appendChild(dot);
+            for (var i = 1; i <= totalSlides; i++) {
+                (function(slideNum) {
+                    var dot = document.createElement('button');
+                    dot.className = 'deck-dot' + (slideNum === currentSlide ? ' active' : '');
+                    dot.innerText = String(slideNum);
+                    dot.title = 'Ir a Diapositiva ' + slideNum;
+                    dot.onclick = function() { goToSlide(slideNum); };
+                    dotsContainer.appendChild(dot);
+                })(i);
             }
+        }
+        updateSlideView();
+    }
+
+    function updateSlideView() {
+        var cards = document.querySelectorAll('.slide-card');
+        for (var i = 0; i < cards.length; i++) {
+            var slideNum = parseInt(cards[i].getAttribute('data-slide'), 10);
+            if (slideNum === currentSlide) {
+                cards[i].classList.add('active');
+            } else {
+                cards[i].classList.remove('active');
+            }
+        }
+
+        var dots = document.querySelectorAll('.deck-dot');
+        for (var j = 0; j < dots.length; j++) {
+            if ((j + 1) === currentSlide) {
+                dots[j].classList.add('active');
+            } else {
+                dots[j].classList.remove('active');
+            }
+        }
+    }
+
+    function goToSlide(n) {
+        if (n >= 1 && n <= totalSlides) {
+            currentSlide = n;
             updateSlideView();
         }
+    }
 
-        function updateSlideView() {
-            document.querySelectorAll('.slide-card').forEach(card => {
-                const slideNum = parseInt(card.getAttribute('data-slide'));
-                card.classList.toggle('active', slideNum === currentSlide);
-            });
-
-            document.querySelectorAll('.deck-dot').forEach((dot, idx) => {
-                dot.classList.toggle('active', (idx + 1) === currentSlide);
-            });
-        }"`;
+    function nextSlide() {
+        if (currentSlide < totalSlides) {
+            currentSlide++;
+            updateSlideView();
         }
+    }
 
-        function goToSlide(n) {
-            if (n >= 1 && n <= totalSlides) {
-                currentSlide = n;
-                updateSlideView();
-            }
+    function prevSlide() {
+        if (currentSlide > 1) {
+            currentSlide--;
+            updateSlideView();
         }
+    }
 
-        function nextSlide() {
-            if (currentSlide < totalSlides) {
-                currentSlide++;
-                updateSlideView();
-            }
-        }
-
-        function prevSlide() {
-            if (currentSlide > 1) {
-                currentSlide--;
-                updateSlideView();
-            }
-        }
-
-        
-
-        function toggleFullScreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(err => {
-                    alert(`Error intentando activar pantalla completa: ${err.message}`);
+    function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            var elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen().catch(function(err) {
+                    console.warn('Pantalla completa no disponible:', err);
                 });
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                }
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
             }
         }
+    }
 
-        // Keyboard Navigation Support
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === ' ') {
-                e.preventDefault();
-                nextSlide();
-            } else if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                prevSlide();
-            } else if (e.key.toLowerCase() === 'f') {
-                toggleFullScreen();
-            }
-        });
+    // Keyboard Navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+            e.preventDefault();
+            nextSlide();
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+            e.preventDefault();
+            prevSlide();
+        } else if (e.key === 'Home') {
+            e.preventDefault();
+            goToSlide(1);
+        } else if (e.key === 'End') {
+            e.preventDefault();
+            goToSlide(totalSlides);
+        } else if (e.key.toLowerCase() === 'f') {
+            toggleFullScreen();
+        }
+    });
 
-        // Initialize presentation on load
-        window.onload = initPresentation;
-    </script>
+    // Expose functions globally for inline onclick handlers
+    window.goToSlide = goToSlide;
+    window.nextSlide = nextSlide;
+    window.prevSlide = prevSlide;
+    window.toggleFullScreen = toggleFullScreen;
+    window.initPresentation = initPresentation;
+
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPresentation);
+    } else {
+        initPresentation();
+    }
+</script>
 </body>
 </html>
