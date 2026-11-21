@@ -6,7 +6,7 @@ basedir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 load_dotenv(os.path.join(basedir, '.env'))
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'dev')
+    SECRET_KEY = os.environ.get('SECRET_KEY') or ''
     
     # Configuración de base de datos desde variables de entorno
     # Si DATABASE_URL está definido, usarlo (para SQLite)
@@ -19,7 +19,7 @@ class Config:
     else:
         # Configuración MySQL por defecto
         DB_USER = os.environ.get('DB_USER', 'root')
-        DB_PASSWORD = os.environ.get('DB_PASSWORD', 'toor')
+        DB_PASSWORD = os.environ.get('DB_PASSWORD') or ''
         DB_HOST = os.environ.get('DB_HOST', 'localhost')
         DB_PORT = os.environ.get('DB_PORT', '3306')
         DB_NAME = os.environ.get('DB_NAME', 'sgri')

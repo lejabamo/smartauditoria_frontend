@@ -586,10 +586,10 @@ const Activos: React.FC = () => {
       const fileName = `Reporte_Activo_${detalleActivo.activo?.Nombre?.replace(/[^a-z0-9]/gi, '_') || 'Activo'}_${new Date().toISOString().split('T')[0]}.pdf`;
       doc.save(fileName);
       
-      toast.success('âœ… Reporte PDF generado exitosamente');
+      toast.success('Reporte PDF generado exitosamente');
     } catch (error) {
       console.error('Error generando PDF:', error);
-      toast.error('âŒ Error al generar el reporte PDF');
+      toast.error(' Error al generar el reporte PDF');
     } finally {
       setExportando(false);
     }
@@ -685,10 +685,10 @@ const Activos: React.FC = () => {
       const fileName = `Reporte_Activo_${detalleActivo.activo?.Nombre?.replace(/[^a-z0-9]/gi, '_') || 'Activo'}_${new Date().toISOString().split('T')[0]}.xlsx`;
       XLSX.writeFile(wb, fileName);
       
-      toast.success('âœ… Reporte Excel generado exitosamente');
+      toast.success('Reporte Excel generado exitosamente');
     } catch (error) {
       console.error('Error generando Excel:', error);
-      toast.error('âŒ Error al generar el reporte Excel');
+      toast.error(' Error al generar el reporte Excel');
     } finally {
       setExportando(false);
     }
@@ -701,11 +701,11 @@ const Activos: React.FC = () => {
     
     // Validaciones
     if (!formData.Nombre || !formData.Nombre.trim()) {
-      toast.error('âŒ El nombre del activo es obligatorio');
+      toast.error(' El nombre del activo es obligatorio');
       return;
     }
     if (!formData.Tipo_Activo) {
-      toast.error('âŒ El tipo de activo es obligatorio');
+      toast.error(' El tipo de activo es obligatorio');
       return;
     }
     
@@ -721,7 +721,7 @@ const Activos: React.FC = () => {
   };
 
   const handleDelete = (id: number) => {
-    if (window.confirm('Â¿Esta seguro de que desea eliminar este activo?')) {
+    if (window.confirm('¿Esta seguro de que desea eliminar este activo?')) {
       deleteMutation.mutate(id);
     }
   };
@@ -1201,7 +1201,7 @@ const Activos: React.FC = () => {
                           {label}
                         </Typography>
                         <Typography variant="caption" className="font-roboto" sx={{ color: '#6B7280' }}>
-                          {activo?.Tipo_Activo} â€¢ {activo?.estado_activo}
+                          {activo?.Tipo_Activo} • {activo?.estado_activo}
                         </Typography>
                       </Box>
                     </Box>

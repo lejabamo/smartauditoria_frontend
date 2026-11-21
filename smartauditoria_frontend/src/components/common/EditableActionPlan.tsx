@@ -163,11 +163,11 @@ const EditableActionPlan: React.FC<EditableActionPlanProps> = ({
 
   const getStatusIcon = (estado: string) => {
     switch (estado) {
-      case 'completada': return 'âœ…';
-      case 'en_progreso': return 'ðŸ”„';
-      case 'pendiente': return 'â³';
-      case 'cancelada': return 'âŒ';
-      default: return 'â“';
+      case 'completada': return 'Completada';
+      case 'en_progreso': return 'En Progreso';
+      case 'pendiente': return 'Pendiente';
+      case 'cancelada': return 'Cancelada';
+      default: return 'No Iniciada';
     }
   };
 
@@ -177,7 +177,7 @@ const EditableActionPlan: React.FC<EditableActionPlanProps> = ({
         <Box display="flex" alignItems="center">
           <AssignmentIcon sx={{ color: '#1E3A8A', mr: 1 }} />
           <Typography variant="h6" sx={{ color: '#1E3A8A', fontWeight: 'bold' }}>
-            ðŸ“‹ Plan de Accion
+            Plan de Acción
           </Typography>
         </Box>
         
@@ -399,10 +399,10 @@ const EditableActionPlan: React.FC<EditableActionPlanProps> = ({
       {/* Dialog para editar/agregar accion */}
       <Dialog open={isDialogOpen} onClose={() => setIsDialogOpen(false)} maxWidth="md" fullWidth>
         <DialogTitle>
-          {editingItem ? 'Editar Accion' : 'Agregar Nueva Accion'}
+          {editingItem ? 'Editar Acción' : 'Agregar Nueva Acción'}
         </DialogTitle>
         
-        <DialogContent>
+        <DialogContent sx={{ pt: '20px !important' }}>
           <Grid container spacing={2} sx={{ mt: 1 }}>
             <Grid  size={{ xs: 12 }}>
               <TextField
@@ -419,7 +419,7 @@ const EditableActionPlan: React.FC<EditableActionPlanProps> = ({
                 fullWidth
                 multiline
                 rows={3}
-                label="Descripcion"
+                label="Descripción"
                 value={newItem.descripcion || ''}
                 onChange={(e) => setNewItem({ ...newItem, descripcion: e.target.value })}
                 required
@@ -446,7 +446,7 @@ const EditableActionPlan: React.FC<EditableActionPlanProps> = ({
                   <MenuItem value="baja">Baja</MenuItem>
                   <MenuItem value="media">Media</MenuItem>
                   <MenuItem value="alta">Alta</MenuItem>
-                  <MenuItem value="critica">Critica</MenuItem>
+                  <MenuItem value="critica">Crítica</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -466,7 +466,7 @@ const EditableActionPlan: React.FC<EditableActionPlanProps> = ({
               <TextField
                 fullWidth
                 type="date"
-                label="Fecha de Finalizacion"
+                label="Fecha de Finalización"
                 value={newItem.fechaFin || ''}
                 onChange={(e) => setNewItem({ ...newItem, fechaFin: e.target.value })}
                 InputLabelProps={{ shrink: true }}
@@ -486,7 +486,7 @@ const EditableActionPlan: React.FC<EditableActionPlanProps> = ({
             
             <Grid  size={{ xs: 12 }}>
               <Typography variant="h6" sx={{ color: '#1E3A8A', mb: 2 }}>
-                ðŸ“Ž Documentos de Soporte
+                Documentos de Soporte
               </Typography>
               
               <Box sx={{ mb: 2 }}>

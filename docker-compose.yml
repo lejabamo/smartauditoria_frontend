@@ -7,10 +7,10 @@ services:
     container_name: smartauditoria_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?MYSQL_ROOT_PASSWORD required}
       MYSQL_DATABASE: sgsri_db
       MYSQL_USER: user
-      MYSQL_PASSWORD: user123
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?MYSQL_PASSWORD required}
     ports:
       - "3306:3306"
     volumes:
@@ -37,7 +37,7 @@ services:
       - db
       - engine
     environment:
-      DATABASE_URL: mysql+pymysql://root:root@db:3306/sgsri_db
+      DATABASE_URL: ${DATABASE_URL:?DATABASE_URL required}
       IA_SERVICE_URL: http://engine:8001/api/v1
       FLASK_ENV: development
     ports:

@@ -9,6 +9,7 @@ from .. import models as models_module
 UsuarioSistema = models_module.UsuarioSistema
 from datetime import datetime, timedelta
 import re
+from .decorators import require_auth
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -119,6 +120,29 @@ def logout():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@auth_bp.route('/refresh-session', methods=['POST'])
+@require_auth
+def refresh_session():
+    """Extender la vigencia de la sesión activa tras confirmar actividad"""
+    try:
+        auth_header = request.headers.get('Authorization', '')
+        token = auth_header.split(" ")[1] if " " in auth_header else auth_header
+        
+        sesion = SesionUsuario.query.filter_by(token=token, activa=True).first()
+        if not sesion:
+            return jsonify({'error': 'No se encontró una sesión activa para este token', 'code': 'NO_ACTIVE_SESSION'}), 404
+        
+        nueva_expiracion = datetime.utcnow() + timedelta(hours=8)
+        sesion.fecha_expiracion = nueva_expiracion
+        db.session.commit()
+        
+        return jsonify({
+            'message': 'Sesión extendida exitosamente',
+            'fecha_expiracion': nueva_expiracion.isoformat()
+        }), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 @auth_bp.route('/register', methods=['POST'])
 def register():
     """Registrar nuevo usuario (solo admin)"""
@@ -181,29 +205,17 @@ def register():
         return jsonify({'error': str(e)}), 500
 
 @auth_bp.route('/me', methods=['GET'])
+@require_auth
 def get_current_user():
     """Obtener información del usuario actual"""
     try:
-        token = None
-        
-        if 'Authorization' in request.headers:
-            auth_header = request.headers['Authorization']
-            try:
-                token = auth_header.split(" ")[1]
-            except IndexError:
-                return jsonify({'error': 'Token malformado'}), 401
-        
-        if not token:
-            return jsonify({'error': 'Token de acceso requerido'}), 401
-        
-        usuario = UsuarioAuth.verify_token(token)
-        if not usuario:
-            return jsonify({'error': 'Token inválido o expirado'}), 401
-        
+        usuario = request.current_user
         return jsonify({
             'user': usuario.to_dict(),
-            'usuario_sistema': usuario.usuario_sistema.to_dict() if hasattr(usuario, 'usuario_sistema') else None
+            'usuario_sistema': usuario.usuario_sistema.to_dict() if getattr(usuario, 'usuario_sistema', None) is not None else None
         }), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
         
     except Exception as e:
         return jsonify({'error': str(e)}), 500

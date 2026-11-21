@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 """Remover nginx de Oracle y reiniciar. El engine en :8001 es suficiente."""
 import paramiko, sys, io
@@ -7,7 +8,7 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='repla
 
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-client.connect('158.69.114.73', username='root', password='JDc)0#%R/76:]0CH', timeout=30)
+client.connect('158.69.114.73', username='root', password=os.environ["VPS_SSH_PASSWORD"], timeout=30)
 print('[OK] Connected to Oracle')
 
 # Check what is on port 80

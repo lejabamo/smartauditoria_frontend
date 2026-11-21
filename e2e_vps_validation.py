@@ -1,3 +1,4 @@
+import os
 import requests
 import sys
 import io
@@ -21,7 +22,7 @@ print(f"  ✓ Estado Backend VPS: {r_health.json()}")
 # 2. Login como Administrador
 print("\n[PASO 2] Autenticación Administrativa...")
 r_login = requests.post(f"{BASE_URL}/api/auth/login",
-                        json={"username": "admin", "password": "Admin@2024!"},
+                        json={"username": "admin", "password": os.environ["SGSRI_ADMIN_PASSWORD"]},
                         verify=False, timeout=10)
 assert r_login.status_code == 200, f"Error login: {r_login.text}"
 token = r_login.json()["token"]
@@ -53,7 +54,7 @@ create_data = {
     "puesto_organizacion": "Operador SGSI",
     "rol": "OPERADOR",
     "id_rol": 2,
-    "password": "PasswordTemp2026*"
+    "password": os.environ["SGSRI_ADMIN_PASSWORD"]
 }
 r_create = requests.post(f"{BASE_URL}/api/usuarios/", json=create_data, headers=headers, verify=False, timeout=10)
 assert r_create.status_code in [200, 201], f"Error al crear: {r_create.text}"
@@ -77,7 +78,7 @@ print(f"  ✓ Token criptográfico firmado: {reset_token[:30]}...")
 
 # 6. Restablecer con Nueva Contraseña
 print("\n[PASO 6] Restablecimiento de Contraseña con Token Firmado...")
-new_pwd = "NewSecuredPassword2026#"
+new_pwd = os.environ.get("SGSRI_TEST_NEW_PASSWORD", "")
 r_reset = requests.post(f"{BASE_URL}/api/auth/reset-password",
                         json={"token": reset_token, "new_password": new_pwd},
                         verify=False, timeout=10)

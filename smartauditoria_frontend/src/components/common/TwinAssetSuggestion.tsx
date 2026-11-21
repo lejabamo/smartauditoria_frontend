@@ -192,7 +192,7 @@ const TwinAssetSuggestion: React.FC<TwinAssetSuggestionProps> = ({
         <Box display="flex" alignItems="center">
           <InfoIcon sx={{ mr: 1 }} />
           <Typography variant="body2">
-            <strong>Â¡Encontramos {twinAssets.length} activo(s) similar(es) con evaluaciones previas!</strong>
+            <strong>¡Encontramos {twinAssets.length} activo(s) similar(es) con evaluaciones previas!</strong>
             <br />
             Puedes clonar la evaluacion existente para acelerar el proceso.
           </Typography>
@@ -240,7 +240,7 @@ const TwinAssetSuggestion: React.FC<TwinAssetSuggestionProps> = ({
                 </Box>
 
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                  <strong>Ãšltima evaluacion:</strong> {twin.ultimaEvaluacion}
+                  <strong>Última evaluacion:</strong> {twin.ultimaEvaluacion}
                 </Typography>
 
                 <Box sx={{ mb: 2 }}>
@@ -290,7 +290,7 @@ const TwinAssetSuggestion: React.FC<TwinAssetSuggestionProps> = ({
             <Box>
               <Alert severity="warning" sx={{ mb: 3 }}>
                 <Typography variant="body2">
-                  <strong>Â¿Estas seguro de que quieres clonar la evaluacion de "{selectedTwin.nombre}"?</strong>
+                  <strong>¿Estas seguro de que quieres clonar la evaluacion de "{selectedTwin.nombre}"?</strong>
                   <br />
                   Esto copiara la amenaza, vulnerabilidad, controles y justificacion a tu evaluacion actual.
                 </Typography>

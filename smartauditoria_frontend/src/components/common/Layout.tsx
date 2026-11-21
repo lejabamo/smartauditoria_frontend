@@ -74,7 +74,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { text: "Activos", icon: <Security />, path: "/activos", roles: ["ADMIN", "OPERADOR", "CONSULTOR"] },
     { text: "Usuarios", icon: <People />, path: "/usuarios", roles: ["ADMIN"] },
     { text: "Riesgos", icon: <Assessment />, path: "/riesgos", roles: ["ADMIN", "OPERADOR", "CONSULTOR"] },
-    { text: "Evaluacion", icon: <Star />, path: "/wizard", roles: ["ADMIN", "OPERADOR"] },
+    { text: "Evaluación", icon: <Star />, path: "/wizard", roles: ["ADMIN", "OPERADOR", "CONSULTOR"] },
     { text: "Auditoría", icon: <FactCheck />, path: "/auditoria", roles: ["ADMIN", "OPERADOR"] },
     { text: "Reportes", icon: <Report />, path: "/reportes", roles: ["ADMIN", "OPERADOR", "CONSULTOR"] },
   ].filter(item => item.roles.includes(currentUserRole) || currentUserRole === "ADMIN");

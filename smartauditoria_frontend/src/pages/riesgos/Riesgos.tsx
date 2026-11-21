@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Card,
@@ -515,7 +515,7 @@ const Riesgos: React.FC = () => {
               <Card className="card">
                 <CardContent sx={{ p: 3 }}>
                   <Typography variant="h6" className="font-poppins" sx={{ color: '#1E3A8A', mb: 2 }}>
-                    Evolucion de Riesgos (Ãšltimos 6 meses)
+                    Evolución de Riesgos (Últimos 6 meses)
                   </Typography>
                   <Box sx={{ height: 400 }}>
                     {loading ? (
@@ -524,7 +524,7 @@ const Riesgos: React.FC = () => {
                       </Box>
                     ) : tendenciaRiesgos.length === 0 ? (
                       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-                        <Typography sx={{ color: '#6B7280' }}>No hay datos de evolucion disponibles</Typography>
+                        <Typography sx={{ color: '#6B7280' }}>No hay datos de evolución disponibles</Typography>
                       </Box>
                     ) : (
                       <ResponsiveContainer width="100%" height="100%">
@@ -565,7 +565,7 @@ const Riesgos: React.FC = () => {
                 }}
               >
                 <Typography variant="h6" className="font-poppins" sx={{ color: '#1E3A8A', fontWeight: 600, mb: 1 }}>
-                  âš ï¸ Atencion Requerida
+                  Atención Requerida
                 </Typography>
                 <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 1 }}>
                   <Typography variant="body1" className="font-roboto" sx={{ color: '#6B7280' }} component="div">
@@ -602,11 +602,11 @@ const Riesgos: React.FC = () => {
           }}
         >
           <Typography variant="h6" className="font-poppins" sx={{ color: '#1E3A8A', fontWeight: 600, mb: 1 }}>
-            âš ï¸ Riesgos Criticos Identificados
+            Riesgos Críticos Identificados
           </Typography>
           <Typography variant="body1" className="font-roboto" sx={{ color: '#6B7280' }}>
-            Se han identificado {topRiesgosCriticos.filter((r: any) => r.severidad === 'HIGH' || r.nivel === 'ALTO').length} riesgo(s) critico(s) que requieren atencion inmediata. 
-            Se recomienda revisar la pestana "Analisis" para ver los detalles y las recomendaciones prioritarias.
+            Se han identificado {topRiesgosCriticos.filter((r: any) => r.severidad === 'HIGH' || r.nivel === 'ALTO').length} riesgo(s) crítico(s) que requieren atención inmediata. 
+            Se recomienda revisar la pestaña "Análisis" para ver los detalles y las recomendaciones prioritarias.
           </Typography>
         </Alert>
       )}

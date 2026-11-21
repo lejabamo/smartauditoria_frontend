@@ -269,7 +269,7 @@ const RiskMatrix4x5: React.FC = () => {
             console.log(`Total activos evaluados (backend): ${totalActivos}, Suma de celdas: ${sumaCeldas}`);
             
             if (sumaCeldas !== totalActivos && totalActivos > 0) {
-              console.warn(`âš ï¸ Advertencia: La suma de celdas (${sumaCeldas}) no coincide con el total de activos evaluados (${totalActivos})`);
+              console.warn(`Advertencia: La suma de celdas (${sumaCeldas}) no coincide con el total de activos evaluados (${totalActivos})`);
             }
             
             setTotalActivosEvaluados(totalActivos);
@@ -410,7 +410,7 @@ const RiskMatrix4x5: React.FC = () => {
             }
             pdf.setFontSize(9);
             pdf.setFont('helvetica', 'normal');
-            pdf.text(`  â€¢ ${evaluacion.nombre_riesgo}`, 25, yPosition);
+            pdf.text(`  • ${evaluacion.nombre_riesgo}`, 25, yPosition);
             yPosition += 5;
             pdf.text(`    Probabilidad: ${evaluacion.probabilidad || 'N/A'} | Impacto: ${evaluacion.impacto || 'N/A'} | Nivel: ${evaluacion.nivel_riesgo || 'N/A'}`, 25, yPosition);
             yPosition += 5;
@@ -512,7 +512,7 @@ const RiskMatrix4x5: React.FC = () => {
                     size="small"
                     sx={{ borderRadius: '8px' }}
                     onClick={() => {
-                      const format = window.confirm('Â¿Exportar como PDF? (Cancelar para CSV)') ? 'PDF' : 'CSV';
+                      const format = window.confirm('¿Exportar como PDF? (Cancelar para CSV)') ? 'PDF' : 'CSV';
                       handleExport(format);
                     }}
                   >

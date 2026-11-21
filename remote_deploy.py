@@ -36,7 +36,7 @@ VPS_ORACLE = {
     "host": "158.69.114.73",
     "port": 22,
     "user": "root",
-    "password": "JDc)0#%R/76:]0CH",
+    "password": os.environ["VPS_SSH_PASSWORD"],
     "deploy_dir": "/opt/smartauditoria",
     "name": "Oracle (Engine + ChromaDB)",
 }
@@ -45,7 +45,7 @@ VPS_SGSRI = {
     "host": "51.79.35.88",
     "port": 22,
     "user": "root",
-    "password": "3WkfS*CNHFg0",
+    "password": os.environ["VPS_SSH_PASSWORD"],
     "deploy_dir": "/opt/smartauditoria",
     "name": "SGSRI (Backend + Frontend)",
 }

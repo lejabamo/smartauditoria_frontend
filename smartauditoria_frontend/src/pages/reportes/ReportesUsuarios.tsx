@@ -317,7 +317,7 @@ const ReportesUsuarios: React.FC = () => {
                           {usuario.nombre}
                         </Typography>
                         <Typography variant="body2" className="font-roboto" sx={{ color: '#6B7280' }}>
-                          {usuario.email} â€¢ {usuario.puesto}
+                          {usuario.email} • {usuario.puesto}
                         </Typography>
                       </Box>
                       <Chip

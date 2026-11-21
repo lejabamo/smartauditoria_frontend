@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 """Ejecuta migraciones y crea admin en SGSRI + verifica engine en Oracle"""
 import paramiko, sys, io
@@ -9,7 +10,7 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='repla
 print("\n[SGSRI] Connecting...")
 c1 = paramiko.SSHClient()
 c1.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-c1.connect('51.79.35.88', username='root', password='3WkfS*CNHFg0', timeout=30)
+c1.connect('51.79.35.88', username='root', password=os.environ["VPS_SSH_PASSWORD"], timeout=30)
 print("[SGSRI] Connected")
 
 sgsri_cmd = (
@@ -41,7 +42,7 @@ sgsri_cmd = (
     'echo "=== Auth test ===" && '
     'curl -sf -X POST http://localhost:5000/api/auth/login '
     '-H "Content-Type: application/json" '
-    '-d \'{"email":"admin@smartauditoria.co","password":"Admin@2024!"}\' | '
+    '-d \'{"email":"admin@smartauditoria.co","password":os.environ["VPS_SSH_PASSWORD"]}\' | '
     'python3 -c "import sys,json; d=json.load(sys.stdin); print(f\'Token: {str(d.get(\\\"token\\\",d.get(\\\"access_token\\\",\\\"NOT_FOUND\\\")))[:40]}...\')" 2>/dev/null || '
     'echo "Login failed - check admin creation" && '
     'echo "[SGSRI DONE]"'
@@ -56,7 +57,7 @@ c1.close()
 print("\n[Oracle] Connecting...")
 c2 = paramiko.SSHClient()
 c2.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-c2.connect('158.69.114.73', username='root', password='JDc)0#%R/76:]0CH', timeout=30)
+c2.connect('158.69.114.73', username='root', password=os.environ["VPS_SSH_PASSWORD"], timeout=30)
 print("[Oracle] Connected")
 
 oracle_cmd = (

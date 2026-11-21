@@ -288,7 +288,7 @@ const ResidualJustificationSuggestions: React.FC<ResidualJustificationSuggestion
         <Box display="flex" alignItems="center">
           <LightbulbIcon sx={{ color: '#1E3A8A', mr: 1 }} />
           <Typography variant="h6" sx={{ color: '#1E3A8A', fontWeight: 'bold' }}>
-            ðŸ’¡ Justificaciones ISO 27005
+            Justificaciones ISO 27005
           </Typography>
         </Box>
         <Tooltip title="Las sugerencias estan basadas en normativa ISO 27005 y consideran la relacion con el riesgo inherente evaluado">
@@ -507,7 +507,7 @@ const ResidualJustificationSuggestions: React.FC<ResidualJustificationSuggestion
       {acceptedSuggestions.size > 0 && (
         <Alert severity="success" sx={{ mt: 2, borderRadius: '8px' }}>
           <Typography variant="body2">
-            <strong>âœ“ Justificacion cargada.</strong> Puedes complementar o editar el texto en el campo de justificacion.
+            <strong>✓ Justificación cargada.</strong> Puedes complementar o editar el texto en el campo de justificacion.
           </Typography>
         </Alert>
       )}

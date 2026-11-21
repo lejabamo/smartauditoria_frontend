@@ -26,7 +26,7 @@ ENGINE_URL  = "http://158.69.114.73:8001" # VPS Oracle — Engine IA
 API_URL     = f"{BACKEND_URL}/api"
 
 ADMIN_EMAIL    = "admin"
-ADMIN_PASSWORD = "admin123"
+ADMIN_PASSWORD = os.environ["SGSRI_ADMIN_PASSWORD"]
 
 TIMEOUT = 30
 

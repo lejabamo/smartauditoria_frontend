@@ -25,10 +25,7 @@ if config.config_file_name is not None:
 target_metadata = db.metadata
 
 # Leer URL de BD desde variable de entorno (no commitear credenciales)
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "mysql+pymysql://root:root@localhost/sgsri_db"
-)
+DATABASE_URL = os.environ.get("DATABASE_URL", "")
 config.set_main_option("sqlalchemy.url", DATABASE_URL)
 
 

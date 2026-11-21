@@ -1,9 +1,10 @@
+import os
 import paramiko
 
 def inspect_vps():
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client.connect('51.79.35.88', username='root', password='3WkfS*CNHFg0', timeout=15)
+    client.connect('51.79.35.88', username='root', password=os.environ["VPS_SSH_PASSWORD"], timeout=15)
     
     print("=== DOCKER CONTAINERS ===")
     stdin, stdout, stderr = client.exec_command('docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"')

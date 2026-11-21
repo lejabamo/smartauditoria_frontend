@@ -215,7 +215,7 @@ const TendenciasSeguridad: React.FC = () => {
                     Riesgos Mejorados
                   </Typography>
                   <Typography variant="caption" className="font-roboto" sx={{ color: '#10B981' }}>
-                    Inherente â†’ Residual
+                    Inherente → Residual
                   </Typography>
                 </Box>
                 <TrendingUpIcon sx={{ fontSize: 40, color: '#10B981' }} />

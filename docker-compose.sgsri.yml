@@ -10,16 +10,16 @@ services:
     env_file:
       - ./smartauditoria_backend/.env.production
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-_VPdJqnuMcYYEORcxH7OHA}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?DB_ROOT_PASSWORD required}
       MYSQL_DATABASE: sgsri_db
       MYSQL_USER: sgsri_user
-      MYSQL_PASSWORD: ${DB_PASSWORD:-KV2jiFc7fetfJH7-zFcoWQ}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD required}
     ports:
       - "127.0.0.1:3306:3306"
     volumes:
       - /data/mariadb:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "sgsri_user", "-p${DB_PASSWORD:-KV2jiFc7fetfJH7-zFcoWQ}"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "sgsri_user", "-p${DB_PASSWORD:?DB_PASSWORD required}"]
       interval: 30s
       timeout: 10s
       retries: 5

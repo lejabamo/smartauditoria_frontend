@@ -8,7 +8,28 @@ __pycache__/
 # Variables de entorno y secretos
 .env
 .env.*
+**/.env
+**/.env.*
 !.env.example
+!**/.env.example
+
+# Scripts locales de operacion, despliegue y diagnostico VPS
+check_*.py
+inspect_*.py
+query_*.py
+read_*.py
+restore_*.py
+verify_vps_live.py
+create_table.py
+list_assets.py
+migrate_data.py
+vps_*.py
+deploy_to_vps.py
+post_deploy.py
+remote_deploy.py
+run_init_db.py
+start_sgsri.py
+fix_db.py
 
 # Base de datos local
 data/

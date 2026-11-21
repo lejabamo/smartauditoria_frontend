@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Layout from "./components/common/Layout";
+import RouteErrorBoundary from "./components/common/RouteErrorBoundary";
 import Login from "./components/auth/Login";
 
 // Lazy loading de componentes para code splitting
@@ -216,7 +217,9 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode; allowedRoles?: strin
 
   return (
     <Layout>
-      <Suspense fallback={<LoadingFallback />}>{children}</Suspense>
+      <RouteErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>{children}</Suspense>
+      </RouteErrorBoundary>
     </Layout>
   );
 };

@@ -179,7 +179,7 @@ const ResidualRiskSuggestions: React.FC<ResidualRiskSuggestionsProps> = ({
       <Box display="flex" alignItems="center" mb={2}>
         <TrendingDownIcon sx={{ color: '#1E3A8A', mr: 1 }} />
         <Typography variant="h6" sx={{ color: '#1E3A8A', fontWeight: 'bold' }}>
-          ðŸ“Š Sugerencias de Riesgo Residual
+          Sugerencias de Riesgo Residual
         </Typography>
       </Box>
 

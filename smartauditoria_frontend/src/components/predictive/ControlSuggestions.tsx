@@ -159,7 +159,7 @@ const ControlSuggestions: React.FC<ControlSuggestionsProps> = ({
     <Box>
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
         <Typography variant="h6" sx={{ color: '#1E3A8A', fontWeight: 'bold' }}>
-          ðŸ›¡ï¸ Controles Sugeridos ISO 27002
+          Controles Sugeridos ISO 27002
         </Typography>
         <Button
           variant="outlined"

@@ -9,7 +9,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='repla
 
 VPS_HOST = "51.79.35.88"
 VPS_USER = "root"
-VPS_PASS = "3WkfS*CNHFg0"
+VPS_PASS = os.environ["VPS_SSH_PASSWORD"]
 
 def create_dist_tar():
     print("1. Creando archivo tar con frontend/dist...")
@@ -105,7 +105,7 @@ def deploy():
         
         # Test login
         r_login = requests.post("https://riesgosti.tics.sedcauca.gov.co/api/auth/login",
-                                json={"username": "admin", "password": "AdminPass2026!" if False else "admin123"},
+                                json={"username": "admin", "password": os.environ["VPS_SSH_PASSWORD"] if False else "admin123"},
                                 verify=False, timeout=10)
         print(f"   Login status: {r_login.status_code}")
         token = None

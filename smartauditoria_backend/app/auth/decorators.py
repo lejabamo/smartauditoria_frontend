@@ -4,7 +4,9 @@ Decoradores para autenticación y autorización
 
 from functools import wraps
 from flask import request, jsonify, current_app
-from .models import UsuarioAuth, Rol
+from .models import UsuarioAuth, Rol, SesionUsuario
+from app import db
+from datetime import datetime
 import jwt
 
 def require_auth(f):
@@ -27,11 +29,25 @@ def require_auth(f):
         try:
             # Decodificar el token
             payload = jwt.decode(token, current_app.config['SECRET_KEY'], algorithms=['HS256'])
-            current_user = UsuarioAuth.query.get(payload['user_id'])
+            user_id = payload.get('user_id') or payload.get('sub') or payload.get('id')
+            current_user = UsuarioAuth.query.get(user_id)
             
             if not current_user or not current_user.activo:
                 return jsonify({'error': 'Usuario no válido o inactivo'}), 401
             
+            # Verificar si la sesión registrada en base de datos sigue activa y vigente
+            try:
+                sesion = SesionUsuario.query.filter_by(token=token).first()
+                if sesion:
+                    if not sesion.activa:
+                        return jsonify({'error': 'Sesión cerrada o revocada', 'code': 'SESSION_REVOKED'}), 401
+                    if sesion.fecha_expiracion and sesion.fecha_expiracion < datetime.utcnow():
+                        sesion.activa = False
+                        db.session.commit()
+                        return jsonify({'error': 'Sesión expirada por inactividad', 'code': 'SESSION_EXPIRED'}), 401
+            except Exception as ses_err:
+                current_app.logger.debug(f"Error verificando SesionUsuario en require_auth: {ses_err}")
+
             # Agregar el usuario actual al contexto
             request.current_user = current_user
             

@@ -342,7 +342,7 @@ const ActivoDetailCard: React.FC<ActivoDetailCardProps> = ({
                     <Grid  size={{ xs: 12, md: 3 }}>
                       <Box sx={{ textAlign: 'center' }}>
                         <Typography variant="body2" className="font-roboto" sx={{ color: '#6B7280', mb: 1 }}>
-                          Ãšltima Actualizacion
+                          Última Actualizacion
                         </Typography>
                         <Typography variant="body2" className="font-roboto" sx={{ fontWeight: 500, color: '#374151' }}>
                           {activo.fecha_ultima_actualizacion_sgsi ? 

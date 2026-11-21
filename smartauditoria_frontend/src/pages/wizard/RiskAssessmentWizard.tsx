@@ -776,6 +776,13 @@ const RiskAssessmentWizard: React.FC = () => {
   });
 
   const handleNext = () => {
+    if (activeStep === 0) {
+      if (!wizardData.selectedActivo) {
+        toast.error('Por favor, selecciona un activo de información antes de continuar');
+        return;
+      }
+    }
+
     if (activeStep === 1) {
       if (!wizardData.newRiesgo.amenaza || !wizardData.newRiesgo.vulnerabilidad) {
         toast.error('Por favor, completa la amenaza y vulnerabilidad antes de continuar');
@@ -789,7 +796,7 @@ const RiskAssessmentWizard: React.FC = () => {
     
     if (activeStep === 3) {
       if (!wizardData.controles.seleccionados || wizardData.controles.seleccionados.length === 0) {
-        toast.error(' Es obligatorio seleccionar al menos un control.');
+        toast.error('Es obligatorio seleccionar al menos un control.');
         return;
       }
       if (!wizardData.controles.eficacia) {
@@ -799,6 +806,10 @@ const RiskAssessmentWizard: React.FC = () => {
     }
     
     if (activeStep < steps.length - 1) {
+      const activoId = wizardData.selectedActivo?.id || wizardData.selectedActivo?.ID_Activo;
+      if (activoId) {
+        guardarEvaluacionParcial(activoId, Math.round(((activeStep + 1) / steps.length) * 100));
+      }
       setActiveStep(activeStep + 1);
     }
   };
@@ -1518,8 +1529,6 @@ const RiskAssessmentWizard: React.FC = () => {
       }
       
       if (porcentajeParcial > 0 && porcentajeParcial < 100) {
-        guardarEvaluacionParcial(activoId, porcentajeParcial);
-        
         return { 
           estado: 'parcial', 
           porcentaje: porcentajeParcial, 

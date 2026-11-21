@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 """Script de arranque de SGSRI — ejecutado directamente"""
 import paramiko, sys, io
@@ -7,7 +8,7 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='repla
 
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-client.connect('51.79.35.88', username='root', password='3WkfS*CNHFg0', timeout=30)
+client.connect('51.79.35.88', username='root', password=os.environ["VPS_SSH_PASSWORD"], timeout=30)
 print('[OK] Connected to SGSRI')
 
 cmd = (

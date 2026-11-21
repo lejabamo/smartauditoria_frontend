@@ -137,12 +137,12 @@ class DocumentosService {
   }
 
   obtenerIconoTipo(tipo: string): string {
-    if (tipo.includes('pdf')) return 'ðŸ“„';
-    if (tipo.includes('word') || tipo.includes('document')) return 'ðŸ“';
-    if (tipo.includes('excel') || tipo.includes('spreadsheet')) return 'ðŸ“Š';
-    if (tipo.includes('image')) return 'ðŸ–¼ï¸';
-    if (tipo.includes('text')) return 'ðŸ“„';
-    return 'ðŸ“Ž';
+    if (tipo.includes('pdf')) return '📄';
+    if (tipo.includes('word') || tipo.includes('document')) return '📝';
+    if (tipo.includes('excel') || tipo.includes('spreadsheet')) return '📊';
+    if (tipo.includes('image')) return '🖼️';
+    if (tipo.includes('text')) return '📄';
+    return '📎';
   }
 }
 

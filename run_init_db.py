@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 """Transfiere init_db.py al contenedor y ejecuta migraciones + admin"""
 import paramiko, sys, io
@@ -9,7 +10,7 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='repla
 print("[SGSRI] Connecting for DB initialization...")
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-client.connect('51.79.35.88', username='root', password='3WkfS*CNHFg0', timeout=30)
+client.connect('51.79.35.88', username='root', password=os.environ["VPS_SSH_PASSWORD"], timeout=30)
 print("[SGSRI] Connected")
 
 # Copy init_db.py to VPS
@@ -25,7 +26,7 @@ cmd = (
     'echo "=== Auth test ===" && '
     'curl -sf -X POST http://localhost:5000/api/auth/login '
     '-H "Content-Type: application/json" '
-    '-d \'{"email":"admin@smartauditoria.co","password":"Admin@2024!"}\' 2>/dev/null | '
+    '-d \'{"email":"admin@smartauditoria.co","password":os.environ["VPS_SSH_PASSWORD"]}\' 2>/dev/null | '
     'python3 -m json.tool 2>/dev/null || echo "Login test - check output above" && '
     'echo "[DB INIT DONE]"'
 )

@@ -339,10 +339,10 @@ const InformeRiesgos: React.FC = () => {
       const fileName = `Informe_Completo_Riesgos_${new Date().toISOString().split('T')[0]}.pdf`;
       doc.save(fileName);
       
-      toast.success('âœ… Reporte PDF generado exitosamente');
+      toast.success('Reporte PDF generado exitosamente');
     } catch (error) {
       console.error('Error generando PDF:', error);
-      toast.error('âŒ Error al generar el reporte PDF');
+      toast.error(' Error al generar el reporte PDF');
     } finally {
       setExportando(false);
     }
@@ -463,10 +463,10 @@ const InformeRiesgos: React.FC = () => {
       const fileName = `Informe_Completo_Riesgos_${new Date().toISOString().split('T')[0]}.xlsx`;
       XLSX.writeFile(wb, fileName);
       
-      toast.success('âœ… Reporte Excel generado exitosamente');
+      toast.success('Reporte Excel generado exitosamente');
     } catch (error) {
       console.error('Error generando Excel:', error);
-      toast.error('âŒ Error al generar el reporte Excel');
+      toast.error(' Error al generar el reporte Excel');
     } finally {
       setExportando(false);
     }
@@ -1473,9 +1473,9 @@ const InformeRiesgos: React.FC = () => {
                                       }
                                       secondary={
                                         <Typography variant="caption" sx={{ color: '#6B7280' }}>
-                                          {documento.tamano && `${documento.tamano} â€¢ `}
+                                          {documento.tamano && `${documento.tamano} • `}
                                           {documento.fechaSubida && new Date(documento.fechaSubida).toLocaleDateString()}
-                                          {documento.descripcion && ` â€¢ ${documento.descripcion}`}
+                                          {documento.descripcion && ` • ${documento.descripcion}`}
                                         </Typography>
                                       }
                                     />
